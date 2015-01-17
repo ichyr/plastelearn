@@ -10,6 +10,10 @@
 # http://github.com/RailsApps/rails-composer/issues
 #----------------------------------------------------------------------------
 
+DEVELOPER FILES
+TODO
+UserStories
+
 # bundler state
 /.bundle
 /vendor/bundle/
