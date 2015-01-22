@@ -1,0 +1,12 @@
+p#notice = notice
+
+p
+  strong Text:
+  = @comment.text
+p
+  strong Homework:
+  = @comment.homework_id
+
+= link_to 'Edit', edit_comment_path(@comment)
+'|
+= link_to 'Back', comments_path
