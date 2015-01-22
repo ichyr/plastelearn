@@ -1,0 +1,15 @@
+p#notice = notice
+
+p
+  strong Description:
+  = @homework.description
+p
+  strong Part:
+  = @homework.part_id
+p
+  strong User:
+  = @homework.user_id
+
+= link_to 'Edit', edit_homework_path(@homework)
+'|
+= link_to 'Back', homeworks_path

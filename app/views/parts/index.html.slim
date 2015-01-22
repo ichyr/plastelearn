@@ -1,0 +1,31 @@
+h1 Listing parts
+
+table
+  thead
+    tr
+      th Title
+      th Description
+      th Course
+      th Start time
+      th End time
+      th Status
+      th
+      th
+      th
+
+  tbody
+    - @parts.each do |part|
+      tr
+        td = part.title
+        td = part.description
+        td = part.course_id
+        td = part.start_time
+        td = part.end_time
+        td = part.status
+        td = link_to 'Show', part
+        td = link_to 'Edit', edit_part_path(part)
+        td = link_to 'Destroy', part, data: {:confirm => 'Are you sure?'}, :method => :delete
+
+br
+
+= link_to 'New Part', new_part_path

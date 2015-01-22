@@ -1,0 +1,24 @@
+p#notice = notice
+
+p
+  strong Title:
+  = @part.title
+p
+  strong Description:
+  = @part.description
+p
+  strong Course:
+  = @part.course_id
+p
+  strong Start time:
+  = @part.start_time
+p
+  strong End time:
+  = @part.end_time
+p
+  strong Status:
+  = @part.status
+
+= link_to 'Edit', edit_part_path(@part)
+'|
+= link_to 'Back', parts_path

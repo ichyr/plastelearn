@@ -1,0 +1,10 @@
+= simple_form_for(@homework) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :description
+    = f.input :part_id
+    = f.input :user_id
+
+  .form-actions
+    = f.button :submit
