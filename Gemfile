@@ -53,3 +53,6 @@ group :test do
   gem 'launchy'
   gem 'selenium-webdriver'
 end
+
+
+gem 'will_paginate', '~> 3.0.6'

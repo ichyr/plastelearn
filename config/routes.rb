@@ -7,7 +7,7 @@ Rails.application.routes.draw do
 
   resources :courses
 
-  root to: 'visitors#index'
+  root to: 'courses#index'
   devise_for :users
   resources :users
 end
