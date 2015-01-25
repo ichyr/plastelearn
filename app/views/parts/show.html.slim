@@ -6,3 +6,8 @@ p#notice = notice
   i.text-muted.text-center
     = @part.description
 
+- @part.homeworks.each do |homework|
+  .row.single-task.bg-success.col-md-10.col-md-offset-1 = link_to homework
+    = homework.user.email
+    br
+    i = homework.description

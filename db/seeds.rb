@@ -20,4 +20,20 @@ parts = []
 
 }
 
-Part.create(parts)
+parts = Part.create(parts)
+
+
+parts.each { |part| 
+
+	homeworks = []
+	1.upto(rand(15)) { |t| 
+		homeworks << { description: "Here to be my new homework! Mio number #{t}",
+									 user_id: 1	 }
+	}
+
+	homeworks = Homework.create(homeworks)
+
+	part.homeworks  = homeworks
+	part.save
+
+}
