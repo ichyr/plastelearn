@@ -7,3 +7,17 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 user = CreateAdminService.new.call
 puts 'CREATED ADMIN USER: ' << user.email
+
+
+course = Course.create title: "KVPV 13", description: "Lorem ipsum doler odor!"
+
+parts = []
+1.upto(10) { |t| 
+	
+	parts << { title: "Module #{t}", 
+						 description: "#{t}:::Lorem ipsum doler odor!",
+						 course_id: course.id }
+
+}
+
+Part.create(parts)
