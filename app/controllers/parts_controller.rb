@@ -9,6 +9,8 @@ class PartsController < ApplicationController
   end
 
   def show
+    @part.homeworks
+
     respond_with(@part)
   end
 
