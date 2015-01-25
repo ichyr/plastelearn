@@ -10,7 +10,12 @@ html
     == csrf_meta_tags
   body
     header
-      == render 'layouts/navigation'
+      .container
+        == render 'layouts/navigation'
     main[role="main"]
-      == render 'layouts/messages'
-      == yield
+      .container
+        == render 'layouts/messages'
+        == yield
+    footer.footer
+      .container
+        == render 'layouts/footer'

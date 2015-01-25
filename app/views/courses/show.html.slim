@@ -1,12 +1,17 @@
 p#notice = notice
 
-p
-  strong Title:
-  = @course.title
-p
-  strong Description:
+h1.text-center
+	= @course.title
+i.text-muted.text-center
   = @course.description
 
-= link_to 'Edit', edit_course_path(@course)
-'|
-= link_to 'Back', courses_path
+br/ 
+
+- @course.parts.each do |part|
+	.row
+		.bg-warning
+		  = part.title
+		  br
+		  i
+			  = part.description
+end
