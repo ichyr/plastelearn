@@ -4,10 +4,11 @@
   = f.hidden_field :homework_id, value: @homework.id
   / = f.hidden_field :user_id, value: current_user.id
 
+  br/
   .form-inputs
   	p Create new comment here
-  	= f.label :text
-    = f.input :text
+    = f.text_area :text, class: "form-control"
 
+  br/
   .form-actions
-    = f.button :submit
+    = f.button :submit, class: "btn btn-success"
