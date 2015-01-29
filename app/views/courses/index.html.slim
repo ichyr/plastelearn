@@ -1,28 +1,18 @@
-h1 Listing courses
+p#notice = notice
+
+.jumbotron
+  h1.text-center
+    = "Welcome to tre distance learning system"
+  b.text-center
+    = "We strive to make our organization better eveery day!"
 
 - if @courses.count == 0
   h3 = "No Courses"
 - else
-  table.table
-    thead
-      tr
-        th Title
-        th Description
-        th
-        th
-        th
+- @courses.each do |course|
+  .row.single-task.bg-success.col-md-10.col-md-offset-1 = link_to course
+    = course.title
+    br
+    i = course.description
 
-    tbody
-      - @courses.each do |course|
-        tr
-          td = course.title
-          td = course.description
-          td = link_to 'Show', course
-          td = link_to 'Edit', edit_course_path(course)
-          td = link_to 'Destroy', course, data: {:confirm => 'Are you sure?'}, :method => :delete
-
-  br
-
-  = will_paginate @courses
-
-= link_to 'New Course', new_course_path
+= will_paginate @courses
