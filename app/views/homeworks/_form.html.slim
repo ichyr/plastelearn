@@ -1,10 +1,10 @@
 = simple_form_for(@homework) do |f|
   = f.error_notification
+  = f.hidden_field :part_id
+  = f.hidden_field :user_id
 
   .form-inputs
     = f.input :description
-    = f.input :part_id
-    = f.input :user_id
 
   .form-actions
-    = f.button :submit
+    = f.button :submit, class: "btn btn-success"
