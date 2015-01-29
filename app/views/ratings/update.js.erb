@@ -12,6 +12,8 @@ $('#user_star').raty({
       url: '/ratings/' + <%= @rating.id %>,
       type: 'PATCH',
       data: { score: score }
-    }).done(function (data){});
+    }).done(function (data){
+      console.log("raty click");
+    });
   }
 });
