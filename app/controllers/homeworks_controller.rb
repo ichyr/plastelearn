@@ -42,6 +42,7 @@ class HomeworksController < ApplicationController
     end
 
     def homework_params
-      params.require(:homework).permit(:description, :part_id, :user_id)
+      params.require(:homework).permit(:description, :part_id, :user_id,
+        attachments_attributes: [:id, :description, :file, "_destroy"])
     end
 end

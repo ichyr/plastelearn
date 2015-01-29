@@ -1,10 +1,28 @@
-= simple_form_for(@homework) do |f|
+= simple_nested_form_for(@homework, html: { multipart: true }) do |f|
   = f.error_notification
-  = f.hidden_field :part_id
-  = f.hidden_field :user_id
+  = f.hidden_field :part_id, value: 1
+  = f.hidden_field :user_id, value: 1
 
   .form-inputs
     = f.input :description
 
+  .form-inputs
+    = f.fields_for :attachments do |attachment_form|
+
+      .form-inputs
+        p
+          = attachment_form.label :description 
+        = attachment_form.text_area :description 
+
+      .form-inputs
+        = attachment_form.label :file 
+        = attachment_form.file_field :file 
+
+      = attachment_form.link_to_remove "Remove this attachment", class: "btn btn-warning"
+    end
+
+  = f.link_to_add "Add attachment", :attachments, class: "btn btn-success pull-right"
+
+  br/
   .form-actions
     = f.button :submit, class: "btn btn-success"
