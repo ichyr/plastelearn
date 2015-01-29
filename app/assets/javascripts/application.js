@@ -15,4 +15,5 @@
 //= require turbolinks
 //= require bootstrap-sprockets
 //= require jquery_nested_form
+//= require jquery.raty.min
 //= require_tree .

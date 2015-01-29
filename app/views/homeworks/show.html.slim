@@ -23,6 +23,11 @@
           th.col-md-7 = file.description 
           th.col-md-2 = file.created_at
 
+  p Averate rating
+  #star
+  p Your rating
+  #user_star
+
 br/
 br/
 
@@ -33,3 +38,24 @@ br/
     i = comment.text
     
 .row.col-md-10.col-md-offset-1 = render "new_comment"
+
+javascript:
+  $(document).ready(function(){
+    $('#star').raty({
+      readOnly: true,
+      score: #{@homework.average_rating},
+      path: '/assets'
+    });
+
+    $('#user_star').raty({
+      score: #{@rating.score},
+      path: '/assets',
+      click: function(score, evt) {
+        $.ajax({
+          url: '/ratings/' + #{@rating.id},
+          type: 'PATCH',
+          data: { score: score }
+        });
+      }
+    });
+  });

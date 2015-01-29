@@ -9,6 +9,13 @@ class HomeworksController < ApplicationController
   end
 
   def show
+    @rating = Rating.where(homework_id: @homework.id, 
+                           user_id: current_user.id).first
+    unless @rating
+      @rating = Rating.create(homework_id: @homework.id, 
+                              user_id: current_user.id, score: 0)
+    end
+
     respond_with(@homework)
   end
 

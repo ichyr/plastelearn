@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+
+  root to: 'courses#index'
+  
+  devise_for :users
+  
   resources :comments
 
   resources :homeworks
@@ -7,7 +12,8 @@ Rails.application.routes.draw do
 
   resources :courses
 
-  root to: 'courses#index'
-  devise_for :users
   resources :users
+
+  resources :ratings, only: :update
+  
 end
