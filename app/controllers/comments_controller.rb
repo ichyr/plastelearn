@@ -21,9 +21,18 @@ class CommentsController < ApplicationController
   end
 
   def create
+
     @comment = Comment.new(comment_params)
-    @comment.save
-    respond_with(@comment)
+
+    if current_user
+      @comment.user_id = current_user.id
+      @comment.save
+    else
+      flash[:notice] = 'You need to be logged in to create a comment.'
+    end
+
+    # respond_with(@comment)
+    redirect_to controller: :homeworks, action: :show, id: comment_params[:homework_id]
   end
 
   def update
