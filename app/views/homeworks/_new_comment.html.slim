@@ -1,0 +1,13 @@
+= simple_form_for(Comment.new) do |f|
+  = f.error_notification
+
+  = f.hidden_field :homework_id, value: @homework.id
+  / = f.hidden_field :user_id, value: current_user.id
+
+  .form-inputs
+  	p Create new comment here
+  	= f.label :text
+    = f.input :text
+
+  .form-actions
+    = f.button :submit

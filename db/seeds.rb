@@ -37,3 +37,15 @@ parts.each { |part|
 	part.save
 
 }
+
+COMMENT_TEXT = "This is totally awesome! LOrem LoreM LOREM!"
+
+homeworks = Homework.all
+
+homeworks.each { |homework| 
+	0.upto(rand(20)) { |temp| 
+		comment_instance = Comment.create(text: COMMENT_TEXT, user_id: user.id)
+		homework.comments << comment_instance
+	}
+	homework.save
+}

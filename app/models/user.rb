@@ -12,4 +12,5 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :homeworks
+  has_many :comments
 end
