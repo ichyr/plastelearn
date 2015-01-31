@@ -60,3 +60,4 @@ gem 'railroady'
 gem 'nested_form'
 gem 'carrierwave'
 gem 'jquery-raty-rails', :git => "https://github.com/bmc/jquery-raty-rails"
+gem 'bootsy'

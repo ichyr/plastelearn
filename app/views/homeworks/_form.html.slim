@@ -4,7 +4,7 @@
   = f.hidden_field :user_id, value: 1
 
   .form-inputs
-    = f.input :description
+    = f.input :description, as: :bootsy
 
   .form-inputs
     = f.fields_for :attachments do |attachment_form|
