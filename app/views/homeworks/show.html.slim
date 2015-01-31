@@ -2,7 +2,7 @@
   h1.text-center
     = "Homework for #{@homework.part.title}"
   b.text-center
-  	= "by #{@homework.user.email}"
+    = "by #{@homework.user.email}"
   br
   br
   i.text-muted.text-center
@@ -23,10 +23,14 @@
           th.col-md-7 = file.description 
           th.col-md-2 = file.created_at
 
-  p Averate rating
-  #star
-  p Your rating
-  #user_star
+  .row style=("display:inline;")
+    .col-md-3.col-md-offset-2
+      - if current_user
+        p Your rating
+        #user_star
+    .col-md-3.col-md-offset-2
+      p Averate rating
+      #star
 
 br/
 br/
@@ -48,11 +52,11 @@ javascript:
     });
 
     $('#user_star').raty({
-      score: #{@rating.score},
+      #{"score: #{@rating.score}," if @rating}
       path: '/assets',
       click: function(score, evt) {
         $.ajax({
-          url: '/ratings/' + #{@rating.id},
+          url: '/ratings/' #{"+ #{@rating.id}" if @rating},
           type: 'PATCH',
           data: { score: score }
         });
