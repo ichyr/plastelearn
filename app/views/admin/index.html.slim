@@ -1,2 +1,86 @@
-h1 Admin#index
-p Find me in app/views/admin/index.html.slim
+.jumbotron
+  h1.text-center Admininstration panel
+
+ul.nav.nav-pills.nav-justified
+  li.active role="presentation" 
+    = link_to "Users", admin_index_path
+  li role="presentation" 
+    = link_to "Courses", admin_courses_path
+
+/! Nav tabs
+ul.nav.nav-tabs.nav-justified role="tablist" 
+  li.active
+    a data-toggle="tab" href="#specializations" role="tab" = I18n.t("layout.users_panel")
+  li
+    a data-toggle="tab" href="#moderators" role="tab"  = I18n.t("layout.moderator_panel")
+  li
+    a data-toggle="tab" href="#admins" role="tab"  = I18n.t("layout.admin_panel")
+
+/! Tab panes
+.tab-content
+  br
+  brz
+  #users.tab-pane.active
+    table.table.table-hover
+      thead
+        tr.row
+          th = I18n.t "users.name"
+          th = I18n.t "users.email"
+          / # th.text-center = I18n.t "users.avatar"
+          th = I18n.t "users.role"
+          th = I18n.t "buttons.edit"
+          th = I18n.t "buttons.delete"
+          
+      tbody
+        - @users.each do |user|
+          tr.row
+            td = link_to user.name, user_path(user)
+            td = user.email
+            / # td = image_tag user.avatar.url(:thumb).to_s, size: "25x25" if user.avatar
+            td = user.role.to_s
+            td = link_to 'Edit', controller: :users, action: :edit, id: user.id
+            td = link_to 'Destroy', user, data: {:confirm => I18n.t("alerts.are_you_sure")}, :method => :delete
+
+  #moderators.tab-pane
+    table.table.table-hover
+      thead
+        tr.row
+          th = I18n.t "users.name"
+          th = I18n.t "users.email"
+          / # th.text-center = I18n.t "users.avatar"
+          th = I18n.t "users.role"
+          th = I18n.t "users.specialization"
+          th = I18n.t "buttons.edit"
+          th = I18n.t "buttons.delete"
+          
+      tbody
+        - @moderators.each do |user|
+          tr.row
+            td = user.name
+            td = user.email
+            / # td = image_tag user.avatar.url(:thumb).to_s, size: "25x25" if user.avatar
+            td = user.role.to_s
+            td = user.specialization.name if user.specialization
+            td = link_to 'Edit', controller: :users, action: :edit, id: user.id
+            td = link_to 'Destroy', user, data: {:confirm => I18n.t("alerts.are_you_sure")}, :method => :delete
+
+  #admins.tab-pane
+    table.table.table-hover
+      thead
+        tr.row
+          th = I18n.t "users.name"
+          th = I18n.t "users.email"
+          / th.text-center = I18n.t "users.avatar"
+          th = I18n.t "users.role"
+          th = I18n.t "buttons.edit"
+          th = I18n.t "buttons.delete"
+          
+      tbody
+        - @admins.each do |user|
+          tr.row
+            td = user.name
+            td = user.email
+            / # td = image_tag user.avatar.url(:thumb).to_s, size: "25x25" if user.avatar
+            td = user.role.to_s
+            td = link_to 'Edit', controller: :users, action: :edit, id: user.id
+            td = link_to 'Destroy', user, data: {:confirm => I18n.t("alerts.are_you_sure")}, :method => :delete

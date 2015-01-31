@@ -1,2 +1,10 @@
-h1 Admin#courses
-p Find me in app/views/admin/courses.html.slim
+.jumbotron
+  h1.text-center Admininstration panel
+
+ul.nav.nav-pills.nav-justified
+  li role="presentation" 
+    = link_to "Users", admin_index_path
+  li.active role="presentation" 
+    = link_to "Courses", admin_courses_path
+
+
