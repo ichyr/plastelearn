@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  get 'admin/index'
+
+  get 'admin/courses'
+
   root to: 'courses#index'
   
   devise_for :users
@@ -15,5 +19,9 @@ Rails.application.routes.draw do
   resources :users
 
   resources :ratings, only: :update
+
+  namespace :admin do
+  	get '\users', to: "admin#index"
+  end
   
 end
