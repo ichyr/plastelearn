@@ -12,9 +12,20 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery-ui
 //= require bootsy
 //= require turbolinks
 //= require bootstrap-sprockets
 //= require jquery_nested_form
 //= require jquery.raty.min
+//= require twitter/bootstrap
+//= require moment
+//= require bootstrap-datetimepicker
 //= require_tree .
+
+$ ->
+  $(document).on 'ready page:change', ->
+    $('.datetime_picker').datetimepicker pickSeconds: false
+    return
+
+  return

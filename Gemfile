@@ -5,6 +5,7 @@ gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.1.0'
 gem 'jquery-rails'
+gem "jquery-ui-rails"
 gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 group :development, :test do
@@ -13,6 +14,7 @@ group :development, :test do
   gem 'spring'
 end
 gem 'bootstrap-sass'
+gem 'twitter-bootstrap-rails'
 gem 'devise'
 gem 'high_voltage'
 gem 'pg'
@@ -61,3 +63,5 @@ gem 'nested_form'
 gem 'carrierwave'
 gem 'jquery-raty-rails', :git => "https://github.com/bmc/jquery-raty-rails"
 gem 'bootsy'
+gem 'momentjs-rails', '>= 2.8.1', :github => 'derekprior/momentjs-rails'
+gem 'datetimepicker-rails', '>= 3.0.0', :git => 'git://github.com/zpaulovics/datetimepicker-rails.git', :branch => 'tarruda'
