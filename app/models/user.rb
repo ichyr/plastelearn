@@ -14,4 +14,6 @@ class User < ActiveRecord::Base
   has_many :homeworks
   has_many :comments
   has_many :ratings
+
+  mount_uploader :avatar, AvatarUploader
 end
