@@ -11,6 +11,6 @@ class Homework < ActiveRecord::Base
   accepts_nested_attributes_for :attachments, :allow_destroy => true
 
   def average_rating
-    ratings.sum(:score) / ratings.size
+    ratings.size != 0 ? ratings.sum(:score) / ratings.size : 0
   end
 end
