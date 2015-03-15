@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
 
-  get 'user_cabinet', to: 'user_cabinet#index'
+  get 'user_cabinet', to: 'user_cabinet#attend'
 
-  get 'user_cabinet/courses'
+  get 'user_cabinet/teacher'
+  get 'user_cabinet/owner'
 
   mount Bootsy::Engine => '/bootsy', as: 'bootsy'
 
