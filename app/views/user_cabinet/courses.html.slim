@@ -1,0 +1,22 @@
+h1.text-center User cabinet
+
+br /
+
+div role="tabpanel" 
+  /! Nav tabs
+  ul.nav.nav-tabs.nav-justified role="tablist" 
+    li.active role="presentation" 
+      a aria-controls="student" data-toggle="tab" href="#student" role="tab"  Courses attended
+    li role="presentation" 
+      a aria-controls="teacher" data-toggle="tab" href="#teacher" role="tab"  Courses assited
+    li role="presentation" 
+      a aria-controls="moderator" data-toggle="tab" href="#moderator" role="tab"  Courses created
+    
+  /! Tab panes
+  .tab-content
+    #student.tab-pane.active role="tabpanel"
+      = render partial: "courses_table", locals: { courses: @attend_courses }
+    #teacher.tab-pane role="tabpanel"
+      = render partial: "courses_table", locals: { courses: @teacher_courses }
+    #moderator.tab-pane role="tabpanel"
+      = render partial: "courses_table", locals: { courses: @owner_courses }
