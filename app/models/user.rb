@@ -15,5 +15,8 @@ class User < ActiveRecord::Base
   has_many :comments
   has_many :ratings
 
+  has_many :registries
+  has_many :courses, through: :registries
+
   mount_uploader :avatar, AvatarUploader
 end
