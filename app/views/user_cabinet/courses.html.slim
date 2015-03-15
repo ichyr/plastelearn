@@ -15,8 +15,8 @@ div role="tabpanel"
   /! Tab panes
   .tab-content
     #student.tab-pane.active role="tabpanel"
-      = render partial: "courses_table", locals: { courses: @attend_courses }
+      = render partial: "courses_table", locals: { courses: @attend_courses, manageable: false }
     #teacher.tab-pane role="tabpanel"
-      = render partial: "courses_table", locals: { courses: @teacher_courses }
+      = render partial: "courses_table", locals: { courses: @teacher_courses, manageable: true }
     #moderator.tab-pane role="tabpanel"
-      = render partial: "courses_table", locals: { courses: @owner_courses }
+      = render partial: "courses_table", locals: { courses: @owner_courses, manageable: true }
