@@ -1,0 +1,2 @@
+module UserCabinetHelper
+end
