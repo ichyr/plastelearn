@@ -1,9 +1,6 @@
 Rails.application.routes.draw do
 
   mount Bootsy::Engine => '/bootsy', as: 'bootsy'
-  get 'admin/index'
-
-  get 'admin/courses'
 
   root to: 'courses#index'
   
@@ -21,8 +18,10 @@ Rails.application.routes.draw do
 
   resources :ratings, only: :update
 
-  namespace :admin do
-  	get '\users', to: "admin#index"
-  end
+  get "admin/index"
+  get "admin/courses"
+  # namespace :admin do
+  # 	get '/users', to: "admin#index"
+  # end
   
 end

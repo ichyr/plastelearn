@@ -1,5 +1,4 @@
-.jumbotron
-  h1.text-center Admininstration panel
+= render "header"
 
 ul.nav.nav-pills.nav-justified
   li role="presentation" 
@@ -7,7 +6,7 @@ ul.nav.nav-pills.nav-justified
   li.active role="presentation" 
     = link_to "Courses", admin_courses_path
 
-br
+br/
 
 .btn.btn-success.pull-right = link_to "New course", new_course_path
 
@@ -32,8 +31,4 @@ br
             .btn.btn-warning = link_to "Edit", edit_course_path(course)
             .btn.btn-danger= link_to 'Destroy', course, data: {:confirm => 'Are you sure?'}, :method => :delete
 
-
-
 = will_paginate @courses
-
-

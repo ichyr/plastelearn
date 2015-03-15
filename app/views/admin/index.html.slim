@@ -1,5 +1,4 @@
-.jumbotron
-  h1.text-center Admininstration panel
+= render "header"
 
 ul.nav.nav-pills.nav-justified
   li.active role="presentation" 
@@ -7,10 +6,12 @@ ul.nav.nav-pills.nav-justified
   li role="presentation" 
     = link_to "Courses", admin_courses_path
 
+br/
+
 /! Nav tabs
 ul.nav.nav-tabs.nav-justified role="tablist" 
   li.active
-    a data-toggle="tab" href="#specializations" role="tab" = I18n.t("layout.users_panel")
+    a data-toggle="tab" href="#users" role="tab" = I18n.t("layout.users_panel")
   li
     a data-toggle="tab" href="#moderators" role="tab"  = I18n.t("layout.moderator_panel")
   li
@@ -26,7 +27,7 @@ ul.nav.nav-tabs.nav-justified role="tablist"
         tr.row
           th = I18n.t "users.name"
           th = I18n.t "users.email"
-          / # th.text-center = I18n.t "users.avatar"
+          th.text-center = I18n.t "users.avatar"
           th = I18n.t "users.role"
           th = I18n.t "buttons.edit"
           th = I18n.t "buttons.delete"
@@ -36,7 +37,7 @@ ul.nav.nav-tabs.nav-justified role="tablist"
           tr.row
             td = link_to user.name, user_path(user)
             td = user.email
-            / # td = image_tag user.avatar.url(:thumb).to_s, size: "25x25" if user.avatar
+            td = image_tag user.avatar.url(:thumb).to_s, size: "25x25" if user.avatar
             td = user.role.to_s
             td = link_to 'Edit', controller: :users, action: :edit, id: user.id
             td = link_to 'Destroy', user, data: {:confirm => I18n.t("alerts.are_you_sure")}, :method => :delete
@@ -47,7 +48,7 @@ ul.nav.nav-tabs.nav-justified role="tablist"
         tr.row
           th = I18n.t "users.name"
           th = I18n.t "users.email"
-          / # th.text-center = I18n.t "users.avatar"
+          th.text-center = I18n.t "users.avatar"
           th = I18n.t "users.role"
           th = I18n.t "users.specialization"
           th = I18n.t "buttons.edit"
@@ -58,7 +59,7 @@ ul.nav.nav-tabs.nav-justified role="tablist"
           tr.row
             td = user.name
             td = user.email
-            / # td = image_tag user.avatar.url(:thumb).to_s, size: "25x25" if user.avatar
+            td = image_tag user.avatar.url(:thumb).to_s, size: "25x25" if user.avatar
             td = user.role.to_s
             td = user.specialization.name if user.specialization
             td = link_to 'Edit', controller: :users, action: :edit, id: user.id
@@ -70,7 +71,7 @@ ul.nav.nav-tabs.nav-justified role="tablist"
         tr.row
           th = I18n.t "users.name"
           th = I18n.t "users.email"
-          / th.text-center = I18n.t "users.avatar"
+          th.text-center = I18n.t "users.avatar"
           th = I18n.t "users.role"
           th = I18n.t "buttons.edit"
           th = I18n.t "buttons.delete"
@@ -80,7 +81,7 @@ ul.nav.nav-tabs.nav-justified role="tablist"
           tr.row
             td = user.name
             td = user.email
-            / # td = image_tag user.avatar.url(:thumb).to_s, size: "25x25" if user.avatar
+            td = image_tag user.avatar.url(:thumb).to_s, size: "25x25" if user.avatar
             td = user.role.to_s
             td = link_to 'Edit', controller: :users, action: :edit, id: user.id
             td = link_to 'Destroy', user, data: {:confirm => I18n.t("alerts.are_you_sure")}, :method => :delete
