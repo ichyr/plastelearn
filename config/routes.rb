@@ -20,6 +20,7 @@ Rails.application.routes.draw do
     get 'statistics', on: :member
     get 'members', on: :member
     get 'enroll', on: :member
+    post 'check_enroll', on: :member
   end
 
   resources :users
