@@ -20,10 +20,10 @@ table.table
   thead
     tr
       th.col-sm-1.text-center #
-      th.col-sm-4.text-center Title
-      th.col-sm-1.text-center Start time
-      th.col-sm-1.text-center End time
-      th.col-sm-2.text-center Status
+      th.col-sm-3.text-center Title
+      th.col-sm-2.text-center Start time
+      th.col-sm-2.text-center End time
+      th.col-sm-1.text-center Status
 
       th.col-sm-1
       th.col-sm-1
@@ -33,12 +33,14 @@ table.table
     - @course.parts.each_with_index do |part, index|
         tr
           td.col-sm-1 = index + 1
-          td.col-sm-1 = link_to part.title, part
-          td.col-sm-1 = part.start_time
-          td.col-sm-1 = part.end_time
+          td.col-sm-3 = link_to part.title, part
+          td.col-sm-2 = part.start_time
+          td.col-sm-2 = part.end_time
           td.col-sm-1.text-center = raw part_status_decoration(part.status)
 
-          td.col-sm-1 = link_to 'Edit', edit_part_path(part, course_id: @course.id)
           td.col-sm-1.text-center = raw part_state_transition_button(part, part.status)
-          td.col-sm-1 = link_to 'Destroy', part, data: {:confirm => 'Are you sure?'}, :method => :delete
+          td.col-sm-1
+            .btn.btn-warning = link_to 'Edit', edit_part_path(part, course_id: @course.id)
+          td.col-sm-1
+            .btn.btn-danger = link_to 'Destroy', part, data: {:confirm => 'Are you sure?'}, :method => :delete
 

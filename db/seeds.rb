@@ -56,7 +56,9 @@ homeworks.each { |homework|
   # create 120 courses
 course_list = []
 (1..120).each { |n|
-  course_list << { title: "Course #{n}", description: "Lorem ipsum doler odor!" }
+  course_list << { title: "Course #{n}", 
+                   description: "Lorem ipsum doler odor!",
+                   enrollment_key: "qwe" }
 }
 Course.create course_list
 
@@ -82,7 +84,7 @@ crs = CreateRegistryService.new
 course = Course.find(1)
 
 (1..25).each { |index| 
-  user = cus.call "user#{index}@examlpe.com"
+  user = cus.call "user#{index}@example.com"
   if(index == 1) 
     crs.call course.id, user.id, USER_COURSE_ROLES[:OWNER]
   elsif index > 1 && index < 8

@@ -9,7 +9,17 @@ class CoursesController < ApplicationController
   end
 
   def show
-    respond_with(@course)
+    redirect_to new_user_session_path unless current_user
+
+    enrolled = Registry.where("user_id = ? and course_id = ?",
+                              current_user.id, @course.id).count
+    enrolled = enrolled > 0 ? true : false;
+
+    if enrolled
+      respond_with(@course)
+    else
+      redirect_to enroll_course_path(@course)
+    end
   end
 
   def new
