@@ -1,7 +1,7 @@
 class UserCabinetController < ApplicationController
   def courses
     # remove next statement
-    current_user = User.find(1) unless current_user
+    # current_user ||= User.find(1)
 
     @new_course_count = current_user.course_grants
 
