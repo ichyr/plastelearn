@@ -19,6 +19,10 @@ class UserCabinetController < ApplicationController
     own_courses = get_course_ids_by_role(current_user, role)
 
     @owner_courses = Course.select(:id, :title).find(own_courses)
+
+    if @new_course_count > 0
+      flash[:notice] = "Currently you can create #{@new_course_count} new courses."
+    end
   end
 
 
