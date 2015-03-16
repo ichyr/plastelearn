@@ -15,7 +15,10 @@ Rails.application.routes.draw do
   resources :parts
 
   resources :courses do
-    get 'manage', on: :member
+    get 'general_manage', on: :member
+    get 'parts_manage', on: :member
+    get 'statistics', on: :member
+    get 'members', on: :member
   end
 
   resources :users

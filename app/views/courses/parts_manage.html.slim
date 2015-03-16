@@ -1,0 +1,13 @@
+h1.text-center Course management
+
+br /
+
+ul.nav.nav-tabs.nav-justified
+  li role="presentation" 
+    = link_to "General information", general_manage_course_path(@course)
+  li.active role="presentation" 
+  	= link_to "Parts management", parts_manage_course_path(@course)
+  li role="presentation" 
+  	= link_to "Statistics", statistics_course_path(@course)
+  li role="presentation" 
+	  = link_to "Members", members_course_path(@course)

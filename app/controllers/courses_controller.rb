@@ -38,8 +38,20 @@ class CoursesController < ApplicationController
     respond_with(@course)
   end
 
-  def manage
-    
+  def general_manage
+    @course = Course.find(params[:id])
+  end
+
+  def parts_manage
+    @course = Course.find(params[:id])
+  end
+
+  def members
+    @course = Course.find(params[:id])
+  end
+
+  def statistics
+    @course = Course.find(params[:id])
   end
 
   private
