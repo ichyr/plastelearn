@@ -16,6 +16,7 @@ class PartsController < ApplicationController
 
   def new
     @part = Part.new
+    @course_id = params[:course_id]
     respond_with(@part)
   end
 
