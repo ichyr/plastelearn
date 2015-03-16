@@ -70,3 +70,26 @@ Course.select(:id).all.each { |cid|
   registry_list << { user_id: 1, course_id: cid, role: roles[cid % 3] }
 }
 Registry.create registry_list
+
+
+
+# Part for course registries trial
+
+# create 25 users
+
+cus = CreateUserService.new
+crs = CreateRegistryService.new
+course = Course.find(1)
+
+(1..25).each { |index| 
+  user = cus.call "user#{index}@examlpe.com"
+  if(index == 1) 
+    crs.call course.id, user.id, USER_COURSE_ROLES[:OWNER]
+  elsif index > 1 && index < 8
+    crs.call course.id, user.id, USER_COURSE_ROLES[:TEACHER]
+  else
+    crs.call course.id, user.id, USER_COURSE_ROLES[:STUDENT]
+  end  
+}
+
+# create different registries for course with id = 1

@@ -17,8 +17,8 @@ module CoursesHelper
 		end
 	end
 
-	def get_status_name number
-		PART_STATUSES.to_a.each { |status|
+	def get_status_name hash, number
+		hash.to_a.each { |status|
 			return status[0] if status[1] == number
 		}
 	end

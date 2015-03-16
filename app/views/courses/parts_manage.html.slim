@@ -32,7 +32,7 @@ table.table
           td = link_to part.title, part
           td = part.start_time
           td = part.end_time
-          td = get_status_name(part.status)
+          td = get_status_name(PART_STATUSES, part.status)
           td = link_to 'Edit', edit_part_path(part, course_id: @course.id)
           td = link_to 'Destroy', part, data: {:confirm => 'Are you sure?'}, :method => :delete
 

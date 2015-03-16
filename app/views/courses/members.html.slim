@@ -11,3 +11,25 @@ ul.nav.nav-tabs.nav-justified
   	= link_to "Statistics", statistics_course_path(@course)
   li.active role="presentation" 
 	  = link_to "Members", members_course_path(@course)
+
+br /
+
+table.table
+  thead
+    tr
+      th №
+      th Username
+      th E-mail
+      th Role
+      th
+      th
+
+  tbody
+    - @registries.each_with_index do |record, index|
+        tr
+          td = index
+          td = record.user.name
+          td = record.user.email
+          td = get_status_name(USER_COURSE_ROLES, record.role)
+          / # td = link_to 'Edit', root_path # edit_registry_path(record)
+          / # td = link_to 'Destroy', root_path, data: {:confirm => 'Are you sure?'}

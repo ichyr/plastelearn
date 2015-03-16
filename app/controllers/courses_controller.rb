@@ -48,6 +48,8 @@ class CoursesController < ApplicationController
 
   def members
     @course = Course.find(params[:id])
+    @registries = Registry.includes(:user)
+                          .where("course_id = ?", @course.id)
   end
 
   def statistics
