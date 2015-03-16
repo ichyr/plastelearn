@@ -1,10 +1,5 @@
 class User < ActiveRecord::Base
   enum role: [:user, :moderator, :admin]
-  after_initialize :set_default_role, :if => :new_record?
-
-  def set_default_role
-    self.role ||= :user
-  end
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
@@ -19,4 +14,12 @@ class User < ActiveRecord::Base
   has_many :courses, through: :registries
 
   mount_uploader :avatar, AvatarUploader
+
+  before_create :set_defaults
+
+  private
+  def set_defaults
+    self.role ||= :user
+    self.course_grants ||= 0
+  end
 end

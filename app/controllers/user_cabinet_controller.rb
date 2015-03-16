@@ -3,6 +3,8 @@ class UserCabinetController < ApplicationController
     # remove next statement
     current_user = User.find(1) unless current_user
 
+    @new_course_count = current_user.course_grants
+
     role = USER_COURSE_ROLES[:STUDENT]
     own_courses = get_course_ids_by_role(current_user, role)
 

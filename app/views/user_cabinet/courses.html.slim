@@ -1,10 +1,16 @@
-h1.text-center User cabinet
+h1.text-center
+  | User cabinet
+  -if @new_course_count > 0
+    .row.pull-right
+      .btn.btn-success = link_to "Create new course", new_course_path
+
 
 br /
 
 div role="tabpanel" 
   /! Nav tabs
-  ul.nav.nav-tabs.nav-justified role="tablist" 
+
+  ul.nav.nav-tabs.nav-justified.row role="tablist" 
     li.active role="presentation" 
       a aria-controls="student" data-toggle="tab" href="#student" role="tab"  Courses attended
     li role="presentation" 

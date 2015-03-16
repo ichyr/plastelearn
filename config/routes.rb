@@ -6,7 +6,7 @@ Rails.application.routes.draw do
 
   root to: 'courses#index'
   
-  devise_for :users
+  devise_for :users, controllers: { registrations: 'registrations'}
   
   resources :comments
 
