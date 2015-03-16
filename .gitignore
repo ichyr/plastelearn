@@ -13,6 +13,7 @@
 DEVELOPER FILES
 TODO
 UserStories
+doc/
 
 # bundler state
 /.bundle
