@@ -1,13 +1,14 @@
 = simple_form_for(@part) do |f|
   = f.error_notification
 
+  = f.hidden_field :course_id, value: @course_id
+
   .form-inputs
     = f.input :title
     = f.input :description, as: :bootsy, input_html: {class: 'form-control', rows: 15}
-    = f.input :course_id, as: :hidden, input_html: { value: @course_id }
     = f.input :start_time, :as => :datetime_picker
     = f.input :end_time, :as => :datetime_picker
-    = f.input :status
+    = f.input :status, collection: PART_STATUSES, selected: :status
 
   .form-actions
     = f.button :submit

@@ -21,22 +21,26 @@ class PartsController < ApplicationController
   end
 
   def edit
+    @course_id = params[:course_id]
   end
 
   def create
     @part = Part.new(part_params)
     @part.save
-    respond_with(@part)
+    
+    redirect_to parts_manage_course_path(@part.course)
   end
 
   def update
     @part.update(part_params)
-    respond_with(@part)
+
+    redirect_to parts_manage_course_path(@part.course)
   end
 
   def destroy
     @part.destroy
-    respond_with(@part)
+    
+    redirect_to parts_manage_course_path(@part.course)
   end
 
   private

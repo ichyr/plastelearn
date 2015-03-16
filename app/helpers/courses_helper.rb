@@ -16,4 +16,10 @@ module CoursesHelper
 			part.status == PART_STATUSES[:COMPLETE]
 		end
 	end
+
+	def get_status_name number
+		PART_STATUSES.to_a.each { |status|
+			return status[0] if status[1] == number
+		}
+	end
 end
