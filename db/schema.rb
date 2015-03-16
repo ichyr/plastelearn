@@ -54,7 +54,7 @@ ActiveRecord::Schema.define(version: 20150315213135) do
     t.text     "description"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
-    t.string   "enrollment_ket"
+    t.string   "enrollment_key"
   end
 
   create_table "homeworks", force: :cascade do |t|

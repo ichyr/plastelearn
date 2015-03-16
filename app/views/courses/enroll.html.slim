@@ -1,0 +1,11 @@
+h1.text-center Enroll for the course
+h2.text-center = @course.title
+
+.authform
+	= simple_form_for(:enrollment, :url => enroll_course_path(@course), :html => {:class => 'form-horizontal' }) do |f|
+
+	  .form-inputs  
+	    = f.input :enrollment_key
+
+	  .form-actions.pull-right
+	    = f.button :submit, "Submit the key", class: "btn btn-success"

@@ -19,6 +19,7 @@ Rails.application.routes.draw do
     get 'parts_manage', on: :member
     get 'statistics', on: :member
     get 'members', on: :member
+    get 'enroll', on: :member
   end
 
   resources :users
