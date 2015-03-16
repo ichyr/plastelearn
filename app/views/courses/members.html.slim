@@ -6,30 +6,35 @@ ul.nav.nav-tabs.nav-justified
   li role="presentation" 
     = link_to "General information", general_manage_course_path(@course)
   li role="presentation" 
-  	= link_to "Parts management", parts_manage_course_path(@course)
+    = link_to "Parts management", parts_manage_course_path(@course)
   li role="presentation" 
-  	= link_to "Statistics", statistics_course_path(@course)
+    = link_to "Statistics", statistics_course_path(@course)
   li.active role="presentation" 
-	  = link_to "Members", members_course_path(@course)
+    = link_to "Members", members_course_path(@course)
 
 br /
 
 table.table
   thead
     tr
-      th №
-      th Username
-      th E-mail
-      th Role
-      th
-      th
+      th.col-sm-1.text-center 
+      th.col-sm-3.text-center Username
+      th.col-sm-2.text-center E-mail
+      th.col-sm-2.text-center Role
+      th.col-sm-2.text-center
+      th.col-sm-2.text-center
 
   tbody
     - @registries.each_with_index do |record, index|
         tr
-          td = index
-          td = record.user.name
-          td = record.user.email
-          td = get_status_name(USER_COURSE_ROLES, record.role)
-          / # td = link_to 'Edit', root_path # edit_registry_path(record)
-          / # td = link_to 'Destroy', root_path, data: {:confirm => 'Are you sure?'}
+          td.col-sm-1 = index
+          td.col-sm-3 = record.user.name
+          td.col-sm-2 = record.user.email
+          td.col-sm-2.text-center = raw user_status_decoration(record.role)
+          td.col-sm-2
+            - if record.role == USER_COURSE_ROLES[:STUDENT]
+              .btn.btn-warning= link_to 'Assign as a Teacher', assign_user_as_course_teacher_course_path(user_id: record.user.id), data: {:confirm => "Are you sure to make #{record.user.name} a teacher?"}, :method => :put
+          td.col-sm-2
+              - if record.role != USER_COURSE_ROLES[:OWNER]
+                .btn.btn-danger
+                  = link_to 'Remove from course', delete_user_from_course_course_path(user_id: record.user.id), data: {:confirm => "Are you sure to remove #{record.user.name} from the course?"}, :method => :delete

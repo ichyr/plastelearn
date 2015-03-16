@@ -22,4 +22,24 @@ module CoursesHelper
 			return status[0] if status[1] == number
 		}
 	end
+
+	def user_status_decoration role
+		role_title = get_status_name(USER_COURSE_ROLES, role)
+
+		result = "<div class='btn btn-sm ";
+
+		if role == USER_COURSE_ROLES[:STUDENT]
+		  result += "btn-success'>"
+		  result += '<span class="glyphicon glyphicon-headphones margin-right-15"></span>'
+		elsif role == USER_COURSE_ROLES[:TEACHER]
+		  result += "btn-warning'>"
+		  result += '<span class="glyphicon glyphicon-leaf margin-right-15"></span>'
+		elsif role == USER_COURSE_ROLES[:OWNER]
+		  result += "btn-primary'>"
+		  result += '<span class="glyphicon glyphicon-certificate margin-right-15"></span>'
+		end
+
+		result += "#{role_title}</div>"
+	end
+
 end

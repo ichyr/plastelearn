@@ -49,7 +49,7 @@ class CoursesController < ApplicationController
   def members
     @course = Course.find(params[:id])
     @registries = Registry.includes(:user)
-                          .where("course_id = ?", @course.id)
+                          .where("course_id = ?", @course.id).order(:id)
   end
 
   def statistics
@@ -75,6 +75,44 @@ class CoursesController < ApplicationController
     end
   end
 
+
+
+
+
+
+  # 
+  # CANDIDATES FOR REFACTORING INTO HELPER STRUCTURES
+  # 
+
+  def assign_user_as_course_teacher
+    user = User.find(params[:user_id])
+    course = Course.find(params[:id])
+
+    registry = get_registry(user, course)
+    registry.role = USER_COURSE_ROLES[:TEACHER]
+    registry.save!
+
+    flash[:notice] = "User #{user.name} was assigned as a teacher for this course."
+    redirect_to members_course_path(course)
+  end
+
+  def delete_user_from_course
+    user = User.find(params[:user_id])
+    course = Course.find(params[:id])
+
+    registry = get_registry(user, course)
+    registry.destroy!
+
+    flash[:notice] = "User #{user.name} was deleted from members of this course."
+    redirect_to members_course_path(course)
+  end
+
+  # 
+  # CANDIDATES FOR REFACTORING INTO HELPER STRUCTURES
+  # 
+
+
+
   private
     def set_course
       @course = Course.find(params[:id])
@@ -82,5 +120,10 @@ class CoursesController < ApplicationController
 
     def course_params
       params.require(:course).permit(:title, :description, :enrollment_key)
+    end
+
+    def get_registry user, course
+      registry = Registry.where("course_id = ? and user_id = ?",
+                               course.id, user.id).first
     end
 end

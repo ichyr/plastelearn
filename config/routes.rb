@@ -21,6 +21,8 @@ Rails.application.routes.draw do
     get 'members', on: :member
     get 'enroll', on: :member
     post 'check_enroll', on: :member
+    put 'assign_user_as_course_teacher', on: :member
+    delete 'delete_user_from_course', on: :member
   end
 
   resources :users
