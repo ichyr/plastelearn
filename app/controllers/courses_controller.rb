@@ -62,7 +62,7 @@ class CoursesController < ApplicationController
     @course = Course.find(params[:id])
 
     if @course.enrollment_key == params[:enrollment][:enrollment_key]
-      flash[:notice] = 'Entered enrollment key is correct.'
+      flash[:notice] = "You were sucessfully enrolled into the course #{@course.title}!"
       Registry.create(user_id: current_user.id,
                       course_id: @course.id,
                       role: USER_COURSE_ROLES[:STUDENT])
