@@ -27,7 +27,7 @@ table.table
   tbody
     - @registries.each_with_index do |record, index|
         tr
-          td.col-sm-1 = index
+          td.col-sm-1 = index + 1
           td.col-sm-3 = record.user.name
           td.col-sm-2 = record.user.email
           td.col-sm-2.text-center = raw user_status_decoration(record.role)

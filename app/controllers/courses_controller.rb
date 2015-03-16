@@ -4,7 +4,7 @@ class CoursesController < ApplicationController
   respond_to :html
 
   def index
-    @courses = Course.paginate(:page => params[:page], :per_page => 10)
+    @courses = Course.order(:created_at).paginate(:page => params[:page], :per_page => 10)
     respond_with(@courses)
   end
 

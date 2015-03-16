@@ -43,6 +43,14 @@ class PartsController < ApplicationController
     redirect_to parts_manage_course_path(@part.course)
   end
 
+  def move_status
+    part = Part.find(params[:id])
+    part.status = params[:status].to_i
+    part.save!
+
+    redirect_to parts_manage_course_path(part.course)
+  end
+
   private
     def set_part
       @part = Part.find(params[:id])

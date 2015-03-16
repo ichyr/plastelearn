@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
 
-  get 'user_cabinet', to: 'user_cabinet#courses'
 
   mount Bootsy::Engine => '/bootsy', as: 'bootsy'
 
@@ -12,7 +11,9 @@ Rails.application.routes.draw do
 
   resources :homeworks
 
-  resources :parts
+  resources :parts do
+    put 'move_status', on: :member
+  end
 
   resources :courses do
     get 'general_manage', on: :member
@@ -31,8 +32,6 @@ Rails.application.routes.draw do
 
   get "admin/index"
   get "admin/courses"
-  # namespace :admin do
-  # 	get '/users', to: "admin#index"
-  # end
-  
+
+  get 'user_cabinet', to: 'user_cabinet#courses'
 end
