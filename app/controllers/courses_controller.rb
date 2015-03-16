@@ -61,21 +61,16 @@ class CoursesController < ApplicationController
   def check_enroll
     @course = Course.find(params[:id])
 
-    puts "====================================="
-    puts "====================================="
-    puts params.inspect
-    puts @course.enrollment_key
-    puts params[:enrollment][:enrollment_key]
-    puts "====================================="
-    puts "====================================="
-
     if @course.enrollment_key == params[:enrollment][:enrollment_key]
       flash[:notice] = 'Entered enrollment key is correct.'
+      Registry.create(user_id: current_user.id,
+                      course_id: @course.id,
+                      role: USER_COURSE_ROLES[:STUDENT])
+      redirect_to user_cabinet_path
     else
       flash[:notice] = 'Entered enrollment key is not correct.'
+      redirect_to enroll_course_path(@course)
     end
-
-    redirect_to enroll_course_path(@course)
   end
 
   private
