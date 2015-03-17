@@ -11,6 +11,8 @@ class PartsController < ApplicationController
   def show
     @part.homeworks
 
+    @submitted = current_user_submitted_homework? @part, current_user
+
     respond_with(@part)
   end
 
@@ -58,5 +60,20 @@ class PartsController < ApplicationController
 
     def part_params
       params.require(:part).permit(:title, :description, :course_id, :start_time, :end_time, :status)
+    end
+
+    def current_user_submitted_homework? user, part
+      cu_id = current_user.id
+      homeworks = part.homeworks
+      result = nil
+
+      homeworks.each do |hw|
+        if hw.user.id == cu_id
+          result = hw
+          break
+        end
+      end
+
+      result
     end
 end

@@ -23,7 +23,9 @@ class HomeworksController < ApplicationController
   end
 
   def new
-    @homework = Homework.new
+    @homework = Homework.new part_id: params[:part_id]
+    @homework.part
+    
     respond_with(@homework)
   end
 

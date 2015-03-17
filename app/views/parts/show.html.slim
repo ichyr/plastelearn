@@ -4,8 +4,22 @@
   i.text-muted.text-center
     = @part.description
 
+- if @submitted
+  .row.single-task.bg-success.col-md-10.col-md-offset-1 = link_to @submitted
+    = @submitted.user.email
+    .btn.btn-success.pull-right
+      = link_to 'Edit homework', edit_part_path(@submitted)
+    br/
+    i = @submitted.description
+- else
+  .btn.btn-success.pull-right
+      = link_to 'Edit homework', new_homework_path()
+
+br /
+
 - @part.homeworks.each do |homework|
-  .row.single-task.bg-success.col-md-10.col-md-offset-1 = link_to homework
-    = homework.user.email
-    br
-    i = homework.description
+  - if homework.user_id != current_user.id
+    .row.single-task.bg-success.col-md-10.col-md-offset-1 = link_to homework
+      = homework.user.email
+      br/
+      i = homework.description
