@@ -8,10 +8,11 @@
   h3 = "No Courses"
 - else
 - @courses.each do |course|
-  .row.single-task.bg-success.col-md-10.col-md-offset-1 = link_to course
-    = course.title
-    br
-    i = course.description
+  .row.single-task.bg-success.col-md-10.col-md-offset-1.margin-bottom-10
+    = link_to course
+      = course.title
+      br
+      i = course.description
 
 .text-center
   = will_paginate @courses, renderer: BootstrapPagination::Rails
