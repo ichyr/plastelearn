@@ -31,4 +31,5 @@ br/
             .btn.btn-warning = link_to "Edit", edit_course_path(course)
             .btn.btn-danger= link_to 'Destroy', course, data: {:confirm => 'Are you sure?'}, :method => :delete
 
-= will_paginate @courses
+.text-center
+  = will_paginate @courses, renderer: BootstrapPagination::Rails
