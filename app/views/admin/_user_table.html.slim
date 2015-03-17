@@ -4,6 +4,8 @@ table.table.table-hover
       th = I18n.t "users.name"
       th = I18n.t "users.email"
       th.text-center = I18n.t "users.avatar"
+      th Courses granted
+      th 
       th = I18n.t "buttons.edit"
       th = I18n.t "buttons.delete"
       
@@ -13,5 +15,8 @@ table.table.table-hover
         td = user.name
         td = user.email
         td = image_tag user.avatar.url(:thumb).to_s, size: "25x25" if user.avatar
+        td 
+          button.btn.btn-primary data-target=".bs-example-modal-sm" data-toggle="modal" type="button"  Small modal
+        td = link_to 'Grant course', root_path
         td = link_to 'Edit', controller: :users, action: :edit, id: user.id
         td = link_to 'Destroy', user, data: {:confirm => I18n.t("alerts.are_you_sure")}, :method => :delete
