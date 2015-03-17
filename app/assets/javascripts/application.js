@@ -14,13 +14,12 @@
 //= require jquery_ujs
 //= require jquery-ui
 //= require bootstrap-sprockets
-//= require bootsy
 //= require turbolinks
 //= require jquery_nested_form
 //= require jquery.raty.min
-//= require twitter/bootstrap
 //= require moment
 //= require bootstrap-datetimepicker
+//= require bootsy
 //= require_tree .
 
 $(function() {
