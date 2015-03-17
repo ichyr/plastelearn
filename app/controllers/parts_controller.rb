@@ -23,7 +23,7 @@ class PartsController < ApplicationController
   end
 
   def edit
-    @course_id = params[:course_id]
+    @course = Course.find(params[:course_id])
   end
 
   def create
