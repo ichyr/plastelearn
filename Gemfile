@@ -66,3 +66,5 @@ gem 'jquery-raty-rails', :git => "https://github.com/bmc/jquery-raty-rails"
 gem 'bootsy'
 gem 'momentjs-rails', '>= 2.8.1', :github => 'derekprior/momentjs-rails'
 gem 'datetimepicker-rails', '>= 3.0.0', :git => 'git://github.com/zpaulovics/datetimepicker-rails.git', :branch => 'tarruda'
+# Bootstrap pagination links
+gem 'will_paginate-bootstrap'

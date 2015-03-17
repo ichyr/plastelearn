@@ -13,4 +13,5 @@
     br
     i = course.description
 
-= will_paginate @courses
+.text-center
+  = will_paginate @courses, renderer: BootstrapPagination::Rails

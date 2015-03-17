@@ -2,7 +2,7 @@
   h1.text-center
     = @course.title
   i.text-muted.text-center
-    = @course.description
+    = raw @course.description
 
 
 - active = active_parts(@course.parts)
