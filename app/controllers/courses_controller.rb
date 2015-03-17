@@ -135,7 +135,8 @@ class CoursesController < ApplicationController
       params.require(:course).permit(:title,
                                      :description,
                                      :enrollment_key,
-                                     :bootsy_image_gallery_id)
+                                     :bootsy_image_gallery_id,
+                                     :short_description)
     end
 
     def get_registry user, course

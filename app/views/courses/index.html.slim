@@ -12,7 +12,7 @@
     = link_to course
       = course.title
       br
-      i = course.description
+      i = course.short_description
 
 .text-center
   = will_paginate @courses, renderer: BootstrapPagination::Rails

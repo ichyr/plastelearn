@@ -9,7 +9,10 @@ user = CreateAdminService.new.call
 puts 'CREATED ADMIN USER: ' << user.email
 
 
-course = Course.create title: "KVPV 13", description: "Lorem ipsum doler odor!"
+course = Course.create title: "KVPV 13",
+                       short_description: "Lorem ipsum doler odor!",
+                       description: "Lorem ipsum doler odor!",
+                       enrollment_key: "kvpv"
 
 parts = []
 1.upto(10) { |t| 
@@ -58,6 +61,7 @@ course_list = []
 (1..120).each { |n|
   course_list << { title: "Course #{n}", 
                    description: "Lorem ipsum doler odor!",
+                   short_description: "Lorem ipsum doler odor!",
                    enrollment_key: "qwe" }
 }
 Course.create course_list
