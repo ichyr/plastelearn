@@ -59,7 +59,13 @@ class PartsController < ApplicationController
     end
 
     def part_params
-      params.require(:part).permit(:title, :description, :course_id, :start_time, :end_time, :status)
+      params.require(:part).permit(:title,
+                                   :description, 
+                                   :course_id, 
+                                   :start_time, 
+                                   :end_time, 
+                                   :status, 
+                                   :bootsy_image_gallery_id)
     end
 
     def current_user_submitted_homework? user, part

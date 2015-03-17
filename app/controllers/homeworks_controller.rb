@@ -30,6 +30,8 @@ class HomeworksController < ApplicationController
   end
 
   def edit
+    @homework = Homework.new part_id: params[:part_id]
+    @homework.part
   end
 
   def create
@@ -54,7 +56,8 @@ class HomeworksController < ApplicationController
     end
 
     def homework_params
-      params.require(:homework).permit(:description, :part_id, :user_id,
+      params.require(:homework).permit(:description, :part_id, :user_id, 
+        :bootsy_image_gallery_id,
         attachments_attributes: [:id, :description, :file, "_destroy"])
     end
 end

@@ -132,7 +132,10 @@ class CoursesController < ApplicationController
     end
 
     def course_params
-      params.require(:course).permit(:title, :description, :enrollment_key)
+      params.require(:course).permit(:title,
+                                     :description,
+                                     :enrollment_key,
+                                     :bootsy_image_gallery_id)
     end
 
     def get_registry user, course
