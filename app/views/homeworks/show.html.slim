@@ -3,11 +3,11 @@
     = "Homework for #{@homework.part.title}"
   b.text-center
     = "by #{@homework.user.email}"
-  br
-  br
-  i.text-muted.text-center
-    p Description
-    = @homework.description
+  br /
+  br /
+
+  i.text-muted.text-center.margin-bottom-20
+    = raw @homework.description
 
   table.row.table
     thead
@@ -31,8 +31,6 @@
     .col-md-3.col-md-offset-2
       p Averate rating
       #star
-
-br/
 
 - @homework.comments.each do |comment|
   .row.single-task.bg-success.col-md-10.col-md-offset-1.margin-bottom-10
