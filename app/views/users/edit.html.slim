@@ -3,5 +3,3 @@
   h3.text-center Modification of a user #{@user.name}
 
 .row.col-md-8.col-md-offset-2 = render @user
-.row
-  = link_to("Delete user", user_path(@user), :data => { :confirm => "Are you sure?" }, :method => :delete, :class => 'btn btn-error') if @user.admin?
