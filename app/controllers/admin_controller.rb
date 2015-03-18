@@ -1,8 +1,7 @@
 class AdminController < ApplicationController
   def index
-  	@users = User.where("role = ?", 0)
-  	@moderators = User.where("role = ?", 1)
-  	@admins = User.where("role = ?", 2)
+  	@users = User.where("role = ?", 0).order(:id)
+  	@admins = User.where("role = ?", 1).order(:id)
   end
 
   def courses

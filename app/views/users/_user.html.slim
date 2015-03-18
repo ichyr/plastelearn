@@ -1,10 +1,17 @@
 = simple_form_for(user) do |f|
   .form-inputs
-    = f.input :email
-  
-  .form-inputs
-    = f.label :role
-    = f.select(:role, User.roles.keys.map {|role| [role.titleize,role]})
+    = f.input :email, disabled: true
+    = f.input :cell_phone, disabled: true
+    = f.input :information, disabled: true
+    .margin-bottom-10
+      = f.label :avatar
+      = image_tag user.avatar.url(:thumb).to_s, size: "150x150" if user.avatar
+
+  .form-inputs.bg-danger.add-padding-10px.margin-bottom-10.border-radius-5px
+  	= f.input :course_grants, hint: "This field represents the number of courses that the user can create. Please mind when changing it!"
+
+  .form-inputs.bg-danger.add-padding-10px.margin-bottom-10.border-radius-5px
+    = f.input :role, collection: User.roles.keys, selected: :role
 
   .form-inputs
-    = f.submit 'Change Role', :class => 'btn btn-success'
+    = f.submit 'Update User', :class => 'btn btn-success'

@@ -16,7 +16,7 @@ div role="tabpanel"
     li role="presentation" 
       a aria-controls="teacher" data-toggle="tab" href="#teacher" role="tab"  Courses assited
     li role="presentation" 
-      a aria-controls="moderator" data-toggle="tab" href="#moderator" role="tab"  Courses created
+      a aria-controls="owned" data-toggle="tab" href="#owned" role="tab"  Courses created
     
   /! Tab panes
   .tab-content
@@ -24,5 +24,5 @@ div role="tabpanel"
       = render partial: "courses_table", locals: { courses: @attend_courses, manageable: false }
     #teacher.tab-pane role="tabpanel"
       = render partial: "courses_table", locals: { courses: @teacher_courses, manageable: true }
-    #moderator.tab-pane role="tabpanel"
+    #owned.tab-pane role="tabpanel"
       = render partial: "courses_table", locals: { courses: @owner_courses, manageable: true }
