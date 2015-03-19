@@ -12,6 +12,8 @@
         = link_to 'Edit homework', edit_part_path(part_id: @part.id)
       br/
       i = @submitted.description
+      br/
+      .star.pull-right.display-inline data-score="#{@submitted.average_rating}"
 - else
   .row.single-task.bg-warning.col-md-10.col-md-offset-1.margin-bottom-10
     | You have not submitted your homework yet!
@@ -20,10 +22,22 @@
 
 br /
 
-- @part.homeworks.each do |homework|
+- @part.homeworks.each_with_index do |homework, index|
   - if homework.user_id != current_user.id
     .row.single-task.bg-success.col-md-10.col-md-offset-1.margin-bottom-10
       = link_to homework
         = homework.user.email
+        .star.pull-right.display-inline data-score="#{homework.average_rating}"
         br/
         i = homework.description
+
+javascript:
+  $(document).ready(function(){
+    $('.star').raty({
+      readOnly: true,
+      score: function() {
+        return $(this).attr('data-score');
+      },
+      path: '/assets'
+    });
+  });

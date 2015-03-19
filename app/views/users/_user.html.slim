@@ -8,10 +8,11 @@
       = image_tag user.avatar.url(:thumb).to_s, size: "150x150" if user.avatar
 
   .form-inputs.bg-danger.add-padding-10px.margin-bottom-10.border-radius-5px
-  	= f.input :course_grants, hint: "This field represents the number of courses that the user can create. Please mind when changing it!", input_html: { min: '0' }
+    = f.input :course_grants, hint: "This field represents the number of courses that the user can create. Please mind when changing it!", input_html: { min: '0' }
 
   .form-inputs.bg-danger.add-padding-10px.margin-bottom-10.border-radius-5px
     = f.input :role, collection: User.roles.keys, selected: :role
 
   .form-inputs
+    = link_to 'Cancel', :back, :class => 'btn btn-info margin-right-15'
     = f.submit 'Update User', :class => 'btn btn-success'
