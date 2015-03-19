@@ -11,7 +11,7 @@
       .margin-left-15.star.display-inline data-score="#{@submitted.average_rating}"
 
       .col-sm-2.btn.btn-success.pull-right
-        = link_to 'Edit homework', edit_part_path(part_id: @part.id)
+        = link_to 'Edit homework', edit_homework_path(@submitted, part_id: @part.id)
       br /
       i = @submitted.description
       

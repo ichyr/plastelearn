@@ -19,7 +19,7 @@
       - @homework.attachments.each do |file|
         tr
           - attachment_file = file.file.file
-          th.col-md-3 = ( attachment_file.filename if attachment_file )
+          th.col-md-3 = ( link_to attachment_file.filename, file.file.url if attachment_file )
           th.col-md-7 = raw file.description 
           th.col-md-2 = file.created_at
 

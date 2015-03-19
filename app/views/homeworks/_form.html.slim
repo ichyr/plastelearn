@@ -1,5 +1,6 @@
 = simple_nested_form_for(@homework, html: { multipart: true }) do |f|
   = f.error_notification
+  = f.hidden_field :homework_id, value: @homework.id
   = f.hidden_field :part_id, value: @homework.part.id
   = f.hidden_field :user_id, value: current_user.id
 
@@ -10,8 +11,7 @@
     = f.fields_for :attachments do |attachment_form|
 
       .form-inputs
-        p
-          = attachment_form.label :description 
+        p = attachment_form.label :description 
         = attachment_form.text_area :description 
 
       .form-inputs

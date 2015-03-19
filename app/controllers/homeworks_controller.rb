@@ -30,7 +30,6 @@ class HomeworksController < ApplicationController
   end
 
   def edit
-    @homework = Homework.new part_id: params[:part_id]
     @homework.part
   end
 
