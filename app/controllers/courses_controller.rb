@@ -37,6 +37,10 @@ class CoursesController < ApplicationController
 
   def create
     @course = Course.new(course_params)
+    Registry.create course_id: @course.id,
+                    user_id: current_user.id,
+                    role: USER_COURSE_ROLES[:OWNER]
+                    
     flash[:notice] = 'Course was successfully created.' if @course.save
     respond_with(@course)
   end
