@@ -1,9 +1,5 @@
 h1.text-center
   | User cabinet
-  -if @new_course_count > 0
-    .row.pull-right
-      .btn.btn-success = link_to "Create new course", new_course_path
-
 
 br /
 
@@ -25,4 +21,11 @@ div role="tabpanel"
     #teacher.tab-pane role="tabpanel"
       = render partial: "courses_table", locals: { courses: @teacher_courses, manageable: true }
     #owned.tab-pane role="tabpanel"
+      br /
+      .row.single-task.bg-success.col-md-10.col-md-offset-1.margin-bottom-15
+        h5.col-sm-5 = @course_grants
+        -if @new_course_count > 0
+          .pull-right
+            .btn.btn-success = link_to "Create new course", new_course_path
+      br/
       = render partial: "courses_table", locals: { courses: @owner_courses, manageable: true }

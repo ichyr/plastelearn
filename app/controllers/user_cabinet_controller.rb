@@ -20,9 +20,7 @@ class UserCabinetController < ApplicationController
 
     @owner_courses = Course.select(:id, :title).find(own_courses)
 
-    if @new_course_count > 0
-      flash[:notice] = "Currently you can create #{@new_course_count} new courses."
-    end
+    @course_grants = "Currently you can create #{@new_course_count} new courses."
   end
 
 
