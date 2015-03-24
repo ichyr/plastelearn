@@ -3,5 +3,10 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .margin-bottom-15 {
-	margin-bottom: 15px;
+  margin-bottom: 15px;
+}
+
+.highlight li.active a {
+  color: #fff !important;
+  background-color: #337ab7 !important;
 }
