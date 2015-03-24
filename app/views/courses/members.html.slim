@@ -2,7 +2,7 @@ h1.text-center Course management
 
 br /
 
-ul.nav.nav-tabs.nav-justified
+ul.nav.nav-tabs.nav-justified.highlight
   li role="presentation" 
     = link_to "General information", general_manage_course_path(@course)
   li role="presentation" 
@@ -17,8 +17,9 @@ br /
 table.table
   thead
     tr
-      th.col-sm-1.text-center 
-      th.col-sm-3.text-center Username
+      th.col-sm-1.text-center
+      th.col-sm-1.text-center Avatar
+      th.col-sm-2.text-center Username
       th.col-sm-2.text-center E-mail
       th.col-sm-2.text-center Role
       th.col-sm-2.text-center
@@ -28,7 +29,8 @@ table.table
     - @registries.each_with_index do |record, index|
         tr
           td.col-sm-1 = index + 1
-          td.col-sm-3 = record.user.name
+          th.col-sm-1.text-center = image_tag record.user.avatar.url(:thumb).to_s, size: "35x35" if record.user.avatar
+          td.col-sm-2 = record.user.name
           td.col-sm-2 = record.user.email
           td.col-sm-2.text-center = raw user_status_decoration(record.role)
           td.col-sm-2
