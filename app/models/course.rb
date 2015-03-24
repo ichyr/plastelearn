@@ -3,6 +3,6 @@ class Course < ActiveRecord::Base
 	
 	has_many :parts
 
-	has_many :registries
+	has_many :registries, dependent: :destroy
   has_many :users, through: :registries
 end
