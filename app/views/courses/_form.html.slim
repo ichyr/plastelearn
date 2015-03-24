@@ -3,6 +3,10 @@
 
   .form-inputs
     = f.input :title, hint: "This is the title of your course"
+
+    .bg-warning.padding-top-bottom-2.padding-right-30 
+      = f.input :public_visible, label: 'Make course visible in the main page and search results'
+
     = f.input :short_description, hint: "This is the short description of you course. It will be present on the index page. Please keep it short."
     = f.input :description, as: :bootsy, input_html: {class: 'form-control', rows: 15}, hint: "This is a detailed description of your course. It will be displayed on the course page. Here you can make rich formatting and add links/images."
     = f.input :enrollment_key, hint: "This is key that users must specify to enroll to your course."

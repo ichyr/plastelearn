@@ -36,3 +36,16 @@
 .display-inline, .display-inline img{
   display:  inline;
 }
+
+.padding-right-30 {
+  padding-right: 30px;
+}
+
+.padding-top-bottom-2 {
+  padding-top: 2px;
+  padding-bottom: 2px;
+}
+
+[for=course_public_visible] {
+  font-weight: bold !important;
+}

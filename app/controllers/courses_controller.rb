@@ -4,7 +4,7 @@ class CoursesController < ApplicationController
   respond_to :html
 
   def index
-    @courses = Course.order(:created_at).paginate(:page => params[:page], :per_page => 10)
+    @courses = Course.where("public_visible = true").order(:created_at).paginate(:page => params[:page], :per_page => 10)
     respond_with(@courses)
   end
 
@@ -140,6 +140,7 @@ class CoursesController < ApplicationController
                                      :description,
                                      :enrollment_key,
                                      :bootsy_image_gallery_id,
+                                     :public_visible,
                                      :short_description)
     end
 
