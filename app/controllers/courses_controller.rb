@@ -44,7 +44,7 @@ class CoursesController < ApplicationController
     @course = Course.new(course_params)
 
     if current_user.course_grants > 0 && @course.save
-      
+
       Registry.create course_id: @course.id,
                       user_id: current_user.id,
                       role: USER_COURSE_ROLES[:OWNER]
@@ -66,7 +66,8 @@ class CoursesController < ApplicationController
 
   def destroy
     @course.destroy
-    respond_with(@course)
+    
+    redirect_to :back
   end
 
   def general_manage
