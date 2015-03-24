@@ -65,6 +65,7 @@ class PartsController < ApplicationController
                                    :start_time, 
                                    :end_time, 
                                    :status, 
+                                   :short_description,
                                    :bootsy_image_gallery_id)
     end
 

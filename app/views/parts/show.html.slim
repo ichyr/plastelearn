@@ -2,7 +2,7 @@
   h1.text-center
     = @part.title
   i.text-muted.text-center
-    = @part.description
+    = raw @part.description
 
 - if @submitted
   .row.single-task.bg-success.col-md-10.col-md-offset-1.margin-bottom-10

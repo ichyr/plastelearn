@@ -4,11 +4,12 @@
   = f.hidden_field :course_id, value: @course.id
 
   .form-inputs
-    = f.input :title
-    = f.input :description, as: :bootsy, input_html: {class: 'form-control', rows: 15}
-    = f.input :start_time, :as => :datetime_picker
-    = f.input :end_time, :as => :datetime_picker
-    = f.input :status, collection: PART_STATUSES, selected: :status
+    = f.input :title, hint: "This is the title of new module (course task)."
+    = f.input :short_description, hint: "This is the short description of you module (course task). It will be present on the course page. Please keep it short."
+    = f.input :description, as: :bootsy, input_html: {class: 'form-control', rows: 15}, hint: "This is a detailed description of your module (course task). It will be displayed on the module(course task) page. Here you can make rich formatting and add links/images."
+    = f.input :start_time, :as => :datetime_picker, hint: "This is the time when module will be opened for users to submit their homeworks."
+    = f.input :end_time, :as => :datetime_picker, hint: "This is the time when module will be closed for users to submit their homeworks."
+    = f.input :status, collection: PART_STATUSES, selected: :status, hint: "This is the current status of your module. You can manually set status."
 
   .form-actions
-    = f.button :submit
+    = f.button :submit, class: "btn btn-success"
