@@ -26,10 +26,15 @@ class CoursesController < ApplicationController
   end
 
   def new
-    @course = Course.new
-    @course.parts
+    if current_user.course_grants > 0
+      @course = Course.new
+      @course.parts
 
-    respond_with(@course)
+      respond_with(@course)
+    else
+      flash[:notice] = "You can't create new courses. Please contact administrator for support!"
+      redirect_to root
+    end
   end
 
   def edit
@@ -37,12 +42,21 @@ class CoursesController < ApplicationController
 
   def create
     @course = Course.new(course_params)
-    Registry.create course_id: @course.id,
-                    user_id: current_user.id,
-                    role: USER_COURSE_ROLES[:OWNER]
-                    
-    flash[:notice] = 'Course was successfully created.' if @course.save
-    respond_with(@course)
+
+    if current_user.course_grants > 0 && @course.save
+      
+      Registry.create course_id: @course.id,
+                      user_id: current_user.id,
+                      role: USER_COURSE_ROLES[:OWNER]
+      current_user.course_grants -= 1;
+      current_user.save!
+                      
+      flash[:notice] = 'Course was successfully created.'
+      respond_with(@course)
+    else
+      flash[:notice] = "You can't create new courses. Please contact administrator for support!"
+      redirect_to root
+    end
   end
 
   def update
