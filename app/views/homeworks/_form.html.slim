@@ -4,25 +4,25 @@
   = f.hidden_field :part_id, value: @homework.part.id
   = f.hidden_field :user_id, value: current_user.id
 
+  .form-actions.pull-right
+    = f.button :submit, class: "btn btn-success"
+
+  br /
+  br /
+
   .form-inputs
     = f.input :description, as: :bootsy, input_html: {class: 'form-control', rows: 15}
 
-  .form-inputs
     = f.fields_for :attachments do |attachment_form|
+      fieldset.margin-bottom-10.single-task
+        .row.form-inputs.margin-bottom-10
+          p.control-label.col-sm-1 = attachment_form.label :description 
+          .col-sm-11 = attachment_form.text_area :description, class: "form-control"
 
-      .form-inputs
-        p = attachment_form.label :description 
-        = attachment_form.text_area :description 
+        .row.form-inputs.margin-bottom-10
+          p.control-label.col-sm-1 = attachment_form.label :file 
+          .col-sm-11 = attachment_form.file_field :file, class: "form-control"
 
-      .form-inputs
-        = attachment_form.label :file 
-        = attachment_form.file_field :file 
-
-      = attachment_form.link_to_remove "Remove this attachment", class: "btn btn-warning"
-    end
+        .row.col-sm-offset-1 = attachment_form.link_to_remove "Remove this attachment", class: "btn btn-warning"
 
   = f.link_to_add "Add attachment", :attachments, class: "btn btn-success pull-right"
-
-  br/
-  .form-actions
-    = f.button :submit, class: "btn btn-success"
