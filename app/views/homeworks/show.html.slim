@@ -37,7 +37,8 @@
 
 - @comments.each do |comment|
   .row.single-task.bg-success.col-md-10.col-md-offset-1.margin-bottom-10
-    = comment.user.email
+    = comment.user.name
+    i = " commented on #{format_date_comments(comment.created_at)}"
     br
     i = comment.text
 
