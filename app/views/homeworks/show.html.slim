@@ -31,14 +31,15 @@
     .col-md-3.col-md-offset-2
       p Averate rating
       #star
+    
+.row.col-md-10.col-md-offset-1.margin-bottom-10
+  .single-task.bg-success = render "new_comment"
 
-- @homework.comments.each do |comment|
+- @comments.each do |comment|
   .row.single-task.bg-success.col-md-10.col-md-offset-1.margin-bottom-10
     = comment.user.email
     br
     i = comment.text
-    
-.row.col-md-10.col-md-offset-1 = render "new_comment"
 
 javascript:
   $(document).ready(function(){

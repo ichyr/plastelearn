@@ -19,6 +19,8 @@ class HomeworksController < ApplicationController
       end
     end
 
+    @comments = @homework.comments.order(created_at: :desc)
+
     respond_with(@homework)
   end
 
