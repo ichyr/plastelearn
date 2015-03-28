@@ -16,6 +16,7 @@ UserStories
 doc/
 public/assets/
 DEPLOYMENT
+.env.yml
 
 # bundler state
 /.bundle
