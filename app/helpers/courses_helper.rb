@@ -74,4 +74,15 @@ module CoursesHelper
     end
   end
 
+  def course_index_description_modal course
+    short = course.short_description
+    full = course.description
+    target = 'course_index_item' + course.id.to_s
+
+    italics_decorator(short) +
+    modal_button(target) +
+    '<br />' +
+    modal_large_body(target, full)
+  end
+
 end
