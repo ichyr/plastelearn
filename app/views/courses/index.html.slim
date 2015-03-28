@@ -1,8 +1,11 @@
-.jumbotron
-  h1.text-center
-    = "Welcome to the distance learning system"
-  b.text-center
-    = "We strive to make our organization better every day!"
+= content_for :heading do
+  .header-bg
+    .container-fluid
+      .jumbotron
+        h1.text-center
+          = "Welcome to the distance learning system"
+        b.text-center
+          = "We strive to make our organization better every day!"
 
 - if @courses.count == 0
   h3 = "No Courses"

@@ -19,3 +19,14 @@
 
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+.header-bg {
+  width: 100%;
+  margin-top: 50px;
+  height: 350px;
+  background-image: url("header-logo.jpg");
+  background-size: cover;
+  padding-top: 25px;
+  padding-bottom: 25px;
+  margin-bottom: -51px;
+}

@@ -12,6 +12,7 @@ html
     header
       .container
         == render 'layouts/navigation'
+    = content_for(:heading)
     main[role="main"]
       .container
         == render 'layouts/messages'
