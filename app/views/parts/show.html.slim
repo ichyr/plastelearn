@@ -1,8 +1,11 @@
-.jumbotron
-  h1.text-center
-    = @part.title
-  i.text-muted.text-center
-    = raw @part.description
+= content_for :heading do
+  .header-bg style="background-image: url(#{@part.course.logo.url})"
+    .container-fluid
+      .jumbotron
+        h1.text-center
+          = @part.title
+        i.text-muted.text-center
+          = raw @part.description  
 
 - if @submitted
   .row.single-task.bg-success.col-md-10.col-md-offset-1.margin-bottom-10

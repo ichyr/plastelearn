@@ -1,36 +1,44 @@
-.jumbotron
-  h1.text-center
-    = raw "Homework for #{link_to @homework.part.title, @homework.part}"
-  b.text-center
-    = "by #{@homework.user.email}"
-  br /
-  br /
+= content_for :heading do
+  .header-bg style="background-image: ;"
+    .container-fluid
+      .jumbotron
+        h1.text-center
+          = raw "Homework for #{link_to @homework.part.title, @homework.part}"
 
-  i.text-muted.text-center.margin-bottom-20
-    = raw @homework.description
+        b.text-center.margin-bottom-10
+          = "by #{@homework.user.email}"
 
-  table.row.table
-    thead
+        br /
+        br /
+
+        i.text-muted.text-center
+          = raw @homework.description
+
+        br /
+        br /
+
+        .row style=("display:inline;")
+          .col-md-3.col-md-offset-2
+            - if current_user
+              p Your rating
+              #user_star
+          .col-md-3.col-md-offset-2
+            p Averate rating
+            #star
+
+table.row.table
+  thead
+    tr
+      th.col-md-3 Filename
+      th.col-md-7 Description
+      th.col-md-2 Date uploaded
+  tbody
+    - @homework.attachments.each do |file|
       tr
-        th.col-md-3 Filename
-        th.col-md-7 Description
-        th.col-md-2 Date uploaded
-    tbody
-      - @homework.attachments.each do |file|
-        tr
-          - attachment_file = file.file.file
-          th.col-md-3 = ( link_to attachment_file.filename, file.file.url if attachment_file )
-          th.col-md-7 = raw file.description 
-          th.col-md-2 = file.created_at
-
-  .row style=("display:inline;")
-    .col-md-3.col-md-offset-2
-      - if current_user
-        p Your rating
-        #user_star
-    .col-md-3.col-md-offset-2
-      p Averate rating
-      #star
+        - attachment_file = file.file.file
+        th.col-md-3 = ( link_to attachment_file.filename, file.file.url if attachment_file )
+        th.col-md-7 = raw file.description 
+        th.col-md-2 = file.created_at
     
 .row.col-md-10.col-md-offset-1.margin-bottom-10
   .single-task.bg-success = render "new_comment"
