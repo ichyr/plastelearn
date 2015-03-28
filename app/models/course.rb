@@ -1,5 +1,7 @@
 class Course < ActiveRecord::Base
 	include Bootsy::Container
+
+	mount_uploader :logo, LogoUploader
 	
 	has_many :parts
 

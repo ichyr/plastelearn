@@ -9,6 +9,13 @@
 
     = f.input :short_description, hint: "This is the short description of you course. It will be present on the index page. Please keep it short."
     = f.input :description, as: :bootsy, input_html: {class: 'form-control', rows: 15}, hint: "This is a detailed description of your course. It will be displayed on the course page. Here you can make rich formatting and add links/images."
+
+    .form-group
+      = f.label :logo
+      .upload-preview
+        = image_tag @course.logo.to_s if @course.logo.url
+      = f.file_field :logo, class: "file"
+
     = f.input :enrollment_key, hint: "This is key that users must specify to enroll to your course."
 
   .form-actions

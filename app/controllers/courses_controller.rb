@@ -156,7 +156,8 @@ class CoursesController < ApplicationController
                                      :enrollment_key,
                                      :bootsy_image_gallery_id,
                                      :public_visible,
-                                     :short_description)
+                                     :short_description,
+                                     :logo)
     end
 
     def get_registry user, course
