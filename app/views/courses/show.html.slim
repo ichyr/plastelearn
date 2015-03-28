@@ -1,6 +1,8 @@
 = content_for :heading do
   .header-bg style="background-image: url(#{@course.logo.url})"
     .container-fluid
+      .margin-bottom-50
+        = render_breadcrumbs
       .jumbotron
         h1.text-center
           = @course.title

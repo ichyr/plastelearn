@@ -1,6 +1,8 @@
 = content_for :heading do
   .header-bg style="background-image: ;"
     .container-fluid
+      .margin-bottom-50
+        = render_breadcrumbs
       .jumbotron
         h1.text-center
           = raw "Homework for #{link_to @homework.part.title, @homework.part}"

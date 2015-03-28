@@ -11,10 +11,14 @@ class CoursesController < ApplicationController
   end
 
   def show
+
     unless current_user
       flash[:notice] = "Only registered user can access the courses. Please register!"
       redirect_to new_user_session_path
     else
+      add_breadcrumb "Home", :root_path
+      add_breadcrumb @course.title, course_path(@course)
+      
       enrolled = Registry.where("user_id = ? and course_id = ?",
                                 current_user.id, @course.id).count
       enrolled = enrolled > 0 ? true : false;

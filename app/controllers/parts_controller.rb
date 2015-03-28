@@ -9,6 +9,8 @@ class PartsController < ApplicationController
   end
 
   def show
+    add_breadcrumb @part.title, :root_path
+
     @part.homeworks
 
     @submitted = current_user_submitted_homework? @part, current_user
@@ -55,7 +57,9 @@ class PartsController < ApplicationController
 
   private
     def set_part
+      add_breadcrumb "Home", :root_path
       @part = Part.find(params[:id])
+      add_breadcrumb @part.course.title, course_path(@part.course)
     end
 
     def part_params
