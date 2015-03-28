@@ -22,11 +22,15 @@
 
 .header-bg {
   width: 100%;
-  margin-top: 50px;
-  height: 350px;
+  height: 600px;
   background-image: url("header-logo.jpg");
   background-size: cover;
-  padding-top: 25px;
+  padding-top: 125px;
   padding-bottom: 25px;
   margin-bottom: -51px;
+}
+
+.navstripe-top {
+	border: none !important;
+	background-color: rgba(255, 255, 255, 0.5) !important;
 }
