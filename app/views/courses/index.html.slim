@@ -15,7 +15,7 @@
     = link_to course
       = course.title
       br
-    = raw course_index_description_modal course
+    = raw course_index_description_modal(course)
 
 .text-center
   = will_paginate @courses, renderer: BootstrapPagination::Rails

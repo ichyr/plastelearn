@@ -15,21 +15,21 @@ module ApplicationHelper
     end
   end
 
-  def modal_button target
+  def modal_button(target, text)
     '<button type="button" class="btn btn-link btn-xs"
             data-toggle="modal"
             data-target=".' + target + '">
-            Read more...
+            ' + text + '
     </button>'
   end
 
-  def modal_large_body(target, data)
+  def modal_large_body(target, title, data)
     '<div class="modal fade ' + target + '" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
       <div class="modal-dialog modal-lg">
         <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-              <h4 class="modal-title" id="gridSystemModalLabel">Course description</h4>
+              <h4 class="modal-title" id="gridSystemModalLabel">' + title + '</h4>
           </div>
           <div class="modal-body">
             <div class="container-fluid">' +

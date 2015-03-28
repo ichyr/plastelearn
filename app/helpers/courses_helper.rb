@@ -78,11 +78,29 @@ module CoursesHelper
     short = course.short_description
     full = course.description
     target = 'course_index_item' + course.id.to_s
+    text = "Read more..."
+    title = "Course description"
 
     italics_decorator(short) +
-    modal_button(target) +
+    modal_button(target, text) +
     '<br />' +
-    modal_large_body(target, full)
+    modal_large_body(target, title, full)
+  end
+
+  def how_to_create_course_modal
+    target = "how-to-create"
+    text = "How to create a course?"
+    title = "How to create a course?"
+
+    full = 
+    "If you have no courses granted to create then you should contact the 
+        administrator in order to get permissions to create a course."
+
+    '<div class="btn btn-info">' +
+    modal_button(target, text) +
+    '</div>' +
+    '<br />' +
+    modal_large_body(target, title, full)
   end
 
 end
