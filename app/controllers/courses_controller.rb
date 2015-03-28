@@ -4,7 +4,9 @@ class CoursesController < ApplicationController
   respond_to :html
 
   def index
-    @courses = Course.where("public_visible = true").order(:created_at).paginate(:page => params[:page], :per_page => 10)
+    @courses = Course.where("public_visible = true and title like ?", search_param)
+                     .order(:created_at)
+                     .paginate(:page => params[:page], :per_page => 10)
     respond_with(@courses)
   end
 
@@ -108,10 +110,6 @@ class CoursesController < ApplicationController
   end
 
 
-
-
-
-
   # 
   # CANDIDATES FOR REFACTORING INTO HELPER STRUCTURES
   # 
@@ -163,5 +161,9 @@ class CoursesController < ApplicationController
     def get_registry user, course
       registry = Registry.where("course_id = ? and user_id = ?",
                                course.id, user.id).first
+    end
+
+    def search_param
+      params[:search] ? "%#{params[:search]}%" : "%"
     end
 end

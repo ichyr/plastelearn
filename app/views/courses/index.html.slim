@@ -7,6 +7,9 @@
         b.text-center
           = "We strive to make our organization better every day!"
 
+.col-md-10.col-md-offset-1.margin-bottom-20
+  = render "search_form" 
+
 - if @courses.count == 0
   h3 = "No Courses"
 - else

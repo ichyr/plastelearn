@@ -1,0 +1,6 @@
+= simple_form_for :search, url: courses_path, html: {class: "courses_index_search"}, method: :get do |f|
+    .input-group
+      = f.text_field :name, :autofocus => true, placeholder: "Enter course name to search..." , name: "search", class: "form-control "
+      .input-group-btn
+        button.btn.btn-default type="submit" 
+          i.glyphicon.glyphicon-search
