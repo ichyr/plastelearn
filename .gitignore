@@ -15,6 +15,7 @@ TODO
 UserStories
 doc/
 public/assets/
+DEPLOYMENT
 
 # bundler state
 /.bundle
