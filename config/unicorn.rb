@@ -10,7 +10,7 @@ stdout_path "#{root}/log/unicorn.log"
 # listen on both a Unix domain socket and a TCP port,
 # we use a shorter backlog for quicker failover when busy
 listen "/tmp/unicorn.plastelearn.sock"
-listen 8081, :tcp_nopush => true
+listen 7070, :tcp_nopush => true
 
 worker_processes 2
 timeout 30
