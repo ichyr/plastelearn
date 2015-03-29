@@ -1,10 +1,10 @@
 require 'spec_helper'
 
-describe UserPolicy do
+describe CoursePolicy do
 
   let(:user) { User.new }
 
-  subject { UserPolicy }
+  subject { CoursePolicy }
 
   permissions ".scope" do
     pending "add some examples to (or delete) #{__FILE__}"

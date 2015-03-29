@@ -1,5 +1,6 @@
 class CoursesController < ApplicationController
-  before_action :set_course, only: [:show, :edit, :update, :destroy]
+  before_action :set_course, except: [:index, :new, :create]
+  after_action :verify_authorized, except: [:index]
 
   respond_to :html
 
@@ -12,6 +13,8 @@ class CoursesController < ApplicationController
   end
 
   def show
+
+    authorize @course
 
     unless current_user
       flash[:notice] = "Only registered user can access the courses. Please register!"
@@ -33,6 +36,8 @@ class CoursesController < ApplicationController
   end
 
   def new
+    authorize Course.new
+
     if current_user.course_grants > 0
       @course = Course.new
       @course.parts
@@ -40,14 +45,17 @@ class CoursesController < ApplicationController
       respond_with(@course)
     else
       flash[:notice] = "You can't create new courses. Please contact administrator for support!"
-      redirect_to root
+      redirect_to root_path
     end
   end
 
   def edit
+    authorize @course
   end
 
   def create
+    authorize Course.new
+
     @course = Course.new(course_params)
 
     if current_user.course_grants > 0 && @course.save
@@ -62,45 +70,51 @@ class CoursesController < ApplicationController
       respond_with(@course)
     else
       flash[:notice] = "You can't create new courses. Please contact administrator for support!"
-      redirect_to root
+      redirect_to root_path
     end
   end
 
   def update
+    authorize @course
+
     flash[:notice] = 'Course was successfully updated.' if @course.update(course_params)
     respond_with(@course)
   end
 
   def destroy
+    authorize @course
+
     @course.destroy
     
     redirect_to :back
   end
 
   def general_manage
-    @course = Course.find(params[:id])
+    authorize @course
   end
 
   def parts_manage
-    @course = Course.find(params[:id])
+    authorize @course
   end
 
   def members
-    @course = Course.find(params[:id])
+    authorize @course
+
     @registries = Registry.includes(:user)
                           .where("course_id = ?", @course.id).order(:id)
   end
 
   def statistics
-    @course = Course.find(params[:id])
+    authorize @course
   end
 
   def enroll
-    @course = Course.find(params[:id])
+    authorize @course
   end
 
   def check_enroll
-    @course = Course.find(params[:id])
+
+    authorize @course
 
     if @course.enrollment_key == params[:enrollment][:enrollment_key]
       flash[:notice] = "You were sucessfully enrolled into the course #{@course.title}!"
@@ -120,8 +134,9 @@ class CoursesController < ApplicationController
   # 
 
   def assign_user_as_course_teacher
+    authorize @course
+
     user = User.find(params[:user_id])
-    course = Course.find(params[:id])
 
     registry = get_registry(user, course)
     registry.role = USER_COURSE_ROLES[:TEACHER]
@@ -132,8 +147,8 @@ class CoursesController < ApplicationController
   end
 
   def delete_user_from_course
+    authorize @course
     user = User.find(params[:user_id])
-    course = Course.find(params[:id])
 
     registry = get_registry(user, course)
     registry.destroy!

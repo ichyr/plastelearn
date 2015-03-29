@@ -71,3 +71,5 @@ gem 'datetimepicker-rails', '>= 3.0.0', :git => 'git://github.com/zpaulovics/dat
 gem 'will_paginate-bootstrap'
 # Breadcrumbs for rails 4
 gem "breadcrumbs_on_rails"
+# for diagram generation
+gem 'railroady'

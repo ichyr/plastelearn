@@ -1,4 +1,5 @@
 class ApplicationPolicy
+
   attr_reader :user, :record
 
   def initialize(user, record)
@@ -49,6 +50,29 @@ class ApplicationPolicy
     def resolve
       scope
     end
+  end
+
+    def owner?(user, course)
+    check_role(user, course, USER_COURSE_ROLES[:OWNER])
+  end
+
+  def enrolled?(user, course)
+    registry_entry(user, course).count > 0
+  end
+
+  def teacher?(user, course)
+    check_role(user, course, USER_COURSE_ROLES[:TEACHER])
+  end
+
+  private
+
+  def registry_entry(user, course)
+    Registry.where("user_id = ? and course_id = ?", user.id, course.id)
+  end
+
+  def check_role(user, course, role)
+    entry = registry_entry(user, course)
+    entry.role == role
   end
 end
 
