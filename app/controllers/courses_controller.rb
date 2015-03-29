@@ -7,6 +7,7 @@ class CoursesController < ApplicationController
     @courses = Course.where("public_visible = true and title like ?", search_param)
                      .order(:created_at)
                      .paginate(:page => params[:page], :per_page => 10)
+    
     respond_with(@courses)
   end
 

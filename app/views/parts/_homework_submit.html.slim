@@ -1,0 +1,16 @@
+- if @submitted
+  .row.single-task.bg-success.col-md-10.col-md-offset-1.margin-bottom-10
+    = link_to @submitted
+      = @submitted.user.email
+      .margin-left-15.star.display-inline data-score="#{@submitted.average_rating}"
+
+      .col-sm-2.btn.btn-success.pull-right
+        = link_to 'Edit homework', edit_homework_path(@submitted, part_id: @part.id)
+      br /
+      i = @submitted.description
+      
+- else
+  .row.single-task.bg-warning.col-md-10.col-md-offset-1.margin-bottom-10
+    | You have not submitted your homework yet!
+    .btn.btn-success.pull-right
+      = link_to 'Submit homework', new_homework_path(part_id: @part.id)
