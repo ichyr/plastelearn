@@ -1,25 +1,31 @@
 class UserPolicy < ApplicationPolicy
 
+  # noone should see this
   def index?
-    user.admin? unless user.nil?
+    false
   end
 
   def edit?
-    # change this !
-    true
+    unless user.nil?
+      user.admin? || user.id == record.id  
+    end
   end
 
+  # implement in case of public profile
   def show?
-    @current_user.admin? or @current_user == @user
+    false
   end
 
   def update?
-    @current_user.admin?
+    unless user.nil?
+      user.admin? || user.id == record.id  
+    end
   end
 
   def destroy?
-    return false if @current_user == @user
-    @current_user.admin?
+    unless user.nil?
+      user.admin? || user.id == record.id  
+    end
   end
 
   class Scope < Scope
