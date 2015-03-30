@@ -18,15 +18,15 @@ class HomeworkPolicy < ApplicationPolicy
   end
 
   def edit?
-    valid_enrolled?(user, record.part.course) && user.id == record.user_id 
+    valid_active_part_change?(user, role)    
   end
 
   def update?
-    valid_enrolled?(user, record.part.course) && user.id == record.user_id 
+    valid_active_part_change?(user, role)
   end
 
   def destroy?
-   valid_enrolled?(user, record.part.course) && user.id == record.user_id 
+    valid_active_part_change?(user, role)
   end
 
   class Scope < Scope
@@ -41,5 +41,11 @@ class HomeworkPolicy < ApplicationPolicy
   	unless user.nil?
     	enrolled?(user, record)
     end
+  end
+
+  def valid_active_part_change?(user, role)
+    valid_enrolled?(user, record.part.course) &&
+    user.id == record.user_id &&
+    record.part.status == PART_STATUSES[:ACTIVE]
   end
 end
