@@ -52,7 +52,7 @@ class ApplicationPolicy
     end
   end
 
-    def owner?(user, course)
+  def owner?(user, course)
     check_role(user, course, USER_COURSE_ROLES[:OWNER])
   end
 
