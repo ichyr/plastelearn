@@ -1,7 +1,7 @@
 class UserPolicy < ApplicationPolicy
 
   def index?
-    @current_user.admin?
+    user.admin? unless user.nil?
   end
 
   def edit?

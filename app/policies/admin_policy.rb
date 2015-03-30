@@ -1,10 +1,10 @@
 class AdminPolicy < ApplicationPolicy
   def index?
-    user.admin? if !user.nil?
+    user.admin? unless user.nil?
   end
 
   def courses?
-    user.admin? if !user.nil?
+    user.admin? unless user.nil?
   end
 end
 
