@@ -65,13 +65,12 @@ class ApplicationPolicy
   end
 
   private
-
   def registry_entry(user, course)
-    Registry.where("user_id = ? and course_id = ?", user.id, course.id).first
+    Registry.where("user_id = ? and course_id = ?", user.id, course.id)
   end
 
   def check_role(user, course, role)
-    entry = registry_entry(user, course)
+    entry = registry_entry(user, course).first
     entry.role == role
   end
 end

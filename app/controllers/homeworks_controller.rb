@@ -1,14 +1,18 @@
 class HomeworksController < ApplicationController
   before_action :set_homework, only: [:show, :edit, :update, :destroy]
+  after_action :verify_authorized
 
   respond_to :html
 
   def index
+    authorize Homework.new
+
     @homeworks = Homework.all
     respond_with(@homeworks)
   end
 
   def show
+    authorize @homework.part.course
 
     if current_user
       @rating = Rating.where(homework_id: @homework.id, 
@@ -27,26 +31,37 @@ class HomeworksController < ApplicationController
   def new
     @homework = Homework.new part_id: params[:part_id]
     @homework.part
+
+    authorize @homework.part.course
     
     respond_with(@homework)
   end
 
   def edit
     @homework.part
+    authorize @homework
   end
 
   def create
     @homework = Homework.new(homework_params)
+
+    authorize @homework.part.course
+
     @homework.save
     respond_with(@homework)
   end
 
   def update
-    @homework.update(homework_params)
+    authorize @homework
+
+    @homework.update(homework_params)    
+
     respond_with(@homework)
   end
 
   def destroy
+    authorize @homework
+
     @homework.destroy
     respond_with(@homework)
   end
