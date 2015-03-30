@@ -6,7 +6,7 @@ class RatingsController < ApplicationController
     @rating = Rating.find(params[:id])
     @homework = @rating.homework
 
-    authorize @homework.part.course
+    authorize @homework
 
     if @rating.update_attributes(score: params[:score])
       respond_to do |format|

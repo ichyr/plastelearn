@@ -21,8 +21,9 @@ class CommentsController < ApplicationController
   end
 
   def create
-
     @comment = Comment.new(comment_params)
+
+    authorize @comment
 
     if current_user
       @comment.user_id = current_user.id
@@ -36,11 +37,15 @@ class CommentsController < ApplicationController
   end
 
   def update
+    authorize @comment
+
     @comment.update(comment_params)
     respond_with(@comment)
   end
 
   def destroy
+    authorize @comment
+    
     @comment.destroy
     respond_with(@comment)
   end

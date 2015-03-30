@@ -2,7 +2,7 @@ class RatingPolicy < ApplicationPolicy
 
 	def update?(user, record)
   	unless user.nil?
-    	enrolled?(user, record)
+    	enrolled?(user, record.part.course)
     end
   end
 
