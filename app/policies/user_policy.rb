@@ -13,7 +13,7 @@ class UserPolicy < ApplicationPolicy
 
   # implement in case of public profile
   def show?
-    false
+    true unless user.nil?
   end
 
   def update?
