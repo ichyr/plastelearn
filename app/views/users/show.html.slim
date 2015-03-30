@@ -1,2 +1,11 @@
-h3 User
-p Email: = @user.email if @user.email
+h1.text-center.margin-bottom-20 = @user.name || "Here shall be the name"
+
+.row
+  .container-fluid
+    .col-sm-3
+      .container-fluid
+        = image_tag @user.avatar.url(:thumb).to_s, size: "100x100" if @user.avatar
+    .col-sm-9
+      .container-fluid
+        b.col-sm-6.text-right E-mail
+        .col-sm-6.text-left = @user.email
