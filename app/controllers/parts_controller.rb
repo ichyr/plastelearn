@@ -13,7 +13,7 @@ class PartsController < ApplicationController
   end
 
   def show
-    authorize @part
+    authorize @part.course
 
     add_breadcrumb @part.title, :root_path
 
@@ -25,38 +25,46 @@ class PartsController < ApplicationController
   end
 
   def new
-    authorize Part.new
-
-    @part = Part.new
     @course = Course.find(params[:course_id])
+    @part = Part.new
+
+    authorize @course
+
     respond_with(@part)
   end
 
   def edit
-    authorize @part
+    authorize @part.course
 
-    @course = Course.find(params[:course_id])
+    @course = @part.course
   end
 
   def create
-    authorize Part.new
-
     @part = Part.new(part_params)
-    @part.save
-    
-    redirect_to parts_manage_course_path(@part.course)
+
+    authorize @part.course
+
+    if @part.save
+      redirect_to parts_manage_course_path(@part.course)
+    else 
+      respond_with(@part)
+    end
   end
 
   def update
-    authorize @part
+    authorize @part.course
 
     @part.update(part_params)
 
-    redirect_to parts_manage_course_path(@part.course)
+    if @part.save
+      redirect_to parts_manage_course_path(@part.course)
+    else 
+      respond_with(@part)
+    end
   end
 
   def destroy
-    authorize @part
+    authorize @part.course
 
     @part.destroy
     
@@ -64,7 +72,7 @@ class PartsController < ApplicationController
   end
 
   def move_status
-    authorize @part
+    authorize @part.course
 
     part = Part.find(params[:id])
     part.status = params[:status].to_i

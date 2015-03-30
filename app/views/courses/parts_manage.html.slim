@@ -40,7 +40,7 @@ table.table
 
           td.col-sm-1.text-center = raw part_state_transition_button(part, part.status)
           td.col-sm-1
-            .btn.btn-warning = link_to 'Edit', edit_part_path(part, course_id: @course.id)
+            .btn.btn-warning = link_to 'Edit', edit_part_path(part)
           td.col-sm-1
             .btn.btn-danger = link_to 'Destroy', part, data: {:confirm => 'Are you sure?'}, :method => :delete
 
