@@ -34,6 +34,7 @@
       .form-group
         = f.label :password
         = f.password_field :password, :autocomplete => 'off', class: 'form-control'
+        p.help-block New password should contain 8 or more symbols.
       .form-group
         = f.label :password_confirmation
         = f.password_field :password_confirmation, class: 'form-control'
