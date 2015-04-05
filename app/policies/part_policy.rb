@@ -32,7 +32,7 @@ class PartPolicy < ApplicationPolicy
   end
 
   def move_status?
-  	privileged_enrolled?(user, record)
+  	privileged_enrolled?(user, record.course)
   end
 
   class Scope < Scope

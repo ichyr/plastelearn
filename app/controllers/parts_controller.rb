@@ -72,13 +72,12 @@ class PartsController < ApplicationController
   end
 
   def move_status
-    authorize @part.course
+    authorize @part
 
-    part = Part.find(params[:id])
-    part.status = params[:status].to_i
-    part.save!
+    @part.status = params[:status].to_i
+    @part.save!
 
-    redirect_to parts_manage_course_path(part.course)
+    redirect_to parts_manage_course_path(@part.course)
   end
 
   private
