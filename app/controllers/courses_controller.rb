@@ -138,23 +138,23 @@ class CoursesController < ApplicationController
 
     user = User.find(params[:user_id])
 
-    registry = get_registry(user, course)
+    registry = get_registry(user, @course)
     registry.role = USER_COURSE_ROLES[:TEACHER]
     registry.save!
 
     flash[:notice] = "User #{user.name} was assigned as a teacher for this course."
-    redirect_to members_course_path(course)
+    redirect_to members_course_path(@course)
   end
 
   def delete_user_from_course
     authorize @course
     user = User.find(params[:user_id])
 
-    registry = get_registry(user, course)
+    registry = get_registry(user, @course)
     registry.destroy!
 
     flash[:notice] = "User #{user.name} was deleted from members of this course."
-    redirect_to members_course_path(course)
+    redirect_to members_course_path(@course)
   end
 
   # 
