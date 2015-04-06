@@ -47,10 +47,13 @@ table.row.table
 
 - @comments.each do |comment|
   .row.single-task.bg-success.col-md-10.col-md-offset-1.margin-bottom-10
-    = comment.user.name
-    i = " commented on #{format_date_comments(comment.created_at)}"
-    br
-    i = comment.text
+    .col-sm-2
+      = image_tag comment.user.avatar.url(:thumb).to_s, size: "50x50", class: "img-circle" if comment.user.avatar.url
+    .col-sm-offest-3
+      = comment.user.name
+      i = " commented on #{format_date_comments(comment.created_at)}"
+      br
+      i = comment.text
 
 javascript:
   $(document).ready(function(){
