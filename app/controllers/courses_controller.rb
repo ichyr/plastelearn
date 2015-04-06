@@ -28,6 +28,9 @@ class CoursesController < ApplicationController
       enrolled = enrolled > 0 ? true : false;
 
       if enrolled
+        @active_parts = @course.parts.where("status = ?", PART_STATUSES[:ACTIVE]).order(:id)
+        @completed_parts = @course.parts.where("status = ?", PART_STATUSES[:COMPLETE]).order(:id)
+
         respond_with(@course)
       else
         redirect_to enroll_course_path(@course)

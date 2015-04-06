@@ -10,9 +10,6 @@
         i.text-muted.text-center
           = raw @course.description
 
-- active = active_parts(@course.parts)
-- completed = completed_parts(@course.parts)
-
 table.table-striped.col-md-12
   thead
     tr.row
@@ -20,10 +17,10 @@ table.table-striped.col-md-12
       th.text-center Completed Tasks
 
   tbody
-    - 0.upto(table_row_count(active, completed) - 1) do |index|
+    - 0.upto(table_row_count(@active_parts, @completed_parts) - 1) do |index|
       tr.row
-        - apart = active[index]
-        - cpart = completed[index]
+        - apart = @active_parts[index]
+        - cpart = @completed_parts[index]
 
         td.col-md-6
           - if apart

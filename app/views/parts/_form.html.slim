@@ -9,7 +9,7 @@
     = f.input :description, as: :bootsy, input_html: {class: 'form-control', rows: 15}, hint: "This is a detailed description of your module (course task). It will be displayed on the module(course task) page. Here you can make rich formatting and add links/images."
     = f.input :start_time, :as => :datetime_picker, hint: "This is the time when module will be opened for users to submit their homeworks."
     = f.input :end_time, :as => :datetime_picker, hint: "This is the time when module will be closed for users to submit their homeworks."
-    = f.input :status, collection: PART_STATUSES, selected: :status, hint: "This is the current status of your module. You can manually set status."
+    = f.input :status, collection: PART_STATUSES, hint: "This is the current status of your module. You can manually set status.", include_blank: false
 
   .form-actions
     = f.button :submit, class: "btn btn-success"
