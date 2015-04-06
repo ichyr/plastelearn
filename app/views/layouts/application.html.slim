@@ -13,9 +13,9 @@ html
       .container
         == render 'layouts/navigation'
     = content_for(:heading)
+    br /
     main[role="main"]
       .container
-        == render 'layouts/messages'
         == yield
     footer.footer
       .container

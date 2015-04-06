@@ -1,6 +1,7 @@
 = content_for :heading do
   .header-bg style="background-image: url(#{@part.course.logo.url})"
     .container-fluid
+      == render 'layouts/messages'
       .margin-bottom-50
         = render_breadcrumbs
       .jumbotron

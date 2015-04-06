@@ -1,6 +1,7 @@
 = content_for :heading do
   .header-bg style="background-image: ;"
     .container-fluid
+      == render 'layouts/messages'
       .margin-bottom-50
         = render_breadcrumbs
       .jumbotron
