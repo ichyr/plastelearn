@@ -34,4 +34,6 @@ Rails.application.routes.draw do
   get "admin/courses"
 
   get 'user_cabinet', to: 'user_cabinet#courses'
+  get 'user_cabinet/courses_assisted', to: 'user_cabinet#courses_teacher'
+  get 'user_cabinet/courses_own', to: 'user_cabinet#courses_owner'
 end

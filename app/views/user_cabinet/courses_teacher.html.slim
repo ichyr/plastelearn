@@ -8,10 +8,10 @@ br /
 div role="tabpanel" 
   /! Nav tabs
 
-  ul.nav.nav-tabs.nav-justified.row.highlight role="tablist" 
-    li.active role="presentation"
+  ul.nav.nav-tabs.nav-justified.row.highlight
+    li role="presentation"
       = link_to "Courses attended", user_cabinet_path 
-    li role="presentation" 
+    li.active role="presentation" 
       = link_to "Courses assited", user_cabinet_courses_assisted_path  
     li role="presentation" 
       = link_to "Courses created", user_cabinet_courses_own_path  
@@ -19,4 +19,4 @@ div role="tabpanel"
   /! Tab panes
   .tab-content
     .tab-pane.active role="tabpanel"
-      = render partial: "courses_table", locals: { courses: @attend_courses, manageable: false }
+      = render partial: "courses_table", locals: { courses: @teacher_courses, manageable: true }

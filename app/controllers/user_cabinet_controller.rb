@@ -1,21 +1,26 @@
 class UserCabinetController < ApplicationController
   def courses
-    # remove next statement
-    # current_user ||= User.find(1)
-
     authorize :user_cabinet
-
-    @new_course_count = current_user.course_grants
 
     role = USER_COURSE_ROLES[:STUDENT]
     own_courses = get_course_ids_by_role(current_user, role)
 
     @attend_courses = Course.select(:id, :title).find(own_courses)
+  end
+
+  def courses_teacher
+    authorize :user_cabinet
 
     role = USER_COURSE_ROLES[:TEACHER]
     own_courses = get_course_ids_by_role(current_user, role)
 
     @teacher_courses = Course.select(:id, :title).find(own_courses)
+  end
+
+  def courses_owner
+    authorize :user_cabinet
+
+    @new_course_count = current_user.course_grants
 
     role = USER_COURSE_ROLES[:OWNER]
     own_courses = get_course_ids_by_role(current_user, role)

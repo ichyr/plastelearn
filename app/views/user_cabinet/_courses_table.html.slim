@@ -2,7 +2,7 @@ br /
 
 - if courses.count == 0
   .row.single-task.bg-success.col-md-10.col-md-offset-1.margin-bottom-15.text-center
-    | There are no courses foundfor this filter.
+    | There were no courses found for this filter.
 - else
   - courses.each do |course|
     = link_to course

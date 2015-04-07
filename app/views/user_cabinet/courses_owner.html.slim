@@ -1,0 +1,32 @@
+== render 'layouts/messages'
+
+h1.text-center
+  | User cabinet
+
+br /
+
+div role="tabpanel" 
+  /! Nav tabs
+
+  ul.nav.nav-tabs.nav-justified.row.highlight role="tablist" 
+    li role="presentation"
+      = link_to "Courses attended", user_cabinet_path 
+    li role="presentation" 
+      = link_to "Courses assited", user_cabinet_courses_assisted_path  
+    li.active role="presentation" 
+      = link_to "Courses created", user_cabinet_courses_own_path  
+    
+  /! Tab panes
+  .tab-content
+    .tab-pane.active role="tabpanel"
+      br /
+      .row.single-task.bg-success.col-md-10.col-md-offset-1.margin-bottom-15
+        h5.col-sm-5 = @course_grants
+        -if @new_course_count > 0
+          .pull-right
+            .btn.btn-success = link_to "Create new course", new_course_path
+        -else
+          .pull-right
+            = raw how_to_create_course_modal
+      br/
+      = render partial: "courses_table", locals: { courses: @owner_courses, manageable: true }
