@@ -43,6 +43,7 @@ class PartsController < ApplicationController
     @part = Part.new(part_params)
 
     authorize @part.course
+    @course = @part.course
 
     if @part.save
       redirect_to parts_manage_course_path(@part.course)
