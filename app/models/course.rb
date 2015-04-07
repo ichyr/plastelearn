@@ -7,4 +7,8 @@ class Course < ActiveRecord::Base
 
 	has_many :registries, dependent: :destroy
   has_many :users, through: :registries
+
+  def self.search(search)
+    where('title LIKE ?', "%#{search}%")
+	end
 end

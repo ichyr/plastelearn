@@ -10,3 +10,5 @@ br /
         = course.title
         - if manageable
           .btn.btn-sm.btn-info.pull-right = link_to "Manage", general_manage_course_path(course)
+  .text-center
+	  = will_paginate courses, renderer: BootstrapPagination::Rails

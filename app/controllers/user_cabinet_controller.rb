@@ -5,7 +5,9 @@ class UserCabinetController < ApplicationController
     role = USER_COURSE_ROLES[:STUDENT]
     own_courses = get_course_ids_by_role(current_user, role)
 
-    @attend_courses = Course.select(:id, :title).find(own_courses)
+    @attend_courses = Course.select(:id, :title)
+                            .where("id in (?)", own_courses)
+                            .paginate(:page => params[:page], :per_page => 10)
   end
 
   def courses_teacher
@@ -14,7 +16,9 @@ class UserCabinetController < ApplicationController
     role = USER_COURSE_ROLES[:TEACHER]
     own_courses = get_course_ids_by_role(current_user, role)
 
-    @teacher_courses = Course.select(:id, :title).find(own_courses)
+    @teacher_courses = Course.select(:id, :title)
+                             .where("id in (?)", own_courses)
+                             .paginate(:page => params[:page], :per_page => 10)
   end
 
   def courses_owner
@@ -25,7 +29,9 @@ class UserCabinetController < ApplicationController
     role = USER_COURSE_ROLES[:OWNER]
     own_courses = get_course_ids_by_role(current_user, role)
 
-    @owner_courses = Course.select(:id, :title).find(own_courses)
+    @owner_courses = Course.select(:id, :title)
+                           .where("id in (?)", own_courses)
+                           .paginate(:page => params[:page], :per_page => 10)
 
     @course_grants = "Currently you can create #{@new_course_count} new courses."
   end
