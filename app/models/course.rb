@@ -8,11 +8,11 @@ class Course < ActiveRecord::Base
 	has_many :registries, dependent: :destroy
   has_many :users, through: :registries
 
-  validates :title, length: { in: 5..30 }
-  validates :enrollment_key, length: { minimum: 8 }
-  validates :short_description, length: { in: 10..255 }
-  validates :description, length: { minimum: 10 }
-  validates :title, :description, :short_description, :enrollment_key, presence: true
+  # validates :title, length: { in: 5..30 }
+  # validates :enrollment_key, length: { minimum: 8 }
+  # validates :short_description, length: { in: 10..255 }
+  # validates :description, length: { minimum: 10 }
+  # validates :title, :description, :short_description, :enrollment_key, presence: true
 
   def self.search(search)
     where('title LIKE ?', "%#{search}%")

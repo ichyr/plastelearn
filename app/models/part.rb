@@ -10,11 +10,11 @@ class Part < ActiveRecord::Base
 
 	after_initialize :set_defaults, :if => :new_record?
 
-	validates :title, length: { in: 5..30 }
-  validates :short_description, length: { in: 10..255 }
-  validates :description, length: { minimum: 10 }
-  validates_with TimeValidator
-  validates :title, :description, :short_description, presence: true
+	# validates :title, length: { in: 5..30 }
+ #  validates :short_description, length: { in: 10..255 }
+ #  validates :description, length: { minimum: 10 }
+ #  validates_with TimeValidator
+ #  validates :title, :description, :short_description, presence: true
 
   def set_defaults
     self.status ||= PART_STATUSES[:PENDING]
