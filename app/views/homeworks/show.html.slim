@@ -29,19 +29,20 @@
             p Averate rating
             #star
 
-table.row.table
-  thead
-    tr
-      th.col-md-3 Filename
-      th.col-md-7 Description
-      th.col-md-2 Date uploaded
-  tbody
-    - @homework.attachments.each do |file|
+- if @homework.attachments.count > 0
+  table.row.table
+    thead
       tr
-        - attachment_file = file.file.file
-        th.col-md-3 = ( link_to attachment_file.filename, file.file.url if attachment_file )
-        th.col-md-7 = raw file.description 
-        th.col-md-2 = file.created_at
+        th.col-md-3 Filename
+        th.col-md-7 Description
+        th.col-md-2 Date uploaded
+    tbody
+      - @homework.attachments.each do |file|
+        tr
+          - attachment_file = file.file.file
+          th.col-md-3 = ( link_to attachment_file.filename, file.file.url if attachment_file )
+          th.col-md-7 = raw file.description 
+          th.col-md-2 = file.created_at
     
 .row.col-md-10.col-md-offset-1.margin-bottom-10
   .single-task.bg-success = render "new_comment"
