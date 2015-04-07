@@ -2,7 +2,8 @@
   = form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => { :role => 'form'}) do |f|
 
     h3 Sign in
-    = devise_error_messages! 
+    =- if devise_error_messages! && devise_error_messages! != ""
+      .alert.alert-danger = devise_error_messages!
 
     .form-group  
       - if devise_mapping.registerable? 
