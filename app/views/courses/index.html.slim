@@ -5,10 +5,13 @@
       .jumbotron
         h1.text-center
           = "Welcome to the distance learning system"
-        b.text-center
+        b.text-center.margin-bottom-20
           = "We strive to make our organization better every day!"
+        .text-center
+          = link_to "Go to the courses!", '#/', class: "btn btn-lg btn-default", onclick: "scrollToElementById('course_listing')"
 
-.col-md-10.col-md-offset-1.margin-bottom-20
+
+#course_listing.col-md-10.col-md-offset-1.margin-bottom-20
   = render "search_form" 
 
 - if @courses.count == 0
@@ -23,3 +26,23 @@
 
 .text-center
   = will_paginate @courses, renderer: BootstrapPagination::Rails
+
+javascript:
+  function scrollToElement(pageElement) {    
+    var positionX = 0,         
+        positionY = 0;    
+
+    while(pageElement != null){        
+      positionX += pageElement.offsetLeft;        
+      positionY += pageElement.offsetTop - 31;        
+      pageElement = pageElement.offsetParent;        
+      window.scrollTo(positionX, positionY);    
+    }
+  }
+
+  function scrollToElementById(id){
+    var pageElement = document.getElementById(id);
+    scrollToElement(pageElement);
+    
+    return false;
+  }
