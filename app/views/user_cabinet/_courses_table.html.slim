@@ -3,7 +3,7 @@ br /
 .col-md-10.col-md-offset-1.margin-bottom-20
 	= simple_form_for :search, url: search_path_link, html: {class: "courses_index_search"}, method: :get, id: "user_cabinet_search", :remote => true do |f|
 	    .input-group
-	      = f.text_field :name, placeholder: "Enter course name to search..." , name: "search", class: "form-control "
+	      = f.text_field :name, placeholder: "Enter course name to search..." , name: "search", class: "form-control ", value: params[:search]
 	      .input-group-btn
 	        button.btn.btn-default type="submit" 
 	          i.glyphicon.glyphicon-search
