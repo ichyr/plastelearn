@@ -59,7 +59,6 @@ end
 
 
 gem 'will_paginate', '~> 3.0.6'
-gem 'railroady'
 gem 'nested_form'
 gem 'carrierwave'
 gem 'rmagick'
@@ -75,3 +74,5 @@ gem "breadcrumbs_on_rails"
 gem 'railroady'
 # charts
 gem "highcharts-rails", "~> 3.0.0"
+# gem for crontab manipulations
+gem 'whenever', :require => false

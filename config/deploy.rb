@@ -1,3 +1,5 @@
+require "whenever/capistrano"
+
 set :stage, :production
 set :application, "plastelearn"
 
@@ -48,8 +50,14 @@ namespace :deploy do
     end
   end
 
+  desc "Update the crontab file"
+  task :update_crontab do
+    run "cd #{current_path} && whenever -i #{:application} --update-crontab"
+  end
+
   before :deploy, "deploy:check_revision"
   after :deploy, "deploy:restart"
   after :rollback, "deploy:restart"
+  after :deploy, "deploy:update_crontab"
 
 end
