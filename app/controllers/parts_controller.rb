@@ -95,7 +95,8 @@ class PartsController < ApplicationController
                                    :end_time, 
                                    :status, 
                                    :short_description,
-                                   :bootsy_image_gallery_id)
+                                   :bootsy_image_gallery_id,
+                                   attachments_attributes: [:id, :description, :file, "_destroy"])
     end
 
     def current_user_submitted_homework? user, part

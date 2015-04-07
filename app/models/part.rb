@@ -4,6 +4,10 @@ class Part < ActiveRecord::Base
 	belongs_to :course
 	has_many :homeworks
 
+	has_many :attachments, as: :attachable
+
+  accepts_nested_attributes_for :attachments, :allow_destroy => true
+
 	after_initialize :set_default_status, :if => :new_record?
 
   def set_default_status

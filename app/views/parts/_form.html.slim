@@ -1,4 +1,4 @@
-= simple_form_for(@part) do |f|
+= simple_nested_form_for(@part, html: { multipart: true }) do |f|
   = f.error_notification
 
   = f.hidden_field :course_id, value: @course.id
@@ -10,6 +10,21 @@
     = f.input :start_time, :as => :datetime_picker, hint: "This is the time when module will be opened for users to submit their homeworks."
     = f.input :end_time, :as => :datetime_picker, hint: "This is the time when module will be closed for users to submit their homeworks."
     = f.input :status, collection: PART_STATUSES, hint: "This is the current status of your module. You can manually set status.", include_blank: false
+
+  .form-inputs
+    = f.fields_for :attachments do |attachment_form|
+      fieldset.margin-bottom-10.single-task
+        .row.form-inputs.margin-bottom-10
+          p.control-label.col-sm-1 = attachment_form.label :description 
+          .col-sm-11 = attachment_form.text_area :description, class: "form-control"
+
+        .row.form-inputs.margin-bottom-10
+          p.control-label.col-sm-1 = attachment_form.label :file 
+          .col-sm-11 = attachment_form.file_field :file, class: "form-control"
+
+        .row.col-sm-offset-1 = attachment_form.link_to_remove "Remove this attachment", class: "btn btn-warning"
+
+  = f.link_to_add "Add attachment", :attachments, class: "btn btn-success pull-right"
 
   .form-actions
     = f.button :submit, class: "btn btn-success"
