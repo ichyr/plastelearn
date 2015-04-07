@@ -7,6 +7,7 @@
           = "Welcome to the distance learning system"
         b.text-center.margin-bottom-20
           = "We strive to make our organization better every day!"
+        .margin-bottom-50
         .text-center
           = link_to "Go to the courses!", '#/', class: "btn btn-lg btn-default", onclick: "scrollToElementById('course_listing')"
 
@@ -43,6 +44,6 @@ javascript:
   function scrollToElementById(id){
     var pageElement = document.getElementById(id);
     scrollToElement(pageElement);
-    
+
     return false;
   }
