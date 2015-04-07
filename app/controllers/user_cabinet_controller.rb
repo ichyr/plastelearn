@@ -6,6 +6,7 @@ class UserCabinetController < ApplicationController
     own_courses = get_course_ids_by_role(current_user, role)
 
     @attend_courses = Course.select(:id, :title)
+                            .search(params[:search])
                             .where("id in (?)", own_courses)
                             .paginate(:page => params[:page], :per_page => 10)
   end
@@ -17,6 +18,7 @@ class UserCabinetController < ApplicationController
     own_courses = get_course_ids_by_role(current_user, role)
 
     @teacher_courses = Course.select(:id, :title)
+                             .search(params[:search])
                              .where("id in (?)", own_courses)
                              .paginate(:page => params[:page], :per_page => 10)
   end
@@ -30,6 +32,7 @@ class UserCabinetController < ApplicationController
     own_courses = get_course_ids_by_role(current_user, role)
 
     @owner_courses = Course.select(:id, :title)
+                           .search(params[:search])
                            .where("id in (?)", own_courses)
                            .paginate(:page => params[:page], :per_page => 10)
 

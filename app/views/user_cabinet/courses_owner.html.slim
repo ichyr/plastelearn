@@ -29,4 +29,4 @@ div role="tabpanel"
           .pull-right
             = raw how_to_create_course_modal
       br/
-      = render partial: "courses_table", locals: { courses: @owner_courses, manageable: true }
+      = render partial: "courses_table", locals: { courses: @owner_courses, manageable: true, search_path_link: user_cabinet_courses_own_path }
