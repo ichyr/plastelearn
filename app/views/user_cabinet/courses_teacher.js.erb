@@ -1,0 +1,1 @@
+$("#course_table").html("<%= escape_javascript(render(partial: 'courses_table', locals: { courses: @teacher_courses, manageable: false, search_path_link: user_cabinet_courses_assisted_path })) %>");

@@ -19,4 +19,5 @@ div role="tabpanel"
   /! Tab panes
   .tab-content
     .tab-pane.active role="tabpanel"
-      = render partial: "courses_table", locals: { courses: @attend_courses, manageable: false, search_path_link: user_cabinet_path }
+      #course_table
+        = render partial: "courses_table", locals: { courses: @attend_courses, manageable: false, search_path_link: user_cabinet_path }
