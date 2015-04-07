@@ -1,5 +1,6 @@
 = simple_nested_form_for(@homework, html: { multipart: true }) do |f|
-  = f.error_notification
+  -if f.error_notification
+    .alert = f.error_notification
   = f.hidden_field :homework_id, value: @homework.id
   = f.hidden_field :part_id, value: @homework.part.id
   = f.hidden_field :user_id, value: current_user.id

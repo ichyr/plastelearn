@@ -25,7 +25,7 @@ class CommentsController < ApplicationController
 
     authorize @comment
 
-    if current_user
+    if current_user && @comment.valid?
       @comment.user_id = current_user.id
       @comment.save
     else
