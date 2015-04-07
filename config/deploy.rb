@@ -58,6 +58,6 @@ namespace :deploy do
   before :deploy, "deploy:check_revision"
   after :deploy, "deploy:restart"
   after :rollback, "deploy:restart"
-  after :deploy, "deploy:update_crontab"
+  # after :deploy, "deploy:update_crontab"
 
 end
