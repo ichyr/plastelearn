@@ -16,9 +16,17 @@ class Part < ActiveRecord::Base
   def self.check_status_update
   	now = DateTime.now
 
+  	#  Refactoring thing
+  	# 
+  	# loop through models
+  	# add ids of elements to change to arrays => (pending|active|complete)
+  	# where(id in (pending|active|complete)).update_all( set new status)
+  	# 
+
   	Part.find_each do |part|
   		start_time = part.start_time
 	  	end_time = part.end_time
+	  	old_status = part.status
 
 	  	if start_time > now
 	  		puts "pending"
@@ -31,7 +39,9 @@ class Part < ActiveRecord::Base
 	  		part.status = PART_STATUSES[:COMPLETE]
 	  	end
 
-	  	part.save!
+	  	if old_status != part.status
+		  	part.save!
+		  end
   	end
 
   end
