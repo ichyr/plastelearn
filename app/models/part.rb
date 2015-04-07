@@ -16,20 +16,23 @@ class Part < ActiveRecord::Base
   def self.check_status_update
   	now = DateTime.now
 
-  	Part.all.each do |part|
+  	Part.find_each do |part|
   		start_time = part.start_time
 	  	end_time = part.end_time
 
 	  	if start_time > now
+	  		puts "pending"
 	  		part.status = PART_STATUSES[:PENDING]
-	  	elsif start_time < now && now > end_time
+	  	elsif start_time > now && now < end_time
+	  		puts "active"
 	  		part.status = PART_STATUSES[:ACTIVE]
 	  	else
+	  		puts "completed"
 	  		part.status = PART_STATUSES[:COMPLETE]
 	  	end
 
 	  	part.save!
-	  			
   	end
+
   end
 end

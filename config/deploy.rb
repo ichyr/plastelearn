@@ -52,7 +52,7 @@ namespace :deploy do
 
   desc "Update the crontab file"
   task :update_crontab do
-    run "cd #{current_path} && whenever --update-crontab #{:application}"
+    run "cd #{current_path} && whenever -i #{:application} --update-crontab"
   end
 
   before :deploy, "deploy:check_revision"
