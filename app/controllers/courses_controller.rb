@@ -107,6 +107,29 @@ class CoursesController < ApplicationController
 
   def statistics
     authorize @course
+
+    @number_of_parts = @course.parts.count
+    @number_of_users = Registry.where("course_id = ?", @course.id).count
+
+    @registries = Registry.includes(:user)
+                          .where("course_id = ?", @course.id).order(:id)
+
+  end
+
+  def user_stats
+    @course = Course.find(params[:id])
+    authorize @course
+    
+    @user = User.find(params[:user_id])
+
+    @parts = @course.parts
+    @homeworks = []
+
+    @parts.each do |part|
+      data = Homework.where("part_id = ? and user_id = ?", part.id, @user.id).first
+      data = "No homework submitted for this module" if data
+      @homeworks << data
+    end
   end
 
   def enroll

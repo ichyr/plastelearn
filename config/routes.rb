@@ -26,6 +26,8 @@ Rails.application.routes.draw do
     delete 'delete_user_from_course', on: :member
   end
 
+  get 'courses/:id/user_stats/:user_id', to: "courses#user_stats"
+
   resources :users
 
   resources :ratings, only: :update

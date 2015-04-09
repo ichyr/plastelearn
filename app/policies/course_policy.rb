@@ -57,6 +57,10 @@ class CoursePolicy < ApplicationPolicy
 		end
 	end
 
+	def user_stats?
+		true
+	end
+
 	def enroll?
 		true unless user.nil?
 	end
