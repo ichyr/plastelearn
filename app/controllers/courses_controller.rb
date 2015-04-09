@@ -96,6 +96,8 @@ class CoursesController < ApplicationController
 
   def parts_manage
     authorize @course
+
+    @parts = @course.parts.order(:id)
   end
 
   def members

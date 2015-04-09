@@ -30,7 +30,7 @@ table.table
       th.col-sm-1
 
   tbody
-    - @course.parts.each_with_index do |part, index|
+    - @parts.each_with_index do |part, index|
         tr
           td.col-sm-1 = index + 1
           td.col-sm-3 = link_to part.title, part
