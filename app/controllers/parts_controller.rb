@@ -56,7 +56,7 @@ class PartsController < ApplicationController
     authorize @part.course
     @course = @part.course
 
-    if @part.update(part_params)
+    if @part.update_attributes!(part_params)
       redirect_to parts_manage_course_path(@part.course)
     else 
       respond_with(@part)
