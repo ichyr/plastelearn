@@ -9,6 +9,10 @@ set :default_env, {
     :PATH => '/home/specplast/.rbenv/plugins/ruby-build/bin:/home/specplast/.rbenv/shims:/home/specplast/.rbenv/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games'
 }
 
+set :default_environment, {
+  :PATH => '/home/specplast/.rbenv/plugins/ruby-build/bin:/home/specplast/.rbenv/shims:/home/specplast/.rbenv/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games'
+}
+
 set :scm, :git
 set :repo_url,  "git@github.com:ichyr/#{fetch(:application)}.git"
 set :branch, 'production'
