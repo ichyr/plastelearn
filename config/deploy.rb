@@ -50,10 +50,10 @@ namespace :deploy do
     end
   end
 
-  desc "Update the crontab file"
-  task :update_crontab do
-    run "cd #{current_path} && whenever -i #{:application} --update-crontab"
-  end
+  # desc "Update the crontab file"
+  # task :update_crontab do
+  #   run "cd #{current_path} && whenever -i #{:application} --update-crontab"
+  # end
 
   before :deploy, "deploy:check_revision"
   after :deploy, "deploy:restart"
