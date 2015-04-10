@@ -7,7 +7,14 @@ set :default_run_options, {
 set :stage, :production
 set :application, "plastelearn"
 
+# setup rvm.
+set :rbenv_type, :system
 set :rbenv_ruby, '2.1.2'
+set :rbenv_prefix, "RBENV_ROOT=#{fetch(:rbenv_path)} RBENV_VERSION=#{fetch(:rbenv_ruby)} #{fetch(:rbenv_path)}/bin/rbenv exec"
+set :rbenv_map_bins, %w{rake gem bundle ruby rails}
+
+# how many old releases do we want to keep
+set :keep_releases, 5
 
 set :default_env, {
     :PATH => '/home/specplast/.rbenv/plugins/ruby-build/bin:/home/specplast/.rbenv/shims:/home/specplast/.rbenv/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/home/specplast/.rbenv/shims/bundler'
@@ -36,7 +43,6 @@ set :linked_dirs, %w{bin log tmp vendor/bundle public/system}
 SSHKit.config.command_map[:rake]  = "bundle exec rake" #8
 SSHKit.config.command_map[:rails] = "bundle exec rails"
 
-set :keep_releases, 10
 
 namespace :deploy do
 
