@@ -1,8 +1,10 @@
-require "whenever/capistrano"
+# require "whenever/capistrano"
+# set :whenever_command, "bundle exec whenever"
 
 set :default_run_options, {
   shell: '/bin/bash --login'
 }
+
 
 set :stage, :production
 set :application, "plastelearn"
