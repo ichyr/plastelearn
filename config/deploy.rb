@@ -6,11 +6,11 @@ set :application, "plastelearn"
 set :rbenv_ruby, '2.1.2'
 
 set :default_env, {
-    :PATH => '/home/specplast/.rbenv/plugins/ruby-build/bin:/home/specplast/.rbenv/shims:/home/specplast/.rbenv/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games'
+    :PATH => '/home/specplast/.rbenv/plugins/ruby-build/bin:/home/specplast/.rbenv/shims:/home/specplast/.rbenv/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/home/specplast/.rbenv/shims/bundler'
 }
 
 set :default_environment, {
-  :PATH => '/home/specplast/.rbenv/plugins/ruby-build/bin:/home/specplast/.rbenv/shims:/home/specplast/.rbenv/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games'
+  :PATH => '/home/specplast/.rbenv/plugins/ruby-build/bin:/home/specplast/.rbenv/shims:/home/specplast/.rbenv/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/home/specplast/.rbenv/shims/bundler'
 }
 
 set :scm, :git
