@@ -9,6 +9,15 @@ namespace :setup do
     end
   end
 
+  desc "Upload default images."
+  task :upload_images do
+    on roles(:app) do
+      execute "mkdir -p #{shared_path}/config"
+      upload! StringIO.new(File.read("config/database.yml")), "#{shared_path}/config/database.yml"
+      upload! StringIO.new(File.read(".env.yml")), "/var/www/plastelearn_prod/current/.env.yml"
+    end
+  end
+
   desc "Seed the database."
   task :seed_db do
     on roles(:app) do
