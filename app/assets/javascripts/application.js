@@ -20,13 +20,13 @@
 //= require moment
 //= require bootstrap-datetimepicker
 //= require bootsy
+//= require highcharts
 //= require_tree .
 
 $(function() {
-  $(document).on('ready page:change', function() {
-    $('.datetime_picker').datetimepicker({
-      pickSeconds: false
-    });
-  });
+	$(document).on('ready page:change', function() {
+		$('.datetime_picker').datetimepicker({
+			pickSeconds: false
+		});
+	});
 });
-

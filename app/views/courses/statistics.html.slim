@@ -6,11 +6,11 @@ ul.nav.nav-tabs.nav-justified.highlight
   li role="presentation" 
     = link_to "General information", general_manage_course_path(@course)
   li role="presentation" 
-  	= link_to "Parts management", parts_manage_course_path(@course)
+    = link_to "Parts management", parts_manage_course_path(@course)
   li.active role="presentation" 
-  	= link_to "Statistics", statistics_course_path(@course)
+    = link_to "Statistics", statistics_course_path(@course)
   li role="presentation" 
-	  = link_to "Members", members_course_path(@course)
+    = link_to "Members", members_course_path(@course)
 
 br /
 
@@ -23,3 +23,176 @@ ol
   li finalization of each part
   li finalization by users
   li possibility to go to user report page
+
+.row
+  .col-md-6
+    .highcharts
+      .parts-statistics
+  .col-md-6
+    .highcharts
+      .finalization-by-parts
+.row
+  .col-md-6
+    .highcharts
+      .finalization-by-users
+
+
+
+javascript:
+  var courseStatuses = {
+    chart: {
+      plotBackgroundColor: null,
+      plotBorderWidth: null,
+      plotShadow: false
+    },
+    title: {
+      text: 'Course part statuses'
+    },
+    tooltip: false,
+    plotOptions: {
+      pie: {
+        allowPointSelect: true,
+        cursor: 'pointer',
+        dataLabels: {
+          enabled: true,
+          format: '<b>{point.name}</b>: {point.y} ({point.percentage:.1f} %)',
+          style: {
+            color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
+          }
+        }
+      }
+    },
+    series: [{
+      type: 'pie',
+      data: [
+        ['Pending', #{@courses_count_pending}],
+        ['Active', #{@courses_count_active}],
+        ['Completed', #{@courses_count_completed}]
+      ]
+    }]
+  };
+
+  var users_count = #{ @course.parts.count };
+  var course_parts = #{ @course.parts.map { |part| part.title }.inspect  };
+
+  var finalizationParts = {
+    chart: {
+      type: 'bar'
+    },
+    title: {
+      text: 'Finalization of parts'
+    },
+    xAxis: [{
+      categories: course_parts,
+      reversed: false,
+      labels: {
+        step: 1
+      }
+    }, { // mirror axis on right side
+      opposite: true,
+      reversed: false,
+      categories: course_parts,
+      linkedTo: 0,
+      labels: {
+        step: 1
+      }
+    }],
+    yAxis: {
+      title: {
+        text: null
+      },
+      labels: {
+        formatter: function() {
+          return this.value;
+        }
+      },
+      min: -users_count,
+      max: users_count
+    },
+
+    plotOptions: {
+      series: {
+        stacking: 'normal'
+      }
+    },
+
+    series: [{
+      name: 'Male',
+      data: [-20, -19, -18, -5, -3, -8, -13, -20, -17, -18]
+    }, {
+      name: 'Female',
+      data: [0, 1, 2, 15, 17, 12, 7, 0, 3, 2]
+    }]
+  }
+
+  var parts_count = 12;
+  var users = [
+    'User 1',
+    'User 2',
+    'User 3',
+    'User 4',
+    'User 5',
+    'User 6',
+    'User 7',
+    'User 8',
+    'User 9',
+    'User 10'
+  ];
+
+  var finalizationUsers = {
+    chart: {
+      type: 'bar'
+    },
+    title: {
+      text: 'Finalization of users'
+    },
+    xAxis: [{
+      categories: users,
+      reversed: false,
+      labels: {
+        step: 1
+      }
+    }, { // mirror axis on right side
+      opposite: true,
+      reversed: false,
+      categories: users,
+      linkedTo: 0,
+      labels: {
+        step: 1
+      }
+    }],
+    yAxis: {
+      title: {
+        text: null
+      },
+      labels: {
+        formatter: function() {
+          return this.value;
+        }
+      },
+      min: -parts_count,
+      max: parts_count
+    },
+
+    plotOptions: {
+      series: {
+        stacking: 'normal'
+      }
+    },
+
+    series: [{
+      name: 'Succeeded',
+      data: [-12, -11, -10, -7, -5, -8, -5, -10, -9, -10]
+    }, {
+      name: 'Failed',
+      data: [0, 1, 2, 5, 7, 4, 7, 2, 3, 2]
+    }]
+  };
+
+  $(function() {
+    // HichCharts for courses
+
+    $(".highcharts .parts-statistics").highcharts(courseStatuses);
+    $('.highcharts .finalization-by-parts').highcharts(finalizationParts);
+    $('.highcharts .finalization-by-users').highcharts(finalizationUsers);
+  });

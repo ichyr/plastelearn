@@ -53,3 +53,13 @@
 [for=course_public_visible] {
   font-weight: bold !important;
 }
+
+.highcharts {
+  .parts-statistics {
+    height: 400px;
+  }
+
+  .finalization-by-parts {
+    height: 400px;
+  }
+}

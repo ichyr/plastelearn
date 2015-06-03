@@ -107,6 +107,12 @@ class CoursesController < ApplicationController
 
   def statistics
     authorize @course
+
+    @courses_count_pending = @course.parts.where("status = ?", PART_STATUSES[:PENDING]).count
+    @courses_count_active = @course.parts.where("status = ?", PART_STATUSES[:ACTIVE]).count
+    @courses_count_completed = @course.parts.where("status = ?", PART_STATUSES[:COMPLETE]).count
+
+    
   end
 
   def enroll
