@@ -139,25 +139,22 @@ class CoursesController < ApplicationController
     course_users_ids = @course_users.map(&:id)
 
     # get all homeworks for specific course
-    course_homeworks = Homework.where("part_id in (?)", course_parts_ids)
+    course_homeworks = Homework.select(:user_id).where("part_id in (?)", course_parts_ids).map { |t|
+      t.user_id
+    }
     
     @course_users_hw_done = []
     @course_user_hw_failed = []
     course_parts_finished = @courses_count_completed + @courses_count_active
 
     # try to optimize the loop below
-    temp = 0;
-
-    @course_users.each { |user| 
-      temp = 0
-      course_homeworks.each { |x| 
-        if x.user_id == user.id
-          temp += 1
-        end
-      }
+    @course_users.each_with_index { |user, index| 
+      temp = course_homeworks.count { |x| x == user.id }
       @course_users_hw_done << temp
       @course_user_hw_failed << (course_parts_finished - temp)
-    }    
+
+      puts "step #{index} result => #{temp}"
+    }
   end
 
   def enroll
