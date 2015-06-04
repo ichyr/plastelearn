@@ -14,16 +14,6 @@ ul.nav.nav-tabs.nav-justified.highlight
 
 br /
 
-h1 What shal be here?
-
-br /
-
-ol
-  li Number of parts
-  li finalization of each part
-  li finalization by users
-  li possibility to go to user report page
-
 .row
   .col-md-6
     .highcharts
@@ -35,6 +25,12 @@ ol
   .col-md-6
     .highcharts
       .finalization-by-users
+  .col-md-6
+    h4.text-center.highcharts-header-color Users statistics
+
+    ol.col-md-offset-3
+      - @course_users.each do |user|
+        li =link_to user.email, user
 
 
 
@@ -49,8 +45,11 @@ javascript:
   var course_parts_done_data = #{ raw @course_parts_done_data.map { |item| item } };
   var course_parts_fail_data = #{ raw @course_parts_fail_data.map { |item| -item } };
 
-  console.log(course_parts_done_data);
-  console.log(course_parts_fail_data);
+  
+  var course_users = #{ raw @course_users.map { |user| "#{user.email}" }  };
+
+  var course_users_done_homeworks = #{ raw @course_users_hw_done.map { |item| item } };
+  var course_users_failed_homeworks = #{ raw @course_user_hw_failed.map { |item| -item } };
 
   var courseStatuses = {
     chart: {
@@ -136,20 +135,6 @@ javascript:
     }]
   }
 
-  var parts_count = 12;
-  var users = [
-    'User 1',
-    'User 2',
-    'User 3',
-    'User 4',
-    'User 5',
-    'User 6',
-    'User 7',
-    'User 8',
-    'User 9',
-    'User 10'
-  ];
-
   var finalizationUsers = {
     chart: {
       type: 'bar'
@@ -158,16 +143,8 @@ javascript:
       text: 'Finalization of users'
     },
     xAxis: [{
-      categories: users,
+      categories: course_users,
       reversed: false,
-      labels: {
-        step: 1
-      }
-    }, { // mirror axis on right side
-      opposite: true,
-      reversed: false,
-      categories: users,
-      linkedTo: 0,
       labels: {
         step: 1
       }
@@ -181,8 +158,8 @@ javascript:
           return this.value;
         }
       },
-      min: -parts_count,
-      max: parts_count
+      min: -course_parts_count,
+      max: course_parts_count
     },
 
     plotOptions: {
@@ -193,10 +170,10 @@ javascript:
 
     series: [{
       name: 'Succeeded',
-      data: [-12, -11, -10, -7, -5, -8, -5, -10, -9, -10]
+      data: course_users_done_homeworks
     }, {
       name: 'Failed',
-      data: [0, 1, 2, 5, 7, 4, 7, 2, 3, 2]
+      data: course_users_failed_homeworks
     }]
   };
 

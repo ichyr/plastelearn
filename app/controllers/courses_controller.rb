@@ -113,9 +113,12 @@ class CoursesController < ApplicationController
     @courses_count_completed = @course.parts.where("status = ?", PART_STATUSES[:COMPLETE]).count
 
     @sorted_parts = @course.parts.order(id: :DESC)
+    @course_users = @course.registries.where("role = ?", USER_COURSE_ROLES[:STUDENT]).map { |reg|
+      reg.user
+    }
 
     @course_parts_count = @course.parts.count
-    @course_users_count = @course.registries.where("role = ?", USER_COURSE_ROLES[:STUDENT]).count
+    @course_users_count = @course_users.count
 
     # will count of submitted homeworks for every part
     @course_parts_done_data = []
@@ -123,12 +126,38 @@ class CoursesController < ApplicationController
 
     @sorted_parts.map { |part|
       temp = part.homeworks.count
-      
+
       @course_parts_done_data << temp
       @course_parts_fail_data << @course_users_count - temp
     }
 
-    @user_course_parts_done_data = 12
+    # will count the submitted, failed to submit and pending homeworks for users
+    @course_users_done_homeworks = (1..@course_users_count).to_a
+    @course_users_failed_homeworks = (1..@course_users_count).to_a
+
+    course_parts_ids = @sorted_parts.ids
+    course_users_ids = @course_users.map(&:id)
+
+    # get all homeworks for specific course
+    course_homeworks = Homework.where("part_id in (?)", course_parts_ids)
+    
+    @course_users_hw_done = []
+    @course_user_hw_failed = []
+    course_parts_finished = @courses_count_completed + @courses_count_active
+
+    # try to optimize the loop below
+    temp = 0;
+
+    @course_users.each { |user| 
+      temp = 0
+      course_homeworks.each { |x| 
+        if x.user_id == user.id
+          temp += 1
+        end
+      }
+      @course_users_hw_done << temp
+      @course_user_hw_failed << (course_parts_finished - temp)
+    }    
   end
 
   def enroll
