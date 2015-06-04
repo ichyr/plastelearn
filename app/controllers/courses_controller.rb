@@ -158,6 +158,12 @@ class CoursesController < ApplicationController
     }
   end
 
+  def report
+    authorize @course
+    
+    @user = User.find(params[:user_id])
+  end
+
   def enroll
     authorize @course
   end
