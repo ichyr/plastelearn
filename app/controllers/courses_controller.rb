@@ -108,14 +108,17 @@ class CoursesController < ApplicationController
   def statistics
     authorize @course
 
+    # get counts of parts with specified statuses
     @courses_count_pending = @course.parts.where("status = ?", PART_STATUSES[:PLANNED]).count
     @courses_count_active = @course.parts.where("status = ?", PART_STATUSES[:ACTIVE]).count
     @courses_count_completed = @course.parts.where("status = ?", PART_STATUSES[:COMPLETE]).count
 
+    # sorted list of parts
     @sorted_parts = @course.parts.order(id: :DESC)
-    @course_users = @course.registries.where("role = ?", USER_COURSE_ROLES[:STUDENT]).map { |reg|
-      reg.user
-    }
+
+    # list of course students - subset of users of this course
+    course_students_list = @course.registries.where("role = ?", USER_COURSE_ROLES[:STUDENT])
+    @course_users = course_students_list.map { |reg| reg.user }
 
     @course_parts_count = @course.parts.count
     @course_users_count = @course_users.count
@@ -125,7 +128,7 @@ class CoursesController < ApplicationController
     @course_parts_fail_data = []
 
     @sorted_parts.map { |part|
-      temp = part.homeworks.count
+      temp = part.homeworks.where("user_id in (?)", @course_users).count
 
       @course_parts_done_data << temp
       @course_parts_fail_data << @course_users_count - temp
@@ -152,8 +155,6 @@ class CoursesController < ApplicationController
       temp = course_homeworks.count { |x| x == user.id }
       @course_users_hw_done << temp
       @course_user_hw_failed << (course_parts_finished - temp)
-
-      puts "step #{index} result => #{temp}"
     }
   end
 
