@@ -112,7 +112,23 @@ class CoursesController < ApplicationController
     @courses_count_active = @course.parts.where("status = ?", PART_STATUSES[:ACTIVE]).count
     @courses_count_completed = @course.parts.where("status = ?", PART_STATUSES[:COMPLETE]).count
 
-    
+    @sorted_parts = @course.parts.order(id: :DESC)
+
+    @course_parts_count = @course.parts.count
+    @course_users_count = @course.registries.where("role = ?", USER_COURSE_ROLES[:STUDENT]).count
+
+    # will count of submitted homeworks for every part
+    @course_parts_done_data = []
+    @course_parts_fail_data = []
+
+    @sorted_parts.map { |part|
+      temp = part.homeworks.count
+      
+      @course_parts_done_data << temp
+      @course_parts_fail_data << @course_users_count - temp
+    }
+
+    @user_course_parts_done_data = 12
   end
 
   def enroll
