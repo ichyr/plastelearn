@@ -1,11 +1,11 @@
 
 h1.text-center User report
 
-h3 = "Course : #{@course.title}"
-
-h3 = "Username: @user.name"
-
-= current_user.id
+.row.margin-bottom-10
+  .col-md-6.text-center
+    h4 = "Course : #{@course.title}"
+  .col-md-6.text-center
+    h4 = "Username: @user.name"
 
 - @parts.each_with_index do |part, index|
   .row.single-task.bg-green.margin-bottom-10
