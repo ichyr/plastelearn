@@ -162,6 +162,27 @@ class CoursesController < ApplicationController
     authorize @course
     
     @user = User.find(params[:user_id])
+
+    @parts = @course.parts.order(:id)
+
+    part_ids = @user.homeworks.ids
+
+    @homeworks = []
+
+    @parts.each_with_index { |p, index| 
+      hw = p.homeworks
+      match = nil
+
+      hw.each { |hw| 
+        if part_ids.include?(hw.id)
+          match = hw 
+          break
+        end
+
+      }
+
+      @homeworks << match
+    }
   end
 
   def enroll
