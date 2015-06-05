@@ -110,28 +110,81 @@ class CoursesController < ApplicationController
   def statistics
     authorize @course
 
-    @number_of_parts = @course.parts.count
-    @number_of_users = Registry.where("course_id = ?", @course.id).count
+    # get counts of parts with specified statuses
+    @courses_count_pending = @course.parts.where("status = ?", PART_STATUSES[:PLANNED]).count
+    @courses_count_active = @course.parts.where("status = ?", PART_STATUSES[:ACTIVE]).count
+    @courses_count_completed = @course.parts.where("status = ?", PART_STATUSES[:COMPLETE]).count
 
-    @registries = Registry.includes(:user)
-                          .where("course_id = ?", @course.id).order(:id)
+    # sorted list of parts
+    @sorted_parts = @course.parts.order(id: :DESC)
 
+    # list of course students - subset of users of this course
+    course_students_list = @course.registries.where("role = ?", USER_COURSE_ROLES[:STUDENT])
+    @course_users = course_students_list.map { |reg| reg.user }
+
+    @course_parts_count = @course.parts.count
+    @course_users_count = @course_users.count
+
+    # will count of submitted homeworks for every part
+    @course_parts_done_data = []
+    @course_parts_fail_data = []
+
+    @sorted_parts.map { |part|
+      temp = part.homeworks.where("user_id in (?)", @course_users).count
+
+      @course_parts_done_data << temp
+      @course_parts_fail_data << @course_users_count - temp
+    }
+
+    # will count the submitted, failed to submit and pending homeworks for users
+    @course_users_done_homeworks = (1..@course_users_count).to_a
+    @course_users_failed_homeworks = (1..@course_users_count).to_a
+
+    course_parts_ids = @sorted_parts.ids
+    course_users_ids = @course_users.map(&:id)
+
+    # get all homeworks for specific course
+    course_homeworks = Homework.select(:user_id).where("part_id in (?)", course_parts_ids).map { |t|
+      t.user_id
+    }
+    
+    @course_users_hw_done = []
+    @course_user_hw_failed = []
+    course_parts_finished = @courses_count_completed + @courses_count_active
+
+    # try to optimize the loop below
+    @course_users.each_with_index { |user, index| 
+      temp = course_homeworks.count { |x| x == user.id }
+      @course_users_hw_done << temp
+      @course_user_hw_failed << (course_parts_finished - temp)
+    }
   end
 
-  def user_stats
-    @course = Course.find(params[:id])
+  def report
     authorize @course
     
     @user = User.find(params[:user_id])
 
-    @parts = @course.parts
+    @parts = @course.parts.order(:id)
+
+    part_ids = @user.homeworks.ids
+
     @homeworks = []
 
-    @parts.each do |part|
-      data = Homework.where("part_id = ? and user_id = ?", part.id, @user.id).first
-      data = "No homework submitted for this module" if data
-      @homeworks << data
-    end
+    @parts.each_with_index { |p, index| 
+      hw = p.homeworks
+      match = nil
+
+      hw.each { |hw| 
+        if part_ids.include?(hw.id)
+          match = hw 
+          break
+        end
+
+      }
+
+      @homeworks << match
+    }
   end
 
   def enroll

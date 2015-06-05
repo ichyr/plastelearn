@@ -57,8 +57,9 @@ class CoursePolicy < ApplicationPolicy
 		end
 	end
 
-	def user_stats?
-		true
+	def report?
+		unless user.nil?
+			user.admin? || owner?(user, record) || teacher?(user, record)
 	end
 
 	def enroll?

@@ -1,0 +1,52 @@
+
+h1.text-center User report
+
+.row.margin-bottom-10
+  .col-md-6.text-center
+    h4 = "Course : #{@course.title}"
+  .col-md-6.text-center
+    h4 = "Username: @user.name"
+
+- @parts.each_with_index do |part, index|
+  .row.single-task.bg-green.margin-bottom-10
+    b = raw "#{link_to 'Homework', @homeworks[index]} for #{link_to part.title, part}"
+    hr/
+    i.text-center
+      -if @homeworks[index]
+        = raw @homeworks[index].description
+
+        .row style=("display:inline;")
+          .col-md-3
+            p Averate rating
+            .star data-average="#{@homeworks[index].average_rating}"
+
+            javascript:
+              $(document).ready(function(){
+                $('.star').each( function (index, el) {
+                  console.log(el);
+                  $(el).raty({
+                    readOnly: true,
+                    score: parseInt(el.getAttribute('data-average')),
+                    path: '/assets'
+                  });
+                })
+              });
+
+        .col-md-10.col-md-offset-1
+          - if @homeworks[index].attachments.count > 0
+            table.row.table
+              thead
+                tr
+                  th.col-md-3 Filename
+                  th.col-md-7 Description
+                  th.col-md-2 Date uploaded
+              tbody
+                - @homeworks[index].attachments.each do |file|
+                  tr
+                    - attachment_file = file.file.file
+                    th.col-md-3 = ( link_to attachment_file.filename, file.file.url if attachment_file )
+                    th.col-md-7 = raw file.description 
+                    th.col-md-2 = format_date(file.created_at)
+
+      -else
+        = "Uer haven't submitted any homework"

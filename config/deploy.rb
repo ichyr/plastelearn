@@ -1,9 +1,28 @@
-require "whenever/capistrano"
+# require "whenever/capistrano"
+# set :whenever_command, "bundle exec whenever"
+
+set :default_run_options, {
+  shell: '/bin/bash --login'
+}
+
 
 set :stage, :production
 set :application, "plastelearn"
 
+# setup rvm.
 set :rbenv_ruby, '2.1.2'
+set :rbenv_map_bins, %w{rake gem bundle ruby rails}
+
+# how many old releases do we want to keep
+set :keep_releases, 5
+
+set :default_env, {
+    :PATH => '/home/specplast/.rbenv/plugins/ruby-build/bin:/home/specplast/.rbenv/shims:/home/specplast/.rbenv/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/home/specplast/.rbenv/shims/bundler'
+}
+
+set :default_environment, {
+  :PATH => '/home/specplast/.rbenv/plugins/ruby-build/bin:/home/specplast/.rbenv/shims:/home/specplast/.rbenv/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/home/specplast/.rbenv/shims/bundler'
+}
 
 set :scm, :git
 set :repo_url,  "git@github.com:ichyr/#{fetch(:application)}.git"
@@ -24,7 +43,6 @@ set :linked_dirs, %w{bin log tmp vendor/bundle public/system}
 SSHKit.config.command_map[:rake]  = "bundle exec rake" #8
 SSHKit.config.command_map[:rails] = "bundle exec rails"
 
-set :keep_releases, 10
 
 namespace :deploy do
 
@@ -50,14 +68,14 @@ namespace :deploy do
     end
   end
 
-  desc "Update the crontab file"
-  task :update_crontab do
-    run "cd #{current_path} && whenever -i #{:application} --update-crontab"
-  end
+  # desc "Update the crontab file"
+  # task :update_crontab do
+  #   run "cd #{current_path} && whenever -i #{:application} --update-crontab"
+  # end
 
   before :deploy, "deploy:check_revision"
   after :deploy, "deploy:restart"
   after :rollback, "deploy:restart"
-  after :deploy, "deploy:update_crontab"
+  # after :deploy, "deploy:update_crontab"
 
 end

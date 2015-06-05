@@ -1,4 +1,5 @@
 h1.text-center Course management
+h5.text-center = @course.title
 
 br /
 
@@ -6,32 +7,189 @@ ul.nav.nav-tabs.nav-justified.highlight
   li role="presentation" 
     = link_to "General information", general_manage_course_path(@course)
   li role="presentation" 
-  	= link_to "Parts management", parts_manage_course_path(@course)
+    = link_to "Parts management", parts_manage_course_path(@course)
   li.active role="presentation" 
-  	= link_to "Statistics", statistics_course_path(@course)
+    = link_to "Statistics", statistics_course_path(@course)
   li role="presentation" 
-	  = link_to "Members", members_course_path(@course)
+    = link_to "Members", members_course_path(@course)
 
 br /
 
-h1 What shal be here?
-
-br /
-
-ol
-  li Number of parts
-  li finalization of each part
-  li finalization by users
-  li possibility to go to user report page
-
 .row
-  .col-sm-3.text-right
-    | Number of parts
-  .col-sm-offset-3
-    = @number_of_parts
-
+  .col-md-6
+    .highcharts
+      .parts-statistics
+  .col-md-6
+    .highcharts
+      .finalization-by-parts
 .row
-  .col-sm-3.text-right
-    | Number of users
-  .col-sm-offset-3
-    = @number_of_user
+  .col-md-6
+    .highcharts
+      .finalization-by-users
+  .col-md-6
+    h4.text-center.highcharts-header-color Users statistics
+
+    table.table-condensed.table-bordered.table-striped.col-md-12
+      tr.highcharts-table-header-color
+        th.text-center.col-md-1 №
+        th.text-center.col-md-3 Name
+        th.text-center.col-md-4 Email
+        th.text-center.col-md-2 Done
+        th.text-center.col-md-2 Failed
+      - @course_users.each_with_index do |user, index|
+          tr
+            td.text-center.col-md-1 = index + 1
+            td.col-md-3 = user.name
+            td.col-md-4 = link_to user.email, report_course_path(@course, user)
+            td.text-center.col-md-2 = @course_users_hw_done[index]
+            td.text-center.col-md-2 = @course_user_hw_failed[index]
+
+javascript:
+  var course_users_count = #{ @course_users_count };
+  var course_parts_count = #{ @course_parts_count };
+
+  var course_parts_count_pending = #{@courses_count_pending};
+  var course_parts_count_active = #{@courses_count_active};
+  var course_parts_count_completed = #{@courses_count_completed};
+
+  var course_parts = #{ raw @sorted_parts.map { |part| "#{part.title}" }  };
+  var course_parts_done_data = #{ raw @course_parts_done_data.map { |item| item } };
+  var course_parts_fail_data = #{ raw @course_parts_fail_data.map { |item| -item } };
+
+  
+  var course_users = #{ raw @course_users.map { |user| "#{user.email}" }  };
+  var course_users_done_homeworks = #{ raw @course_users_hw_done.map { |item| item } };
+  var course_users_failed_homeworks = #{ raw @course_user_hw_failed.map { |item| -item } };
+
+  var courseStatuses = {
+    chart: {
+      plotBackgroundColor: null,
+      plotBorderWidth: null,
+      plotShadow: false
+    },
+    title: {
+      text: 'Course part statuses'
+    },
+    tooltip: false,
+    plotOptions: {
+      pie: {
+        allowPointSelect: true,
+        cursor: 'pointer',
+        dataLabels: {
+          enabled: true,
+          format: '<b>{point.name}</b>: {point.y} ({point.percentage:.1f} %)',
+          style: {
+            color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
+          }
+        }
+      }
+    },
+    series: [{
+      type: 'pie',
+      data: [
+        ['Pending', course_parts_count_pending],
+        ['Active', course_parts_count_active],
+        ['Completed', course_parts_count_completed]
+      ]
+    }]
+  };
+
+
+  var finalizationParts = {
+    chart: {
+      type: 'bar'
+    },
+    title: {
+      text: 'Finalization of parts'
+    },
+    xAxis: [{
+      categories: course_parts,
+      reversed: false,
+      labels: {
+        step: 1
+      }
+    }, { // mirror axis on right side
+      opposite: true,
+      reversed: false,
+      categories: course_parts,
+      linkedTo: 0,
+      labels: {
+        step: 1
+      }
+    }],
+    yAxis: {
+      title: {
+        text: null
+      },
+      labels: {
+        formatter: function() {
+          return this.value;
+        }
+      },
+      min: -course_users_count,
+      max: course_users_count
+    },
+
+    plotOptions: {
+      series: {
+        stacking: 'normal'
+      }
+    },
+
+    series: [{
+      name: 'Completed',
+      data: course_parts_done_data
+    }, {
+      name: 'Failed',
+      data: course_parts_fail_data
+    }]
+  }
+
+  var finalizationUsers = {
+    chart: {
+      type: 'bar'
+    },
+    title: {
+      text: 'Finalization of users'
+    },
+    xAxis: [{
+      categories: course_users,
+      reversed: false,
+      labels: {
+        step: 1
+      }
+    }],
+    yAxis: {
+      title: {
+        text: null
+      },
+      labels: {
+        formatter: function() {
+          return this.value;
+        }
+      },
+      min: -course_parts_count,
+      max: course_parts_count
+    },
+
+    plotOptions: {
+      series: {
+        stacking: 'normal'
+      }
+    },
+
+    series: [{
+      name: 'Succeeded',
+      data: course_users_done_homeworks
+    }, {
+      name: 'Failed',
+      data: course_users_failed_homeworks
+    }]
+  };
+
+  $(function() {
+    // HichCharts for courses
+    $(".highcharts .parts-statistics").highcharts(courseStatuses);
+    $('.highcharts .finalization-by-parts').highcharts(finalizationParts);
+    $('.highcharts .finalization-by-users').highcharts(finalizationUsers);
+  });

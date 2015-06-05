@@ -10,8 +10,8 @@ class Homework < ActiveRecord::Base
 
   accepts_nested_attributes_for :attachments, :allow_destroy => true
 
-  validates :description, presence: true
-  validates :description, length: { minimum: 10 }
+  # validates :description, presence: true
+  # validates :description, length: { minimum: 10 }
 
   def average_rating
     ratings.size != 0 ? ratings.sum(:score) / ratings.size : 0

@@ -1,4 +1,5 @@
 h1.text-center Course management
+h5.text-center = @course.title
 
 br /
 
@@ -30,7 +31,7 @@ table.table
       th.col-sm-1
 
   tbody
-    - @parts.each_with_index do |part, index|
+    - @course.parts.order(:id).each_with_index do |part, index|
         tr
           td.col-sm-1 = index + 1
           td.col-sm-3 = link_to part.title, part

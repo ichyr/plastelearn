@@ -53,3 +53,35 @@
 [for=course_public_visible] {
   font-weight: bold !important;
 }
+
+.highcharts {
+  .parts-statistics {
+    height: 400px;
+  }
+
+  .finalization-by-parts {
+    height: 400px;
+  }
+
+  .finalization-by-users {
+    // height: 600px;
+  }
+
+  &-header-color {
+    color: #274B6D;
+  }
+
+  &-table-header-color {
+    background-color: #274B6D !important;
+    font-weight: bold;
+    color: white;
+  }
+}
+
+.bg-green {
+  background-color: rgb(30, 190, 30);
+}
+
+.star img {
+  display: inline;
+}
