@@ -8,7 +8,9 @@ class Part < ActiveRecord::Base
 
   accepts_nested_attributes_for :attachments, :allow_destroy => true
 
+	after_create :set_defaults, :if => :new_record?
 	after_initialize :set_defaults, :if => :new_record?
+
 
 	# validates :title, length: { in: 5..30 }
  #  validates :short_description, length: { in: 10..255 }
