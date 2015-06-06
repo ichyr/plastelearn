@@ -186,11 +186,10 @@ class CoursesController < ApplicationController
     @users = course_students_list.map { |reg| reg.user }
 
     @homeworks = []
-
-    @part.homeworks.each { |hw| 
+    @users.each { |user| 
       match = nil
-      @users.each { |user| 
-        if user.id == hw.id
+      @part.homeworks.each { |hw| 
+        if user.id == hw.user_id
           match = hw 
           break
         end

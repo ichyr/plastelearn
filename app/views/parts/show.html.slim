@@ -39,7 +39,7 @@ br /
         = homework.user.email
         .star.pull-right.display-inline data-score="#{homework.average_rating}"
         br/
-        i = homework.description
+        i = raw shorten_description(homework.description)
 
 javascript:
   $(document).ready(function(){
