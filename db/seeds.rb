@@ -37,7 +37,8 @@ PARTS_COUNT = 11
   (1..PARTS_COUNT).each { |r|       
       parts << { title: "Module #{t} :: #{r}", 
                  description: DESCRIPTION_LONG,
-                 course_id: course.id
+                 course_id: course.id,
+                 status: PART_STATUSES[:COMPLETE]
                }
   }
   parts = Part.create(parts)
@@ -64,12 +65,10 @@ crs = CreateRegistryService.new
 
 
 # 7. Create dummy homework with 2 attachments
-HOMEWORK_DESCRIPTION = '#{DESCRIPTION_LONG} 120 x 240 - Vertical Banner<br><br><img src="/images/banners/black_120x240.gif" alt="" border="0" height="240" width="120"><img src="/images/banners/grey_120x240.gif" alt="" border="0" height="240" width="120"><img src="/images/banners/white_120x240.gif" alt="" border="0" height="240" width="120">'
-a = []
-b = Attachment.create! description: "1. #{DESCRIPTION_SHORT}"
-a << b
+HOMEWORK_DESCRIPTION = "#{DESCRIPTION_LONG} 120 x 240 - Vertical Banner<br><br><img src='/images/banners/black_120x240.gif' alt='' border='0' height='240' width='120'><img src='/images/banners/grey_120x240.gif' alt='' border='0' height='240' width='120'><img src='/images/banners/white_120x240.gif' alt='' border='0' height='240' width='120'>"
+a = Attachment.create! description: "1. #{DESCRIPTION_SHORT}"
 b = Attachment.create! description: "2. #{DESCRIPTION_SHORT}"
-a << b
+c = Attachment.all
 
 # 8. Each student will have (4..11) modules done for a course
 student_ids = Registry.select(:user_id)
@@ -86,13 +85,16 @@ student_ids.each { |sid|
   (1..count).each { |e|
     homeworks << { description: HOMEWORK_DESCRIPTION,
                    user_id: sid,
-                   part_id: e,
-                   attachments: a
+                   part_id: e
                  }
   }
 }
 
 Homework.create!(homeworks)
+
+temp = Homework.find(1)
+temp.attachments = c
+temp.save!
 
 # 9. Each homework should have comments
 COMMENT_TEXT = "This is totally awesome! LOrem LoreM LOREM!"
@@ -108,4 +110,4 @@ homeworks.each { |homework|
     data << comment_instance
   }
 }
-Comment.create(data)
+Comment.create(data)  

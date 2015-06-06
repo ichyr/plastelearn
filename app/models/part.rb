@@ -19,7 +19,7 @@ class Part < ActiveRecord::Base
  #  validates :title, :description, :short_description, presence: true
 
   def set_defaults
-    self.status ||= PART_STATUSES[:PENDING]
+    self.status ||= PART_STATUSES[:PLANNED]
 
     self.start_time = DateTime.now
     self.end_time = DateTime.now
