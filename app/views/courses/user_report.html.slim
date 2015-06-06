@@ -5,7 +5,7 @@ h1.text-center User report
   .col-md-6.text-center
     h4 = "Course : #{@course.title}"
   .col-md-6.text-center
-    h4 = "Username: @user.name"
+    h4 = "Username: #{@user.name}"
 
 - @parts.each_with_index do |part, index|
   .row.single-task.bg-green.margin-bottom-10
