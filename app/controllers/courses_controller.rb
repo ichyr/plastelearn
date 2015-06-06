@@ -114,10 +114,10 @@ class CoursesController < ApplicationController
     @courses_count_completed = @course.parts.where("status = ?", PART_STATUSES[:COMPLETE]).count
 
     # sorted list of parts
-    @sorted_parts = @course.parts.order(id: :DESC)
+    @sorted_parts = @course.parts.order(id: :ASC)
 
     # list of course students - subset of users of this course
-    course_students_list = @course.registries.where("role = ?", USER_COURSE_ROLES[:STUDENT])
+    course_students_list = @course.registries.where("role = ?", USER_COURSE_ROLES[:STUDENT]).order(id: :ASC)
     @course_users = course_students_list.map { |reg| reg.user }
 
     @course_parts_count = @course.parts.count

@@ -16,51 +16,51 @@ ul.nav.nav-tabs.nav-justified.highlight
 br /
 
 .row
-  .col-md-6
+  .col-sm-6
     .highcharts
       .parts-statistics
 
 .row
-  .col-md-6
+  .col-sm-6
     .highcharts
       .finalization-by-users
-  .col-md-6
+  .col-sm-6
     .highcharts
       .finalization-by-parts
 
 .row
-  .col-md-6
+  .col-sm-6
     h4.text-center.highcharts-header-color Users statistics
 
-    table.table-condensed.table-bordered.table-striped.col-md-12
+    table.table-condensed.table-bordered.table-striped.col-sm-12
       tr.highcharts-table-header-color
-        th.text-center.col-md-1 №
-        th.text-center.col-md-3 Name
-        th.text-center.col-md-4 Email
-        th.text-center.col-md-2 Done
-        th.text-center.col-md-2 Failed
+        th.text-center.col-sm-1 №
+        th.text-center.col-sm-3 Name
+        th.text-center.col-sm-4 Email
+        th.text-center.col-sm-2 Done
+        th.text-center.col-sm-2 Failed
       - @course_users.each_with_index do |user, index|
           tr
-            td.text-center.col-md-1 = index + 1
-            td.col-md-3 = user.name
-            td.col-md-4 = link_to user.email, user_report_course_path(@course, user)
-            td.text-center.col-md-2 = @course_users_hw_done[index]
-            td.text-center.col-md-2 = @course_users_hw_failed[index]
-  .col-md-6
+            td.text-center.col-sm-1 = index + 1
+            td.col-sm-3 = user.name
+            td.col-sm-4 = link_to user.email, user_report_course_path(@course, user)
+            td.text-center.col-sm-2 = @course_users_hw_done[index]
+            td.text-center.col-sm-2 = @course_users_hw_failed[index]
+  .col-sm-6
     h4.text-center.highcharts-header-color Parts statistics
 
-    table.table-condensed.table-bordered.table-striped.col-md-12
+    table.table-condensed.table-bordered.table-striped.col-sm-12
       tr.highcharts-table-header-color
-        th.text-center.col-md-1 №
-        th.text-center.col-md-3 Name
-        th.text-center.col-md-2 Done
-        th.text-center.col-md-2 Failed
+        th.text-center.col-sm-1 №
+        th.text-center.col-sm-3 Name
+        th.text-center.col-sm-2 Done
+        th.text-center.col-sm-2 Failed
       - @sorted_parts.each_with_index do |part, index|
           tr
-            td.text-center.col-md-1 = index + 1
-            td.col-md-3 = link_to part.title, part_report_course_path(@course, part)
-            td.text-center.col-md-2 = @course_parts_done_data[index]
-            td.text-center.col-md-2 = @course_parts_fail_data[index]
+            td.text-center.col-sm-1 = index + 1
+            td.col-sm-3 = link_to part.title, part_report_course_path(@course, part)
+            td.text-center.col-sm-2 = @course_parts_done_data[index]
+            td.text-center.col-sm-2 = @course_parts_fail_data[index]
 
 javascript:
   var course_users_count = #{ @course_users_count };
