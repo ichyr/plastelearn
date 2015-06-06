@@ -134,10 +134,6 @@ class CoursesController < ApplicationController
       @course_parts_fail_data << @course_users_count - temp
     }
 
-    # will count the submitted, failed to submit and pending homeworks for users
-    @course_users_done_homeworks = (1..@course_users_count).to_a
-    @course_users_failed_homeworks = (1..@course_users_count).to_a
-
     course_parts_ids = @sorted_parts.ids
     course_users_ids = @course_users.map(&:id)
 
@@ -147,40 +143,59 @@ class CoursesController < ApplicationController
     }
     
     @course_users_hw_done = []
-    @course_user_hw_failed = []
+    @course_users_hw_failed = []
     course_parts_finished = @courses_count_completed + @courses_count_active
 
     # try to optimize the loop below
     @course_users.each_with_index { |user, index| 
       temp = course_homeworks.count { |x| x == user.id }
       @course_users_hw_done << temp
-      @course_user_hw_failed << (course_parts_finished - temp)
+      @course_users_hw_failed << (course_parts_finished - temp)
     }
+
   end
 
-  def report
+  def user_report
     authorize @course
     
     @user = User.find(params[:user_id])
-
     @parts = @course.parts.order(:id)
-
     part_ids = @user.homeworks.ids
 
     @homeworks = []
-
     @parts.each_with_index { |p, index| 
       hw = p.homeworks
       match = nil
-
       hw.each { |hw| 
         if part_ids.include?(hw.id)
           match = hw 
           break
         end
+      }
+      @homeworks << match
+    }
+  end
+
+  def part_report
+    authorize @course
+
+    @part = Part.find(params[:part_id])
+
+    # list of course students - subset of users of this course
+    course_students_list = @course.registries.where("role = ?", USER_COURSE_ROLES[:STUDENT])
+    @users = course_students_list.map { |reg| reg.user }
+
+    @homeworks = []
+
+    @part.homeworks.each { |hw| 
+      match = nil
+      @users.each { |user| 
+        if user.id == hw.id
+          match = hw 
+          break
+        end
 
       }
-
       @homeworks << match
     }
   end

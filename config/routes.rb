@@ -19,7 +19,8 @@ Rails.application.routes.draw do
     get 'general_manage', on: :member
     get 'parts_manage', on: :member
     get 'statistics', on: :member
-    get 'report/:user_id', to: 'courses#report', as: "report", on: :member
+    get 'user_report/:user_id', to: 'courses#user_report', as: "user_report", on: :member
+    get 'part_report/:part_id', to: 'courses#part_report', as: "part_report", on: :member
     get 'members', on: :member
     get 'enroll', on: :member
     post 'check_enroll', on: :member
