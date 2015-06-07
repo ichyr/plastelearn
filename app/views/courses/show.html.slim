@@ -15,7 +15,7 @@ br /
   = link_to "Create part", new_part_path(course_id: @course.id), class: "btn btn-success pull-right"
 br /
 
-table.table-striped.col-md-12
+table.table-striped.col-sm-12
   thead
     tr.row
       th.text-center Active Tasks
@@ -27,13 +27,13 @@ table.table-striped.col-md-12
         - apart = @active_parts[index]
         - cpart = @completed_parts[index]
 
-        td.col-md-6
+        td.col-sm-6
           - if apart
             .single-task.bg-success.margin-bottom-10 = link_to apart
               = apart.title
               br
               i = apart.short_description
-        td.col-md-6
+        td.col-sm-6
           - if cpart
             .single-task.bg-info.margin-bottom-10 = link_to cpart
               = cpart.title

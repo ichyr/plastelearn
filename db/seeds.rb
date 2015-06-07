@@ -38,7 +38,7 @@ PARTS_COUNT = 11
       parts << { title: "Module #{t} :: #{r}", 
                  description: DESCRIPTION_LONG,
                  course_id: course.id,
-                 status: PART_STATUSES[:COMPLETE]
+                 status: PART_STATUSES[:ACTIVE]
                }
   }
   parts = Part.create(parts)
@@ -52,7 +52,7 @@ cus = CreateUserService.new
 crs = CreateRegistryService.new
 
 (1..18).each { |index| 
-  user = cus.call "user#{index}@example.com"
+  user = cus.call "user#{index}@example.com", "User #{index}"
   if(index == 1) 
     crs.call course.id, user.id, USER_COURSE_ROLES[:OWNER]
   elsif index > 1 && index < 5

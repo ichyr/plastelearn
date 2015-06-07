@@ -1,11 +1,11 @@
-#course_listing.col-md-10.col-md-offset-1.margin-bottom-20
+#course_listing.col-sm-10.col-sm-offset-1.margin-bottom-20
   = render "search_form" 
 
 - if @courses.count == 0
   h3 = "No Courses"
 - else
   - @courses.each do |course|
-    .row.single-task.bg-success.col-md-10.col-md-offset-1.margin-bottom-10
+    .row.single-task.bg-success.col-sm-10.col-sm-offset-1.margin-bottom-10
       = link_to course
         = course.title
         br

@@ -14,16 +14,16 @@
   table.row.table
     thead
       tr
-        th.col-md-3 Filename
-        th.col-md-7 Description
-        th.col-md-2 Date uploaded
+        th.col-sm-3 Filename
+        th.col-sm-7 Description
+        th.col-sm-2 Date uploaded
     tbody
       - @part.attachments.each do |file|
         tr
           - attachment_file = file.file.file
-          th.col-md-3 = ( link_to attachment_file.filename, file.file.url if attachment_file )
-          th.col-md-7 = raw file.description 
-          th.col-md-2 = file.created_at
+          th.col-sm-3 = ( link_to attachment_file.filename, file.file.url if attachment_file )
+          th.col-sm-7 = raw file.description 
+          th.col-sm-2 = file.created_at
 
 = render "homework_submit"
 
@@ -31,7 +31,7 @@ br /
 
 - @part.homeworks.each_with_index do |homework, index|
   - if homework.user_id != current_user.id
-    .row.single-task.bg-success.col-md-10.col-md-offset-1.margin-bottom-10
+    .row.single-task.bg-success.col-sm-10.col-sm-offset-1.margin-bottom-10
       = link_to homework
         .col-sm-2
           = image_tag homework.user.avatar.url(:thumb).to_s, size: "50x50", class: "img-circle" if homework.user.avatar.url

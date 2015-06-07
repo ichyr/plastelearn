@@ -1,6 +1,6 @@
 br /
 
-.col-md-10.col-md-offset-1.margin-bottom-20
+.col-sm-10.col-sm-offset-1.margin-bottom-20
 	= simple_form_for :search, url: search_path_link, html: {class: "courses_index_search"}, method: :get, id: "user_cabinet_search", :remote => true do |f|
 	    .input-group
 	      = f.text_field :name, placeholder: "Enter course name to search..." , name: "search", class: "form-control ", value: params[:search]
@@ -9,12 +9,12 @@ br /
 	          i.glyphicon.glyphicon-search
 
 - if courses.count == 0
-  .row.single-task.bg-success.col-md-10.col-md-offset-1.margin-bottom-15.text-center
+  .row.single-task.bg-success.col-sm-10.col-sm-offset-1.margin-bottom-15.text-center
     | There were no courses found for this filter.
 - else
   - courses.each do |course|
     = link_to course
-      .row.single-task.bg-success.col-md-10.col-md-offset-1.margin-bottom-15
+      .row.single-task.bg-success.col-sm-10.col-sm-offset-1.margin-bottom-15
         = course.title
         - if manageable
           .btn.btn-sm.btn-info.pull-right = link_to "Manage", general_manage_course_path(course)
