@@ -7,7 +7,7 @@ class CoursesController < ApplicationController
   def index
     @courses = Course.where("public_visible = true and title like ?", search_param)
                      .order(:created_at)
-                     .paginate(:page => params[:page], :per_page => 10)
+                     .paginate(:page => params[:page], :per_page => 9)
   end
 
   def show

@@ -1,0 +1,21 @@
+<% @courses.each_with_index do |course, index| %>
+  <% if index % 3 == 0 %>
+    <div class="row margin-bottom-10">
+  <% end %>
+
+      <div class="col-sm-3 col-sm-offset-1 single-course">
+        <a href = <%= url_for course %>>
+          <%= image_tag course.logo.url.to_s %>
+          <b class="text-center col-sm-12"> <%= course.title %> </b>
+        </a>
+        <%= raw course_index_description_modal(course) %>
+      </div>
+
+  <% if index % 3 == 2%>
+    </div>
+  <% end %>
+<% end %>
+
+<% if @courses.count % 3 != 0%>
+  </div>
+<% end %>
