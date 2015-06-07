@@ -4,11 +4,16 @@ class AdminController < ApplicationController
 
   after_action :verify_authorized
 
-  def index
+  def users_index
     authorize :admin
     
   	@users = User.where("role = ?", 0).order(:id)
-  	@admins = User.where("role = ?", 1).order(:id)
+  end
+
+  def admins_index
+    authorize :admin
+    
+    @admins = User.where("role = ?", 1).order(:id)
   end
 
   def courses

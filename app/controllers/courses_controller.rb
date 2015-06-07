@@ -212,7 +212,7 @@ class CoursesController < ApplicationController
       Registry.create(user_id: current_user.id,
                       course_id: @course.id,
                       role: USER_COURSE_ROLES[:STUDENT])
-      redirect_to user_cabinet_path
+      redirect_to @course
     else
       flash[:notice] = 'Entered enrollment key is not correct.'
       redirect_to enroll_course_path(@course)

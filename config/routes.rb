@@ -32,7 +32,8 @@ Rails.application.routes.draw do
 
   resources :ratings, only: :update
 
-  get "admin/index"
+  get "admin/users_index"
+  get "admin/admins_index"
   get "admin/courses"
 
   get 'user_cabinet', to: 'user_cabinet#courses'

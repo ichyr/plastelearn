@@ -1,0 +1,20 @@
+== render 'layouts/messages'
+
+= render "header"
+
+ul.nav.nav-pills.nav-justified
+  li.active role="presentation" 
+    = link_to "Users", admin_users_index_path
+  li role="presentation" 
+    = link_to "Courses", admin_courses_path
+
+br/
+
+/! Nav tabs
+ul.nav.nav-tabs.nav-justified
+  li.active
+    = link_to 18n.t("layout.users_panel"), admin_users_index_path
+  li
+    = link_to 18n.t("layout.admins_panel"), admin_admins_index_path
+
+= render partial: 'user_table' , locals: {users: @users}
