@@ -1,0 +1,23 @@
+- if @courses.count == 0
+  h3 = "No Courses"
+- else
+  table.table.table-stripped
+    thead
+      tr
+        th.col-sm-1.text-center Id
+        th.col-sm-2.text-center Title
+        th.col-sm-6.text-center Description
+        th.col-sm-3.text-center Actions
+    tbody
+      - @courses.each do |course|
+        tr
+          td = course.id
+          td = course.title
+          td = course.short_description
+          td
+            .btn.btn-info = link_to "Show", course
+            .btn.btn-warning = link_to "Edit", edit_course_path(course)
+            .btn.btn-danger= link_to 'Destroy', course, data: {:confirm => 'Are you sure?'}, :method => :delete
+
+.text-center
+  = will_paginate @courses, renderer: BootstrapPagination::Rails

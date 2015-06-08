@@ -4,34 +4,21 @@
 
 ul.nav.nav-pills.nav-justified
   li role="presentation" 
-    = link_to "Users", admin_index_path
+    = link_to "Users", admin_users_index_path
   li.active role="presentation" 
     = link_to "Courses", admin_courses_path
 
 br/
 
-.btn.btn-success.pull-right = link_to "New course", new_course_path
+.row.margin-bottom-10
+  .btn.btn-success.pull-right = link_to "New course", new_course_path
 
-- if @courses.count == 0
-  h3 = "No Courses"
-- else
-  table.table.table-stripped
-    thead
-      tr
-        th.col-sm-1.text-center Id
-        th.col-sm-2.text-center Title
-        th.col-sm-6.text-center Description
-        th.col-sm-3.text-center Actions
-    tbody
-      - @courses.each do |course|
-        tr
-          td = course.id
-          td = course.title
-          td = course.short_description
-          td
-            .btn.btn-info = link_to "Show", course
-            .btn.btn-warning = link_to "Edit", edit_course_path(course)
-            .btn.btn-danger= link_to 'Destroy', course, data: {:confirm => 'Are you sure?'}, :method => :delete
+  = simple_form_for :search, url: admin_courses_path, html: {class: "courses_index_search col-sm-4", id:"course_admin_search_form"}, method: :get,  remote: true do |f|
+      .input-group
+        = f.text_field :name, placeholder: "Enter course name to search..." , name: "search", class: "form-control ", value: params[:search]
+        .input-group-btn
+          button.btn.btn-default type="submit" 
+            i.glyphicon.glyphicon-search
 
-.text-center
-  = will_paginate @courses, renderer: BootstrapPagination::Rails
+.admin-courses-list
+  = render "courses_list"
