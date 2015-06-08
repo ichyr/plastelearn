@@ -8,9 +8,9 @@ table.table.table-hover
       th.col-sm-2.text-center Courses granted
       
   tbody
-    - @users.each do |user|
+    - @users.each_with_index do |user, index|
       tr.row
-        td.col-sm-1.text-center = user.id
+        td.col-sm-1.text-center = index + 1
         td.col-sm-3 = user.name
         td.col-sm-3 = user.email
         td.col-sm-1 = image_tag user.avatar.url(:thumb).to_s, size: "25x25" if user.avatar
