@@ -8,14 +8,24 @@ class AdminController < ApplicationController
 
   def users_index
     authorize :admin
-    
-  	@users = User.where("role = ?", 0).order(:id)
+
+    pages = (Course.count / PER_PAGE) + 1
+    current_page = params[:page].to_i > pages ? pages : params[:page]
+    search = "%#{params[:search]}%"
+
+    @users = User.where('name like ? and role = 0', search).order(:id)
+                     .paginate(:page => current_page, :per_page => PER_PAGE)
   end
 
   def admins_index
     authorize :admin
     
-    @admins = User.where("role = ?", 1).order(:id)
+    pages = (Course.count / PER_PAGE) + 1
+    current_page = params[:page].to_i > pages ? pages : params[:page]
+    search = "%#{params[:search]}%"
+
+    @users = User.where('name like ? and role = 1', search).order(:id)
+                     .paginate(:page => current_page, :per_page => PER_PAGE)
   end
 
   def courses

@@ -17,4 +17,15 @@ ul.nav.nav-tabs.nav-justified
   li.active
     = link_to "Admins", admin_admins_index_path
 
-= render partial: 'user_table' , locals: {users: @admins}
+br/
+
+.row.magrin-bottom-10
+	= simple_form_for :search, url: admin_admins_index_path, html: {class: "courses_index_search col-sm-4 pull-right", id:"course_admin_search_form"}, method: :get,  remote: true do |f|
+	    .input-group
+	      = f.text_field :name, placeholder: "Enter course name to search..." , name: "search", class: "form-control ", value: params[:search]
+	      .input-group-btn
+	        button.btn.btn-default type="submit" 
+	          i.glyphicon.glyphicon-search
+
+.admin-user-list
+	= render partial: 'user_table'
