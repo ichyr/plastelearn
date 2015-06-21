@@ -20,6 +20,7 @@ module Plastelearn
       g.fixture_replacement :factory_girl, dir: "spec/factories"
     end
 
+
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
@@ -34,5 +35,7 @@ module Plastelearn
 
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
+    # For https://github.com/chanks/que
+    config.active_record.schema_format = :sql
   end
 end

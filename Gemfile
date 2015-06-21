@@ -76,3 +76,6 @@ gem 'railroady'
 gem "highcharts-rails", "~> 3.0.0"
 # gem for crontab manipulations
 gem 'whenever', :require => false
+
+# gem for async jobs
+gem 'que'
