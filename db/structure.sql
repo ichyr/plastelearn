@@ -384,6 +384,40 @@ CREATE TABLE schema_migrations (
 
 
 --
+-- Name: scores; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE scores (
+    id integer NOT NULL,
+    user_id integer,
+    part_id integer,
+    value integer,
+    comment text,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: scores_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE scores_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: scores_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE scores_id_seq OWNED BY scores.id;
+
+
+--
 -- Name: users; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -503,6 +537,13 @@ ALTER TABLE ONLY registries ALTER COLUMN id SET DEFAULT nextval('registries_id_s
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
+ALTER TABLE ONLY scores ALTER COLUMN id SET DEFAULT nextval('scores_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
 ALTER TABLE ONLY users ALTER COLUMN id SET DEFAULT nextval('users_id_seq'::regclass);
 
 
@@ -584,6 +625,14 @@ ALTER TABLE ONLY ratings
 
 ALTER TABLE ONLY registries
     ADD CONSTRAINT registries_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: scores_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY scores
+    ADD CONSTRAINT scores_pkey PRIMARY KEY (id);
 
 
 --
@@ -699,4 +748,6 @@ INSERT INTO schema_migrations (version) VALUES ('20150328145451');
 INSERT INTO schema_migrations (version) VALUES ('20150609180816');
 
 INSERT INTO schema_migrations (version) VALUES ('20150621161358');
+
+INSERT INTO schema_migrations (version) VALUES ('20150622001729');
 

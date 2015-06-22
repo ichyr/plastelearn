@@ -9,9 +9,11 @@ class User < ActiveRecord::Base
   has_many :homeworks
   has_many :comments
   has_many :ratings
+  has_many :scores
 
   has_many :registries, dependent: :destroy
   has_many :courses, through: :registries
+  has_many :parts, through: :scores
 
   mount_uploader :avatar, AvatarUploader
 

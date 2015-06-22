@@ -3,8 +3,12 @@ class Part < ActiveRecord::Base
 	
 	belongs_to :course
 	has_many :homeworks
+	has_many :scores
+
+	has_many :users, through: :scores
 
 	has_many :attachments, as: :attachable
+
 
   accepts_nested_attributes_for :attachments, :allow_destroy => true
 
