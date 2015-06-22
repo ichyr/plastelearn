@@ -1,0 +1,61 @@
+en:
+  activerecord:
+    notice:
+      specialization:
+        success_creation: 'Specialization was successfully created.'
+        success_update: 'Specialization was successfully updated.'
+        success_destroy: 'Specialization was successfully destroyed.'
+    errors:
+      models:
+        messages: 
+          blank: "Fill in the field %{attribute}."
+        user:
+          blank: "Please enter the information about the user!"
+          attributes:
+            name:
+              blank: "Fill in the name field!"
+            email:
+              blank: "Fill in the e-mail field!"
+            password:
+              blank: "Fill in the password field!"
+            current_password:
+              blank: "must be entered for user update!"
+    models:
+      attachment: "Attachment"
+      comment: "Comment"
+      course: "Coruse"
+      user: "User"
+      email: "Email"
+    attributes:
+      user:
+        name: "Name"
+        email: "Email"
+        role: "Role"
+        password: "Password"
+        password_confirmation: "Password"
+        avatar: "Avatar"
+        specialization: "Specialization"
+        roles:
+          instruktor: "Instruktor"
+          moderator: "Moderator"
+          admin: "Administrator"
+        update_success: 'User was successfully updated.'
+        destroy_success: 'User was successfully destroyed.'
+      specialization:
+        name: "name"
+        avatar: "avatar"
+        create_button: "Create specialization"
+      specdatum:
+        gen_info: "information"
+        proby: "proby"
+        activity: "activities"
+        provid: "provid"
+        file: "terms of reference"
+      vmilist:
+        name: "name"
+        avatar: "avatar"
+        child_info: "Scouts checklist"
+        instructor_info: "Instruktor qualifications"
+        create_success: 'Vmilist was successfully created.'
+        update_success: 'Vmilisr was successfully updated.'
+        destroy_success: 'Vmilisr was successfully destroyed.'

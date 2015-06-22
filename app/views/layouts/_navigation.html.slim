@@ -3,11 +3,11 @@ nav.navbar.navbar-inverse.navbar-fixed-top.navstripe-top
   .container
     .navbar-header
       button.navbar-toggle[type="button" data-toggle="collapse" data-target=".navbar-collapse"]
-        span.sr-only Toggle navigation
+        span.sr-only #{I18n.t("layout.header.navigation.toogle")}
         span.icon-bar
         span.icon-bar
         span.icon-bar
-      = link_to 'Зелений дракон', root_path, class: 'navbar-brand'
+      = link_to I18n.t("layout.header.navigation.title"), root_path, class: 'navbar-brand'
     .collapse.navbar-collapse
       ul.nav.navbar-nav.navbar-right
         == render 'layouts/navigation_links'
