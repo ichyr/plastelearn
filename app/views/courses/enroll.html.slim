@@ -1,4 +1,7 @@
-h1.text-center Enroll for the course
+= content_for :title
+  = I18n.t("course.enrollment.page")
+
+h1.text-center = I18n.t("course.enrollment.page")
 h2.text-center = @course.title
 
 == render 'layouts/messages'
@@ -10,4 +13,4 @@ h2.text-center = @course.title
 	    = f.input :enrollment_key
 
 	  .form-actions.pull-right
-	    = f.button :submit, "Submit the key", class: "btn btn-success"
+	    = f.button :submit, I18n.t("course.enrollment.submit"), class: "btn btn-success"

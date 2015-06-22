@@ -3,7 +3,7 @@
 
 .container-fluid
   - if @courses.count == 0
-    h3 = "No Courses"
+    h3 = I18n.t("course.no_courses")
   - else
     = render "course_list_data"
 

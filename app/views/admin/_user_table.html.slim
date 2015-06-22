@@ -1,11 +1,11 @@
 table.table.table-hover
   thead
     tr.row
-      th.col-sm-1.text-center = I18n.t "general.numbering"
-      th.col-sm-3 = I18n.t "activerecord.attributes.user.name"
-      th.col-sm-3 = I18n.t "activerecord.attributes.user.email"
-      th.col-sm-1.text-center = I18n.t "activerecord.attributes.user.avatar"
-      th.col-sm-2.text-center = I18n.t "activerecord.attributes.user.course_grants"
+      th.col-sm-1.text-center = I18n.t("general.numbering")
+      th.col-sm-3 = I18n.t("activerecord.attributes.user.name")
+      th.col-sm-3 = I18n.t("activerecord.attributes.user.email")
+      th.col-sm-1.text-center = I18n.t("activerecord.attributes.user.avatar")
+      th.col-sm-2.text-center = I18n.t("activerecord.attributes.user.course_grants")
       
   tbody
     - @users.each_with_index do |user, index|

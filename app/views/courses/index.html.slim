@@ -1,15 +1,18 @@
+= content_for :title
+  = I18n.t("layout.main.title")
+
 = content_for :heading do
   .header-bg
     .container-fluid
       == render 'layouts/messages'
       .jumbotron
         h1.text-center
-          = "Welcome to the distance learning system"
+          = I18n.t("layout.main.greeting")
         b.text-center.margin-bottom-20
-          = "We strive to make our organization better every day!"
+          = I18n.t("layout.main.description")
         .margin-bottom-50
         .text-center
-          = link_to "Go to the courses!", '#/', class: "btn btn-lg btn-default", onclick: "scrollToElementById('course_listing')"
+          = link_to I18n.t("layout.main.courses"), '#/', class: "btn btn-lg btn-default", onclick: "scrollToElementById('course_listing')"
 
 .index_course_list
   = render "course_list"

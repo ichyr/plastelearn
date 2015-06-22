@@ -41,12 +41,19 @@ en:
         success_creation: 'Course was successfully created.'
         success_update: 'Course was successfully updated.'
         success_destroy: 'Course was successfully destroyed.'
+        hint:
+          title: "This is the title of your course"
+          public_visible: "Make course visible in the main page and search results"
+          short_description: "This is the short description of you course. It will be present on the index page. Please keep it short."
+          description: "This is a detailed description of your course. It will be displayed on the course page. Here you can make rich formatting and add links/images."
+          enrollment_key: "This is key that users must specify to enroll to your course."
       homework:
         description: "Description"
       part:
         title: "Title"
         description: "Description"
-        status:
+        status: "Status"
+        statuses:
           planned: "Planned"
           active: "Active"
           complete: "Complete"
@@ -69,6 +76,7 @@ en:
         password_confirmation: "Password"
         avatar: "Avatar"
         course_grants: "Courses granted"
+        role: "Role"
         roles:
           student: "Student"
           teacher: "Teacher"

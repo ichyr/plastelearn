@@ -1,11 +1,13 @@
-
-h1.text-center Part report
+= content_for :title
+  = I18n.t("course.reports.part.title")
+  
+h1.text-center = I18n.t("course.reports.part.title")
 
 .row.margin-bottom-10
   .col-sm-6.text-center
-    h4 = "Course : #{@course.title}"
+    h4 = "#{I18n.t("activerecord.models.course")} : #{@course.title}"
   .col-sm-6.text-center
-    h4 = "Part: #{@part.title}"
+    h4 = "#{I18n.t("activerecord.models.part")}: #{@part.title}"
 
 - @users.each_with_index do |user, index|
   .row.single-task.bg-green.margin-bottom-10
@@ -13,7 +15,7 @@ h1.text-center Part report
     .col-sm-2
       = image_tag user.avatar.url(:thumb).to_s, size: "50x50", class: "img-circle" if user.avatar.url
     b.col-sm-10.text-center
-      = raw "#{link_to 'Homework', @homeworks[index]} of #{link_to user.name || user.email, user}"
+      = raw "#{link_to I18n.t("activerecord.models.homework"), @homeworks[index]} of #{link_to user.name || user.email, user}"
       hr/
     i.text-center
       -if @homeworks[index]
@@ -42,7 +44,7 @@ h1.text-center Part report
                       th.col-sm-2 = format_date(file.created_at)
 
       -else
-        = "Uer haven't submitted any homework"
+        = I18n.t("course.reports.part.no_data")
 
 javascript:
   $(document).ready(function(){

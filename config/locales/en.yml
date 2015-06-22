@@ -1,5 +1,10 @@
 en:
   layout:
+    main:
+      title: "Plast e-learning"
+      greeting: "Welcome to the distance learning system"
+      description: "We strive to make our organization better every day!"
+      courses: "Go to the courses!"
     header:
       navigation:
         toogle: "Toggle navigation"
@@ -26,6 +31,8 @@ en:
     destroy: "Destroy"
     id: "Id"
     actions: "Actions"
+    done: "Done"
+    failed: "Failed"
     are_you_sure: "Are you sure?"
     search_placeholer:
       course_name: "Enter course name to search..."
@@ -41,3 +48,44 @@ en:
       title: "Administrators management"
     courses:
       title: "Courses management"
+
+  course:
+    no_courses: "No courses"
+    editing: "Editing course"
+    new: "New course"
+    active_tasks: "Active tasks"
+    completed_tasks: "Completed tasks"
+    enrollment:
+      page: "Enroll for the course"
+      submit: "Submit the key"
+    management:
+      title: "Course management"
+      general: "General information"
+      parts: "Parts management"
+      statistics: "Statistics"
+      members: "Members"
+      assign:
+        teacher: "Assign as a Teacher"
+        teacher_confirm: "Are you sure to make %{user_name} a teacher?"
+        remove: "Remove from course"
+        remove_confirm: "Are you sure to remove %{user_name} from the course?"
+    reports:
+      part:
+        title: "Part report"
+        no_data: "Part has no submitted homeworks."
+      user:
+        title: "User report"
+        no_data: "User hasn't submitted any homework."
+    statistics:
+      title: "NIIIIIIIIIIIGERRRRRR"
+      user_stats: "Users statistics"
+      parts_stats: "Parts statistics"
+      part_statuses: "Course part statuses"
+      part_finalization: "Finalization of parts"
+      users_finalization: "Finalization of users"
+      completed: "Completed"
+      failed: "Failed"
+
+  part:
+    new: "New Part"
+    create: "Create part"
