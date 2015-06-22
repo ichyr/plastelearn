@@ -8,9 +8,6 @@ class CoursesController < ApplicationController
     @courses = Course.where("public_visible = true and title like ?", search_param)
                      .order(:created_at)
                      .paginate(:page => params[:page], :per_page => 9)
-
-    @user = User.find(20)
-    SendWelcomeEmail.enqueue  @user.id, :run_at => Time.now, :priority => 5
   end
 
   def show
