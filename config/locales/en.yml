@@ -13,7 +13,31 @@ en:
           sign_up: "Sign up"
     footer:
       copyright: "Krystyna and Ivan Chyr"
+
   models:
-    user:
-      name: "Name"
-  hello: "Hello world"
+    course:
+      new: "New course"
+
+  general:
+    numbering: "No"
+    show: "Show"
+    edit: "Edit"
+    update: "Update"
+    destroy: "Destroy"
+    id: "Id"
+    actions: "Actions"
+    are_you_sure: "Are you sure?"
+    search_placeholer:
+      course_name: "Enter course name to search..."
+
+  admin:
+    title: "Admininstration panel"
+    user_index:
+      title: "Users management"
+      users: "Users"
+      courses: "Courses"
+      admins: "Admins"
+    admins_index:
+      title: "Administrators management"
+    courses:
+      title: "Courses management"

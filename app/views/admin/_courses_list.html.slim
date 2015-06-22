@@ -4,10 +4,10 @@
   table.table.table-stripped
     thead
       tr
-        th.col-sm-1.text-center Id
-        th.col-sm-2.text-center Title
-        th.col-sm-6.text-center Description
-        th.col-sm-3.text-center Actions
+        th.col-sm-1.text-center = I18n.t("general.id")
+        th.col-sm-2.text-center = I18n.t("activerecord.attributes.course.title")
+        th.col-sm-6.text-center = I18n.t("activerecord.attributes.course.description")
+        th.col-sm-3.text-center = I18n.t("general.actions")
     tbody
       - @courses.each do |course|
         tr
@@ -15,9 +15,9 @@
           td = course.title
           td = course.short_description
           td
-            .btn.btn-info = link_to "Show", course
-            .btn.btn-warning = link_to "Edit", edit_course_path(course)
-            .btn.btn-danger= link_to 'Destroy', course, data: {:confirm => 'Are you sure?'}, :method => :delete
+            .btn.btn-info = link_to I18n.t("general.show"), course
+            .btn.btn-warning = link_to I18n.t("general.edit"), edit_course_path(course)
+            .btn.btn-danger= link_to I18n.t("general.destroy"), course, data: {:confirm => I18n.t("general.are_you_sure")}, :method => :delete
 
 .text-center
   = will_paginate @courses, renderer: BootstrapPagination::Rails

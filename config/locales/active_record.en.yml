@@ -68,7 +68,7 @@ en:
         password: "Password"
         password_confirmation: "Password"
         avatar: "Avatar"
-        course_grants: "Course grants"
+        course_grants: "Courses granted"
         roles:
           student: "Student"
           teacher: "Teacher"

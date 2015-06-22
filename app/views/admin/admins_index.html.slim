@@ -1,28 +1,31 @@
+= content_for :title
+  = I18n.t("admin.admins_index.title")
+
 == render 'layouts/messages'
 
 = render "header"
 
 ul.nav.nav-pills.nav-justified
   li.active role="presentation" 
-    = link_to "Users", admin_users_index_path
+    = link_to I18n.t("admin.user_index.users"), admin_users_index_path
   li role="presentation" 
-    = link_to "Courses", admin_courses_path
+    = link_to I18n.t("admin.user_index.courses"), admin_courses_path
 
 br/
 
 /! Nav tabs
 ul.nav.nav-tabs.nav-justified
   li
-    = link_to "Users", admin_users_index_path
+    = link_to I18n.t("admin.user_index.users"), admin_users_index_path
   li.active
-    = link_to "Admins", admin_admins_index_path
+    = link_to I18n.t("admin.user_index.admins"), admin_admins_index_path
 
 br/
 
 .row.magrin-bottom-10
 	= simple_form_for :search, url: admin_admins_index_path, html: {class: "courses_index_search col-sm-4 pull-right", id:"course_admin_search_form"}, method: :get,  remote: true do |f|
 	    .input-group
-	      = f.text_field :name, placeholder: "Enter course name to search..." , name: "search", class: "form-control ", value: params[:search]
+	      = f.text_field :name, placeholder: I18n.t("general.search_placeholer.course_name"), name: "search", class: "form-control ", value: params[:search]
 	      .input-group-btn
 	        button.btn.btn-default type="submit" 
 	          i.glyphicon.glyphicon-search
