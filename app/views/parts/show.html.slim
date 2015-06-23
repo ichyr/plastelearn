@@ -1,3 +1,6 @@
+= content_for :title
+  = "#{I18n.t("activerecord.models.part")} #{@part.title}"
+
 = content_for :heading do
   .header-bg style="background-image: url(#{@part.course.logo.url})"
     .container-fluid
@@ -14,9 +17,9 @@
   table.row.table
     thead
       tr
-        th.col-sm-3 Filename
-        th.col-sm-7 Description
-        th.col-sm-2 Date uploaded
+        th.col-sm-3 = I18n.t("activerecord.attributes.attachments.filename")
+        th.col-sm-7 = I18n.t("activerecord.attributes.attachments.description")
+        th.col-sm-2 = I18n.t("activerecord.attributes.attachments.date_uploaded")
     tbody
       - @part.attachments.each do |file|
         tr

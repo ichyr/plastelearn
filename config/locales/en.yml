@@ -33,6 +33,7 @@ en:
     actions: "Actions"
     done: "Done"
     failed: "Failed"
+    submit: "Submit"
     are_you_sure: "Are you sure?"
     search_placeholer:
       course_name: "Enter course name to search..."
@@ -100,6 +101,11 @@ en:
     add_attachment: "Add attachment"
     remove_attachment: "Remove this attachment"
     update: "Update Homework"
+    submit: "Submit homework"
+    submit_closed: "Submitting is closed"
+    edit: "Edit homework"
+    edit_closed: "Editing is completed"
+    no_homework: "You have not submitted your homework yet!"
 
   rating:
     your: "Your rating"
@@ -108,3 +114,5 @@ en:
   part:
     new: "New Part"
     create: "Create part"
+    new_in_module: "New module in course %{course_title}"
+    edit_in_module: "Editing module in course %{course_title}"

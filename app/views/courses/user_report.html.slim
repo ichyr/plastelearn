@@ -39,9 +39,9 @@ h1.text-center User report
             table.row.table
               thead
                 tr
-                  th.col-sm-3 Filename
-                  th.col-sm-7 Description
-                  th.col-sm-2 Date uploaded
+                  th.col-sm-3 = I18n.t("activerecord.attributes.attachments.filename")
+                  th.col-sm-7 = I18n.t("activerecord.attributes.attachments.description")
+                  th.col-sm-2 = I18n.t("activerecord.attributes.attachments.date_uploaded")
               tbody
                 - @homeworks[index].attachments.each do |file|
                   tr

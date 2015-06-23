@@ -65,6 +65,13 @@ en:
         success_creation: 'Part was successfully created.'
         success_update: 'Part was successfully updated.'
         success_destroy: 'Part was successfully destroyed.'
+        hint:
+          title: "This is the title of new module (course task)."
+          short_description: "This is the short description of you module (course task). It will be present on the course page. Please keep it short."
+          description: "This is a detailed description of your module (course task). It will be displayed on the module(course task) page. Here you can make rich formatting and add links/images."
+          start_time: "This is the time when module will be opened for users to submit their homeworks."
+          end_time: "This is the time when module will be closed for users to submit their homeworks."
+          status: "This is the current status of your module. You can manually set status."
       score:
         value: "Mark"
         comment: "Comment"
