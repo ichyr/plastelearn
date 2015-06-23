@@ -92,3 +92,5 @@ en:
           owner: "Owner"
         update_success: 'User 123 was successfully updated.'
         destroy_success: 'User was successfully destroyed.'
+        hint:
+          

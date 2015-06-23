@@ -50,6 +50,8 @@ en:
       title: "Administrators management"
     courses:
       title: "Courses management"
+    modification_of: "Modification of a user %{user_name}"
+    user_list: "User list"
 
   course:
     no_courses: "No courses"
@@ -126,3 +128,5 @@ en:
       assisted: "Courses assisted"
       created: "Courses created"
 
+  user: 
+    default_name: "Here shall be the name"
