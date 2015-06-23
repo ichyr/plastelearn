@@ -1,9 +1,9 @@
-h1.text-center = "Editing homework in"
+= content_for :title
+  = "#{I18n.t("homework.editing_in")} #{@homework.part.title}"
+
+h1.text-center = I18n.t("homework.editing_in")
 h2.text-center = @homework.part.title
 
 == render 'form'
 
-= link_to 'Show', @homework
-'|
-= link_to 'Back', homeworks_path
 

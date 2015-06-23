@@ -77,7 +77,7 @@ en:
         title: "User report"
         no_data: "User hasn't submitted any homework."
     statistics:
-      title: "NIIIIIIIIIIIGERRRRRR"
+      title: "Course statistics"
       user_stats: "Users statistics"
       parts_stats: "Parts statistics"
       part_statuses: "Course part statuses"
@@ -85,6 +85,25 @@ en:
       users_finalization: "Finalization of users"
       completed: "Completed"
       failed: "Failed"
+    parts_mng:
+      title: "Course parts management"
+    members_mng:
+      title: "Course people management"
+
+  comment:
+    comment_on: "commented on"
+
+  homework:
+    for: "Homework for"
+    new_for: "Creating homework for"
+    editing_in: "Editing homework in"
+    add_attachment: "Add attachment"
+    remove_attachment: "Remove this attachment"
+    update: "Update Homework"
+
+  rating:
+    your: "Your rating"
+    average: "Averate rating"
 
   part:
     new: "New Part"

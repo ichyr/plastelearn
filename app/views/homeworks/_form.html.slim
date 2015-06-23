@@ -6,7 +6,7 @@
   = f.hidden_field :user_id, value: current_user.id
 
   .form-actions.pull-right
-    = f.button :submit, class: "btn btn-success"
+    = f.button :submit, class: "btn btn-success", value: I18n.t("homework.update")
 
   br /
   br /
@@ -24,6 +24,6 @@
           p.control-label.col-sm-1 = attachment_form.label :file 
           .col-sm-11 = attachment_form.file_field :file, class: "form-control"
 
-        .row.col-sm-offset-1 = attachment_form.link_to_remove "Remove this attachment", class: "btn btn-warning"
+        .row.col-sm-offset-1 = attachment_form.link_to_remove I18n.t("homework.remove_attachment"), class: "btn btn-warning"
 
-  = f.link_to_add "Add attachment", :attachments, class: "btn btn-success pull-right"
+  = f.link_to_add I18n.t("homework.add_attachment"), :attachments, class: "btn btn-success pull-right"

@@ -29,6 +29,8 @@ en:
       attachment:
         description: "Description"
         file: "File"
+        filename: "Filename"
+        date_uploaded: "Date uploaded"
       comment:
         text: :"Text"
       course:
