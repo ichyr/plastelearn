@@ -1,8 +1,6 @@
-Welcome to example.com, <%= @user.name %>
+<%= I18n.t("mail.greeting.welcome", user_name: @user.name) %>
 ===============================================
  
-You have successfully signed up to  <%= link_to "Online learning system", root_path %>, your username is: <%= @user.email %>
+<%= I18n.t("mail.greeting.body", user_name: @user.name, site_link: I18n.t("layout.mail.title")) %>
  
-To login to the site, just follow this link: <%= url_for user_session_url %>.
- 
-Thanks for joining and have a great day!
+<%= I18n.t("mail.greeting.thanks") %>

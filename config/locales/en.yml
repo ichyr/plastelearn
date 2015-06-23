@@ -130,3 +130,20 @@ en:
 
   user: 
     default_name: "Here shall be the name"
+
+  mail:
+    greeting:
+      welcome: "Welcome to Online learning system, %{user_name}"
+      body: "You have successfully signed up to %{site_link}, your username is:  %{user_name}."
+      thanks: "Thanks for joining and have a great day!"
+
+  helpers:
+    app:
+      no_date: "No date specified"
+      close: "Close"
+    course:
+      read_mode: "Read more..."
+      description: "Course description"
+      how_create: "How to create a course?"
+      full: "If you have no courses granted to create then you should contact the administrator in order to get permissions to create a course."
+
