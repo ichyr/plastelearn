@@ -1,7 +1,10 @@
+= content_for :title
+  = "#{I18n.t("user_cabinet.title")}: #{I18n.t("user_cabinet.courses.assisted")}"
+
 == render 'layouts/messages'
 
 h1.text-center
-  | User cabinet
+  = I18n.t("user_cabinet.title")
 
 br /
 
@@ -10,11 +13,11 @@ div role="tabpanel"
 
   ul.nav.nav-tabs.nav-justified.row.highlight role="tablist" 
     li.active role="presentation"
-      = link_to "Courses attended", user_cabinet_path 
+      = link_to I18n.t("user_cabinet.courses.attended"), user_cabinet_path 
     li role="presentation" 
-      = link_to "Courses assited", user_cabinet_courses_assisted_path  
+      = link_to I18n.t("user_cabinet.courses.assisted"), user_cabinet_courses_assisted_path  
     li role="presentation" 
-      = link_to "Courses created", user_cabinet_courses_own_path  
+      = link_to I18n.t("user_cabinet.courses.created"), user_cabinet_courses_own_path  
     
   /! Tab panes
   .tab-content

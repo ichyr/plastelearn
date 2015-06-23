@@ -34,6 +34,7 @@ en:
     done: "Done"
     failed: "Failed"
     submit: "Submit"
+    manage: "Manage"
     are_you_sure: "Are you sure?"
     search_placeholer:
       course_name: "Enter course name to search..."
@@ -90,6 +91,7 @@ en:
       title: "Course parts management"
     members_mng:
       title: "Course people management"
+    no_found: "There were no courses found for your request."
 
   comment:
     comment_on: "commented on"
@@ -116,3 +118,11 @@ en:
     create: "Create part"
     new_in_module: "New module in course %{course_title}"
     edit_in_module: "Editing module in course %{course_title}"
+
+  user_cabinet:
+    title: "User cabinet"
+    courses:
+      attended: "Courses attended"
+      assisted: "Courses assisted"
+      created: "Courses created"
+
