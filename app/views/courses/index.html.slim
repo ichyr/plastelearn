@@ -8,8 +8,8 @@
       .jumbotron
         h1.text-center
           = I18n.t("layout.main.greeting")
-        b.text-center.margin-bottom-20
-          = I18n.t("layout.main.description")
+        b.margin-bottom-20
+          .text-center = I18n.t("layout.main.description")
         .margin-bottom-50
         .text-center
           = link_to I18n.t("layout.main.courses"), '#/', class: "btn btn-lg btn-default", onclick: "scrollToElementById('course_listing')"

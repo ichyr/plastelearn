@@ -13,9 +13,9 @@ en:
           administration: "Адміністрація"
           personal_cabinet: "Персональний кабінет"
           edit_account: "Редагувати обліковий запис"
-          sign_out: "Зареєструватися"
+          sign_out: "Вийти"
           sign_in: "Увійти"
-          sign_up: "Вийти"
+          sign_up: "Зареєструватися"
     footer:
       copyright: "Христина та Іван Чир"
 

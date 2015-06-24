@@ -37,10 +37,8 @@ module ApplicationHelper
             '</div>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">'
-            +
-            I18n.t("helpres.app.close")
-            +
+            <button type="button" class="btn btn-default" data-dismiss="modal">' +
+            I18n.t("helpres.app.close") +
             '</button>
           </div>
         </div>
