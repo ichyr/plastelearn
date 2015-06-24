@@ -39,6 +39,7 @@ en:
     are_you_sure: "Are you sure?"
     search_placeholer:
       course_name: "Enter course name to search..."
+      user_name: "Enter user name to search..."
 
   admin:
     title: "Admininstration panel"
@@ -95,6 +96,7 @@ en:
     members_mng:
       title: "Course people management"
     no_found: "There were no courses found for your request."
+    create_course: "Create course"
 
   comment:
     comment_on: "commented on"
@@ -128,6 +130,8 @@ en:
       attended: "Courses attended"
       assisted: "Courses assisted"
       created: "Courses created"
+    create_new: "Create new course"
+    course_count: "Currently you can create %{count} new courses."
 
   user: 
     default_name: "Here shall be the name"
@@ -144,7 +148,7 @@ en:
       no_date: "No date specified"
       close: "Close"
     course:
-      read_mode: "Read more..."
+      read_more: "Read more..."
       description: "Course description"
       how_create: "How to create a course?"
       full: "If you have no courses granted to create then you should contact the administrator in order to get permissions to create a course."

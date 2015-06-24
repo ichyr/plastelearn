@@ -27,7 +27,7 @@ div role="tabpanel"
         h5.col-sm-5 = @course_grants
         -if @new_course_count > 0
           .pull-right
-            .btn.btn-success = link_to "Create new course", new_course_path
+            .btn.btn-success = link_to I18n.t("user_cabinet.create_new"), new_course_path
         -else
           .pull-right
             = raw how_to_create_course_modal

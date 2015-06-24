@@ -33,6 +33,21 @@ a {
   }
 }
 
+a.btn {
+  color: #FFF !important;
+  text-decoration: none;
+
+  &:visited {
+    color: #FFF;
+    text-decoration: none !important;
+  }
+
+  &:hover {
+    color: #FFF;
+    text-decoration: none !important;
+  }
+}
+
 div {
   &.field, &.actions {
     margin-bottom: 10px;

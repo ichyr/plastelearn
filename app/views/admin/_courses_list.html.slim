@@ -15,9 +15,9 @@
           td = course.title
           td = course.short_description
           td
-            .btn.btn-info = link_to I18n.t("general.show"), course
-            .btn.btn-warning = link_to I18n.t("general.edit"), edit_course_path(course)
-            .btn.btn-danger= link_to I18n.t("general.destroy"), course, data: {:confirm => I18n.t("general.are_you_sure")}, :method => :delete
+            .btn.btn-sm.btn-info = link_to I18n.t("general.show"), course
+            .btn.btn-sm.btn-warning = link_to I18n.t("general.edit"), edit_course_path(course)
+            .btn.btn-sm.btn-danger= link_to I18n.t("general.destroy"), course, data: {:confirm => I18n.t("general.are_you_sure")}, :method => :delete
 
 .text-center
   = will_paginate @courses, renderer: BootstrapPagination::Rails

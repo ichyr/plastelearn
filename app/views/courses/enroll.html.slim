@@ -10,7 +10,7 @@ h2.text-center = @course.title
 	= simple_form_for(:enrollment, :url => check_enroll_course_path(@course), :html => {:class => 'form-horizontal' }) do |f|
 
 	  .form-inputs  
-	    = f.input :enrollment_key
+	    = f.input :enrollment_key, label: I18n.t("activerecord.attributes.course.enrollment_key")
 
 	  .form-actions.pull-right
 	    = f.button :submit, I18n.t("course.enrollment.submit"), class: "btn btn-success"

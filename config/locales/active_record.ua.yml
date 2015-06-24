@@ -83,8 +83,8 @@ ua:
         role: "Роль"
         password: "Пароль"
         password_confirmation: "Підтвердження паролю"
-        avatar: "Світлина кристувача"
-        course_grants: "Дозволи на створення курсу"
+        avatar: "Світлина..."
+        course_grants: "Дозволи..."
         roles:
           student: "Слухач"
           teacher: "Тренер"
