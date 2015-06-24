@@ -22,27 +22,17 @@ a {
   color: #000 !important;
   text-decoration: none;
 
-  &:visited {
-    color: #000;
-    text-decoration: none !important;
-  }
-
-  &:hover {
+  &:visited, &:hover {
     color: #000;
     text-decoration: none !important;
   }
 }
 
-a.btn {
+a.btn-success {
   color: #FFF !important;
   text-decoration: none;
 
-  &:visited {
-    color: #FFF;
-    text-decoration: none !important;
-  }
-
-  &:hover {
+  &:visited, &:hover {
     color: #FFF;
     text-decoration: none !important;
   }
