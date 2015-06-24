@@ -47,17 +47,17 @@
           th.col-sm-7 = raw file.description 
           th.col-sm-2 = file.created_at
     
-.row.col-sm-10.col-sm-offset-1.margin-bottom-10
-  .single-task.bg-success = render "new_comment"
+.row.col-sm-10.col-sm-offset-1.margin-bottom-50
+  = render "new_comment"
 
 - @comments.each do |comment|
-  .row.single-task.bg-success.col-sm-10.col-sm-offset-1.margin-bottom-10
+  .row.col-sm-10.col-sm-offset-1.margin-bottom-20
     .col-sm-2
       = image_tag comment.user.avatar.url(:thumb).to_s, size: "50x50", class: "img-circle" if comment.user.avatar.url
     .col-sm-offest-3
       = comment.user.name
-      i = " #{I18n.t("comment.commented_on")} #{format_date_comments(comment.created_at)}"
-      br
+      i.margin-bottom-20 = " #{I18n.t("comment.comment_on")} #{format_date_comments(comment.created_at)}"
+      br /
       i = comment.text
 
 javascript:

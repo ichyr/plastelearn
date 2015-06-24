@@ -34,15 +34,15 @@ br /
 
 - @part.homeworks.each_with_index do |homework, index|
   - if homework.user_id != current_user.id
-    .row.single-task.bg-success.col-sm-10.col-sm-offset-1.margin-bottom-10
-      = link_to homework
-        .col-sm-2
-          = image_tag homework.user.avatar.url(:thumb).to_s, size: "50x50", class: "img-circle" if homework.user.avatar.url
-        .col-sm-offest-3
-        = homework.user.email
-        .star.pull-right.display-inline data-score="#{homework.average_rating}"
-        br/
-        i = raw shorten_description(homework.description)
+    .row.col-sm-10.col-sm-offset-1.margin-bottom-30
+        = link_to homework
+          .col-sm-2
+            = image_tag homework.user.avatar.url(:thumb).to_s, size: "50x50", class: "img-circle" if homework.user.avatar.url
+          .col-sm-offest-3
+          = homework.user.email
+          .star.pull-right.display-inline data-score="#{homework.average_rating}"
+          br/
+          i = raw shorten_description(homework.description)
 
 javascript:
   $(document).ready(function(){

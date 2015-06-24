@@ -1,5 +1,5 @@
 - if @submitted
-  .row.single-task.bg-success.col-sm-10.col-sm-offset-1.margin-bottom-10
+  .row.col-sm-10.col-sm-offset-1.margin-bottom-30
     = link_to @submitted
       = @submitted.user.email
       .margin-left-15.star.display-inline data-score="#{@submitted.average_rating}"
@@ -14,11 +14,12 @@
       i = @submitted.description
       
 - else
-  .row.single-task.bg-warning.col-sm-10.col-sm-offset-1.margin-bottom-10
-    = I18n.t("homework.no_homework")
+  .row.col-sm-10.col-sm-offset-1.margin-bottom-30
+    span.col-sm-1.glyphicon.glyphicon-asterisk aria-hidden="true"
+    .col-sm-7 = I18n.t("homework.no_homework")
     - if @part.status == PART_STATUSES[:ACTIVE]
-      .col-sm-2.btn.btn-success.pull-right
+      .col-sm-3.btn.btn-success.pull-right
         = link_to I18n.t("homework.submit"), new_homework_path(part_id: @part.id)
     - else
-      .col-sm-2.btn.btn-warning.pull-right.disabled
+      .col-sm-3.btn.btn-warning.pull-right.disabled
         = link_to I18n.t("homework.submit_closed"), new_homework_path(part_id: @part.id)
