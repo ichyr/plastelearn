@@ -1,2 +1,151 @@
 en:
-  hello: "Привіт, світ!"
+  layout:
+    main:
+      title: "Електронна навчальна система Пласт"
+      greeting: "Вітаємо у зеленому драконі!"
+      description: "Ми кожного дня стараємся бути кращими."
+      courses: "Перейти до курсів!"
+    header:
+      navigation:
+        toogle: "Перемкнути навігацію"
+        title: "Зелений дракон"
+        links:
+          administration: "Адміністрація"
+          personal_cabinet: "Персональний кабінет"
+          edit_account: "Редагувати обліковий запис"
+          sign_out: "Зареєструватися"
+          sign_in: "Увійти"
+          sign_up: "Вийти"
+    footer:
+      copyright: "Христина та Іван Чир"
+
+  models:
+    course:
+      new: "Новий курс"
+
+  general:
+    numbering: "№"
+    show: "Показати"
+    edit: "Редагувати"
+    update: "Оновити"
+    destroy: "Знищити"
+    id: "Іден."
+    actions: "Можливі дії"
+    done: "Зроблен"
+    cancel: "Вімінити"
+    failed: "Не виконано"
+    submit: "Надіслати"
+    manage: "Управляти"
+    are_you_sure: "Ви впевнені?"
+    search_placeholer:
+      course_name: "Введіть ім'я курсу для пошуку..."
+
+  admin:
+    title: "Адміністративна пенель"
+    user_index:
+      title: "Управління користувачами"
+      users: "Користувачі"
+      courses: "Курси"
+      admins: "Адміністратори"
+    admins_index:
+      title: "Управління адміністраторами"
+    courses:
+      title: "Управління курсами"
+    modification_of: "Зміна користувача %{user_name}"
+    user_list: "Список користувачів"
+
+  course:
+    no_courses: "Немає курсів"
+    editing: "Редагування курсу"
+    new: "Новий курс"
+    active_tasks: "Активні завдання"
+    completed_tasks: "Завершені завдання"
+    enrollment:
+      page: "Долучитися до курсу"
+      submit: "Перевірити ключ"
+    management:
+      title: "Управління курсом"
+      general: "Загальна інформація"
+      parts: "Управління модулями"
+      statistics: "Статистика"
+      members: "Учасники"
+      assign:
+        teacher: "Зробити тренером"
+        teacher_confirm: "Ви впевнені, що хочете зробити %{user_name} тренером?"
+        remove: "Видалити з курсу"
+        remove_confirm: "Ви впевнені, що хочете видалити %{user_name} з курсу?"
+    reports:
+      part:
+        title: "Звіт по модулю"
+        no_data: "До модулю жоден користувач не завантажив домашніх завдань."
+      user:
+        title: "Звіт по користувачу"
+        no_data: "Користувач не завантажив домашніх завдань до жодного модулю."
+    statistics:
+      title: "Статистика курсу"
+      user_stats: "Статистика користувачів"
+      parts_stats: "Статистика модулів"
+      part_statuses: "Статуси модулів"
+      part_finalization: "Завершеність по модулях"
+      users_finalization: "Завершеність по користувачах"
+      completed: "Завершено"
+      failed: "Не завершено"
+    parts_mng:
+      title: "Управління модулями курсу"
+    members_mng:
+      title: "Управління користувачами курсу"
+    no_found: "Нажал за вашим запитом не було знайдено жодного курсу."
+
+  comment:
+    comment_on: "прокоментував "
+
+  homework:
+    for: "Відповідь для"
+    new_for: "Створення відповіді для"
+    editing_in: "Редагування відповіді для"
+    add_attachment: "Додати прикріплення"
+    remove_attachment: "Видалити прикріплення"
+    update: "Оновити відповідь"
+    submit: "Надіслати відповідь"
+    submit_closed: "Надсилання неможливе"
+    edit: "Редагування відповіді"
+    edit_closed: "Редагування неможливе"
+    no_homework: "Ви досі не завантажили своєї відповіді!"
+
+  rating:
+    your: "Ваша оцінка"
+    average: "Середня оцінка"
+
+  part:
+    new: "Новий модудь"
+    create: "Створити модуль"
+    new_in_module: "Новий модуль у курсі %{course_title}"
+    edit_in_module: "Редагування модулю у курсі %{course_title}"
+
+  user_cabinet:
+    title: "Кабінет користувача"
+    courses:
+      attended: "Слухач курсів"
+      assisted: "Тренер у курсах"
+      created: "Власник курсів"
+
+  user: 
+    default_name: "Тут мое бути ваше ім'я"
+    update: "Оновити інформацію"
+
+  mail:
+    greeting:
+      welcome: "Вітамо у онлайн системі навчання, %{user_name}"
+      body: "Ви успішно зареєструвалися у %{site_link}, ваш логін:  %{user_name}."
+      thanks: "Дякую за долучення та майте доброго дня ;) !"
+
+  helpers:
+    app:
+      no_date: "Не вказано дати"
+      close: "Закрити"
+    course:
+      read_mode: "Читати далі..."
+      description: "Опис курсу"
+      how_create: "Як створити курс?"
+      full: "Якщо ви бажаєте створити свій курс, а можливості немає то зв'яжіться з адміністратором для отримання такої можливості" 
+

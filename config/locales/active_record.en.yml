@@ -93,4 +93,4 @@ en:
         update_success: 'User 123 was successfully updated.'
         destroy_success: 'User was successfully destroyed.'
         hint:
-          
+          course_grant: "This field represents the number of courses that the user can create. Please mind when changing it!"

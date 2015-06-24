@@ -32,6 +32,7 @@ en:
     id: "Id"
     actions: "Actions"
     done: "Done"
+    cancel: "Cancel"
     failed: "Failed"
     submit: "Submit"
     manage: "Manage"
@@ -130,6 +131,7 @@ en:
 
   user: 
     default_name: "Here shall be the name"
+    update: "Update User"
 
   mail:
     greeting:
