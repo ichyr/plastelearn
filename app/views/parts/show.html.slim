@@ -17,9 +17,9 @@
   table.row.table
     thead
       tr
-        th.col-sm-3 = I18n.t("activerecord.attributes.attachments.filename")
-        th.col-sm-7 = I18n.t("activerecord.attributes.attachments.description")
-        th.col-sm-2 = I18n.t("activerecord.attributes.attachments.date_uploaded")
+        th.col-sm-3 = I18n.t("activerecord.attributes.attachment.filename")
+        th.col-sm-7 = I18n.t("activerecord.attributes.attachment.description")
+        th.col-sm-2 = I18n.t("activerecord.attributes.attachment.date_uploaded")
     tbody
       - @part.attachments.each do |file|
         tr
