@@ -59,7 +59,7 @@ Rails.application.configure do
   # Create a logger which ages the logfile once it reaches 
   # a certain size. Leave 10 “old” log files where each file
   # is about 1,024,000 bytes.
-  config.logger = Logger.new(File.dirname(__FILE__) + "/../log/#{RAILS_ENV}.log", 10, 1024000)
+  config.logger = Logger.new(File.dirname(__FILE__) + "/../log/production.log", 10, 1024000)
 
   # Use a different cache store in production.
   # config.cache_store = :mem_cache_store
