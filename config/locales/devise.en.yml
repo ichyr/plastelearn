@@ -8,6 +8,8 @@ en:
       password: "Password"
       email: "Email"
       avatar: "Avatar"
+      information: "Information"
+      cell_phone: "Cell phone"
       password_confirmation: "Password confirmation"
       new_password: "New password"
       new_password_confirmation: "Confirmation of a new password"

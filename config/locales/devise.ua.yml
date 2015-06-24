@@ -8,6 +8,8 @@ ua:
       password: "Пароль"
       email: "Електронна пошта"
       avatar: "Світлина користувача"
+      information: "Інформація про користувача"
+      cell_phone: "Номер мобільного телефону"
       password_confirmation: "Підтвердженя паролю"
       new_password: "Новий пароль"
       new_password_confirmation: "Підтвердженя нового паролю"
