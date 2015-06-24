@@ -6,6 +6,10 @@ li.active a.white-text {
   color: #FFF !important;
 }
 
+.parts-list tr{
+  padding-bottom: 30px !important;
+}
+
 .single-task {
   -webkit-border-radius: 20px;
   -moz-border-radius: 20px;
@@ -24,7 +28,7 @@ li.active a.white-text {
 }
 
 .margin-bottom-20 {
-  margin-bottom: 20px;
+  margin-bottom: 20px !important;
 }
 
 .margin-bottom-10 {
