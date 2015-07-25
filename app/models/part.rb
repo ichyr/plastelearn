@@ -3,12 +3,18 @@ class Part < ActiveRecord::Base
 	
 	belongs_to :course
 	has_many :homeworks
+	has_many :scores
+
+	has_many :users, through: :scores
 
 	has_many :attachments, as: :attachable
 
+
   accepts_nested_attributes_for :attachments, :allow_destroy => true
 
+	after_create :set_defaults, :if => :new_record?
 	after_initialize :set_defaults, :if => :new_record?
+
 
 	# validates :title, length: { in: 5..30 }
  #  validates :short_description, length: { in: 10..255 }
@@ -17,7 +23,7 @@ class Part < ActiveRecord::Base
  #  validates :title, :description, :short_description, presence: true
 
   def set_defaults
-    self.status ||= PART_STATUSES[:PENDING]
+    self.status ||= PART_STATUSES[:PLANNED]
 
     self.start_time = DateTime.now
     self.end_time = DateTime.now

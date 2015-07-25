@@ -22,13 +22,18 @@ a {
   color: #000 !important;
   text-decoration: none;
 
-  &:visited {
+  &:visited, &:hover {
     color: #000;
     text-decoration: none !important;
   }
+}
 
-  &:hover {
-    color: #000;
+a.btn-success {
+  color: #FFF !important;
+  text-decoration: none;
+
+  &:visited, &:hover {
+    color: #FFF;
     text-decoration: none !important;
   }
 }

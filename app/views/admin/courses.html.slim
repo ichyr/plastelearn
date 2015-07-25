@@ -1,37 +1,27 @@
+= content_for :title
+  = I18n.t("admin.courses.title")
+
 == render 'layouts/messages'
 
 = render "header"
 
 ul.nav.nav-pills.nav-justified
   li role="presentation" 
-    = link_to "Users", admin_index_path
+    = link_to I18n.t("admin.user_index.users"), admin_users_index_path
   li.active role="presentation" 
-    = link_to "Courses", admin_courses_path
+    = link_to I18n.t("admin.user_index.courses"), admin_courses_path, class: "white-text"
 
 br/
 
-.btn.btn-success.pull-right = link_to "New course", new_course_path
+.row.margin-bottom-10
+  .btn.btn-success.pull-right = link_to I18n.t("models.course.new"), new_course_path
 
-- if @courses.count == 0
-  h3 = "No Courses"
-- else
-  table.table.table-stripped
-    thead
-      tr
-        th.col-md-1.text-center Id
-        th.col-md-2.text-center Title
-        th.col-md-6.text-center Description
-        th.col-md-3.text-center Actions
-    tbody
-      - @courses.each do |course|
-        tr
-          td = course.id
-          td = course.title
-          td = course.short_description
-          td
-            .btn.btn-info = link_to "Show", course
-            .btn.btn-warning = link_to "Edit", edit_course_path(course)
-            .btn.btn-danger= link_to 'Destroy', course, data: {:confirm => 'Are you sure?'}, :method => :delete
+  = simple_form_for :search, url: admin_courses_path, html: {class: "courses_index_search col-sm-4", id:"course_admin_search_form"}, method: :get,  remote: true do |f|
+      .input-group
+        = f.text_field :name, placeholder: I18n.t("general.search_placeholer.course_name") , name: "search", class: "form-control ", value: params[:search]
+        .input-group-btn
+          button.btn.btn-default type="submit" 
+            i.glyphicon.glyphicon-search
 
-.text-center
-  = will_paginate @courses, renderer: BootstrapPagination::Rails
+.admin-courses-list
+  = render "courses_list"

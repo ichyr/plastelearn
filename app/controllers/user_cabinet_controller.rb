@@ -36,7 +36,7 @@ class UserCabinetController < ApplicationController
                            .where("id in (?)", own_courses)
                            .paginate(:page => params[:page], :per_page => 10)
 
-    @course_grants = "Currently you can create #{@new_course_count} new courses."
+    @course_grants = I18n.t("user_cabinet.course_count", count: @new_course_count)
   end
 
 

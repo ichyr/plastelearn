@@ -1,19 +1,24 @@
 table.table.table-hover
   thead
     tr.row
-      th.col-sm-1.text-center = "No"
-      th.col-sm-3 = I18n.t "users.name"
-      th.col-sm-3 = I18n.t "users.email"
-      th.col-sm-1.text-center = I18n.t "users.avatar"
-      th.col-sm-2.text-center Courses granted
+      th.col-sm-1.text-center = I18n.t("general.numbering")
+      th.col-sm-3 = I18n.t("activerecord.attributes.user.name")
+      th.col-sm-3 = I18n.t("activerecord.attributes.user.email")
+      th.col-sm-1.text-center = I18n.t("activerecord.attributes.user.avatar")
+      th.col-sm-2.text-center = I18n.t("activerecord.attributes.user.course_grants")
       
   tbody
-    - users.each do |user|
+    - @users.each_with_index do |user, index|
       tr.row
-        td.col-sm-1.text-center = user.id
+        td.col-sm-1.text-center = index + 1
         td.col-sm-3 = user.name
         td.col-sm-3 = user.email
         td.col-sm-1 = image_tag user.avatar.url(:thumb).to_s, size: "25x25" if user.avatar
         td.col-sm-2.text-center = user.course_grants
-        td.col-sm-1 = link_to 'Edit', controller: :users, action: :edit, id: user.id
-        td.col-sm-1 = link_to 'Destroy', user, data: {:confirm => I18n.t("alerts.are_you_sure")}, :method => :delete
+        td.col-sm-1
+          .btn.btn-sm.btn-warning = link_to I18n.t("general.edit"), controller: :users, action: :edit, id: user.id
+        td.col-sm-1
+          .btn.btn-sm.btn-danger = link_to I18n.t("general.destroy"), user, data: {:confirm => I18n.t("general.are_you_sure")}, :method => :delete
+
+.text-center
+  = will_paginate @users, renderer: BootstrapPagination::Rails

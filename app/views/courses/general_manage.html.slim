@@ -1,17 +1,20 @@
-h1.text-center Course management
+= content_for :title
+  = I18n.t("course.management.title")
+
+h1.text-center = I18n.t("course.management.title")
 h5.text-center = @course.title
 
 br /
 
 ul.nav.nav-tabs.nav-justified.highlight
   li.active role="presentation" 
-    = link_to "General information", general_manage_course_path(@course)
+    = link_to I18n.t("course.management.general"), general_manage_course_path(@course)
   li role="presentation" 
-  	= link_to "Parts management", parts_manage_course_path(@course)
+  	= link_to I18n.t("course.management.parts"), parts_manage_course_path(@course)
   li role="presentation" 
-  	= link_to "Statistics", statistics_course_path(@course)
+  	= link_to I18n.t("course.management.statistics"), statistics_course_path(@course)
   li role="presentation" 
-	  = link_to "Members", members_course_path(@course)
+	  = link_to I18n.t("course.management.members"), members_course_path(@course)
 
 br/
 

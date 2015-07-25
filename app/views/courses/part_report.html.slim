@@ -1,0 +1,59 @@
+= content_for :title
+  = I18n.t("course.reports.part.title")
+  
+h1.text-center = I18n.t("course.reports.part.title")
+
+.row.margin-bottom-10
+  .col-sm-6.text-center
+    h4 = "#{I18n.t("activerecord.models.course")} : #{@course.title}"
+  .col-sm-6.text-center
+    h4 = "#{I18n.t("activerecord.models.part")}: #{@part.title}"
+
+- @users.each_with_index do |user, index|
+  .row.single-task.bg-green.margin-bottom-10
+    
+    .col-sm-2
+      = image_tag user.avatar.url(:thumb).to_s, size: "50x50", class: "img-circle" if user.avatar.url
+    b.col-sm-10.text-center
+      = raw "#{link_to I18n.t("activerecord.models.homework"), @homeworks[index]} of #{link_to user.name || user.email, user}"
+      hr/
+    i.text-center
+      -if @homeworks[index]
+        = raw @homeworks[index].description
+
+        .row style=("display:inline;")
+          .col-sm-3
+            p Averate rating
+            .star data-average="#{@homeworks[index].average_rating}"
+
+        .row
+          .col-sm-10.col-sm-offset-1
+          - if @homeworks[index].attachments.count > 0
+              table.row.table
+                thead
+                  tr
+                    th.col-sm-3 = I18n.t("activerecord.attributes.attachment.filename")
+                    th.col-sm-7 = I18n.t("activerecord.attributes.attachment.description")
+                    th.col-sm-2 = I18n.t("activerecord.attributes.attachment.date_uploaded")
+                tbody
+                  - @homeworks[index].attachments.each do |file|
+                    tr
+                      - attachment_file = file.file.file
+                      th.col-sm-3 = ( link_to attachment_file.filename, file.file.url if attachment_file )
+                      th.col-sm-7 = raw file.description 
+                      th.col-sm-2 = format_date(file.created_at)
+
+      -else
+        = I18n.t("course.reports.part.no_data")
+
+javascript:
+  $(document).ready(function(){
+    $('.star').each( function (index, el) {
+      console.log(el);
+      $(el).raty({
+        readOnly: true,
+        score: parseInt(el.getAttribute('data-average')),
+        path: '/assets'
+      });
+    })
+  });

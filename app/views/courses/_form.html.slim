@@ -3,13 +3,13 @@
     .alert = f.error_notification
 
   .form-inputs
-    = f.input :title, hint: "This is the title of your course"
+    = f.input :title, hint: I18n.t("activerecord.attributes.course.hint.title")
 
     .bg-warning.padding-top-bottom-2.padding-right-30 
-      = f.input :public_visible, label: 'Make course visible in the main page and search results'
+      = f.input :public_visible, label: I18n.t("activerecord.attributes.course.hint.public_visible")
 
-    = f.input :short_description, hint: "This is the short description of you course. It will be present on the index page. Please keep it short."
-    = f.input :description, as: :bootsy, input_html: {class: 'form-control', rows: 15}, hint: "This is a detailed description of your course. It will be displayed on the course page. Here you can make rich formatting and add links/images."
+    = f.input :short_description, hint: I18n.t("activerecord.attributes.course.hint.short_description")
+    = f.input :description, as: :bootsy, input_html: {class: 'form-control', rows: 15}, hint: I18n.t("activerecord.attributes.course.hint.description")
 
     .form-group
       = f.label :logo
@@ -17,7 +17,7 @@
         = image_tag @course.logo.to_s if @course.logo.url
       = f.file_field :logo, class: "file"
 
-    = f.input :enrollment_key, hint: "This is key that users must specify to enroll to your course."
+    = f.input :enrollment_key, hint: I18n.t("activerecord.attributes.course.hint.enrollment_key")
 
   .form-actions
-    = f.button :submit
+    = f.button :submit, value: I18n.t("course.create_course"), class: "btn btn-success"

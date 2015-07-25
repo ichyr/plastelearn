@@ -1,3 +1,6 @@
+= content_for :title
+  = "#{I18n.t("activerecord.models.part")} #{@part.title}"
+
 = content_for :heading do
   .header-bg style="background-image: url(#{@part.course.logo.url})"
     .container-fluid
@@ -14,16 +17,16 @@
   table.row.table
     thead
       tr
-        th.col-md-3 Filename
-        th.col-md-7 Description
-        th.col-md-2 Date uploaded
+        th.col-sm-3 = I18n.t("activerecord.attributes.attachment.filename")
+        th.col-sm-7 = I18n.t("activerecord.attributes.attachment.description")
+        th.col-sm-2 = I18n.t("activerecord.attributes.attachment.date_uploaded")
     tbody
       - @part.attachments.each do |file|
         tr
           - attachment_file = file.file.file
-          th.col-md-3 = ( link_to attachment_file.filename, file.file.url if attachment_file )
-          th.col-md-7 = raw file.description 
-          th.col-md-2 = file.created_at
+          th.col-sm-3 = ( link_to attachment_file.filename, file.file.url if attachment_file )
+          th.col-sm-7 = raw file.description 
+          th.col-sm-2 = file.created_at
 
 = render "homework_submit"
 
@@ -31,15 +34,15 @@ br /
 
 - @part.homeworks.each_with_index do |homework, index|
   - if homework.user_id != current_user.id
-    .row.single-task.bg-success.col-md-10.col-md-offset-1.margin-bottom-10
-      = link_to homework
-        .col-sm-2
-          = image_tag homework.user.avatar.url(:thumb).to_s, size: "50x50", class: "img-circle" if homework.user.avatar.url
-        .col-sm-offest-3
-        = homework.user.email
-        .star.pull-right.display-inline data-score="#{homework.average_rating}"
-        br/
-        i = homework.description
+    .row.col-sm-10.col-sm-offset-1.margin-bottom-30
+        = link_to homework
+          .col-sm-2
+            = image_tag homework.user.avatar.url(:thumb).to_s, size: "50x50", class: "img-circle" if homework.user.avatar.url
+          .col-sm-offest-3
+          = homework.user.email
+          .star.pull-right.display-inline data-score="#{homework.average_rating}"
+          br/
+          i = raw shorten_description(homework.description)
 
 javascript:
   $(document).ready(function(){

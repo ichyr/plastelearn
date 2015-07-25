@@ -11,7 +11,7 @@ module ApplicationHelper
     if date 
       date.strftime "%m %B of %Y at %H:%M"
     else 
-      "No date specified"
+      I18n.t("helpers.app.no_date")
     end
   end
 
@@ -37,7 +37,9 @@ module ApplicationHelper
             '</div>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-default" data-dismiss="modal">' +
+            I18n.t("helpers.app.close") +
+            '</button>
           </div>
         </div>
       </div>

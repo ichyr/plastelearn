@@ -1,6 +1,6 @@
 = simple_form_for :search, url: courses_path, html: {class: "courses_index_search", id:"course_index_search_form"}, method: :get,  remote: true do |f|
     .input-group
-      = f.text_field :name, placeholder: "Enter course name to search..." , name: "search", class: "form-control ", value: params[:search]
+      = f.text_field :name, placeholder: I18n.t("general.search_placeholer.course_name") , name: "search", class: "form-control ", value: params[:search]
       .input-group-btn
         button.btn.btn-default type="submit" 
           i.glyphicon.glyphicon-search

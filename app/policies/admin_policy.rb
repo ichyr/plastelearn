@@ -1,5 +1,9 @@
 class AdminPolicy < ApplicationPolicy
-  def index?
+  def users_index?
+    user.admin? unless user.nil?
+  end
+
+  def admins_index?
     user.admin? unless user.nil?
   end
 

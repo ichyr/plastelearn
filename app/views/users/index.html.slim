@@ -1,6 +1,9 @@
+= content_for :title
+  = I18n.t("admin.title") + ": " + I18n.t("admin.user_list")
+
 .container
   .row
-    h3 Users
+    h3 = I18n.t("admin.user_list")
     .column
       table.table
         tbody

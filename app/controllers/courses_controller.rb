@@ -7,7 +7,7 @@ class CoursesController < ApplicationController
   def index
     @courses = Course.where("public_visible = true and title like ?", search_param)
                      .order(:created_at)
-                     .paginate(:page => params[:page], :per_page => 10)
+                     .paginate(:page => params[:page], :per_page => 9)
   end
 
   def show
@@ -116,10 +116,10 @@ class CoursesController < ApplicationController
     @courses_count_completed = @course.parts.where("status = ?", PART_STATUSES[:COMPLETE]).count
 
     # sorted list of parts
-    @sorted_parts = @course.parts.order(id: :DESC)
+    @sorted_parts = @course.parts.order(id: :ASC)
 
     # list of course students - subset of users of this course
-    course_students_list = @course.registries.where("role = ?", USER_COURSE_ROLES[:STUDENT])
+    course_students_list = @course.registries.where("role = ?", USER_COURSE_ROLES[:STUDENT]).order(id: :ASC)
     @course_users = course_students_list.map { |reg| reg.user }
 
     @course_parts_count = @course.parts.count
@@ -136,10 +136,6 @@ class CoursesController < ApplicationController
       @course_parts_fail_data << @course_users_count - temp
     }
 
-    # will count the submitted, failed to submit and pending homeworks for users
-    @course_users_done_homeworks = (1..@course_users_count).to_a
-    @course_users_failed_homeworks = (1..@course_users_count).to_a
-
     course_parts_ids = @sorted_parts.ids
     course_users_ids = @course_users.map(&:id)
 
@@ -149,40 +145,58 @@ class CoursesController < ApplicationController
     }
     
     @course_users_hw_done = []
-    @course_user_hw_failed = []
+    @course_users_hw_failed = []
     course_parts_finished = @courses_count_completed + @courses_count_active
 
     # try to optimize the loop below
     @course_users.each_with_index { |user, index| 
       temp = course_homeworks.count { |x| x == user.id }
       @course_users_hw_done << temp
-      @course_user_hw_failed << (course_parts_finished - temp)
+      @course_users_hw_failed << (course_parts_finished - temp)
     }
+
   end
 
-  def report
+  def user_report
     authorize @course
     
     @user = User.find(params[:user_id])
-
     @parts = @course.parts.order(:id)
-
     part_ids = @user.homeworks.ids
 
     @homeworks = []
-
     @parts.each_with_index { |p, index| 
       hw = p.homeworks
       match = nil
-
       hw.each { |hw| 
         if part_ids.include?(hw.id)
           match = hw 
           break
         end
+      }
+      @homeworks << match
+    }
+  end
+
+  def part_report
+    authorize @course
+
+    @part = Part.find(params[:part_id])
+
+    # list of course students - subset of users of this course
+    course_students_list = @course.registries.where("role = ?", USER_COURSE_ROLES[:STUDENT])
+    @users = course_students_list.map { |reg| reg.user }
+
+    @homeworks = []
+    @users.each { |user| 
+      match = nil
+      @part.homeworks.each { |hw| 
+        if user.id == hw.user_id
+          match = hw 
+          break
+        end
 
       }
-
       @homeworks << match
     }
   end
@@ -200,7 +214,7 @@ class CoursesController < ApplicationController
       Registry.create(user_id: current_user.id,
                       course_id: @course.id,
                       role: USER_COURSE_ROLES[:STUDENT])
-      redirect_to user_cabinet_path
+      redirect_to @course
     else
       flash[:notice] = 'Entered enrollment key is not correct.'
       redirect_to enroll_course_path(@course)

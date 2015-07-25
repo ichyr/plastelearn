@@ -57,7 +57,13 @@ class CoursePolicy < ApplicationPolicy
 		end
 	end
 
-	def report?
+	def user_report?
+		unless user.nil?
+			user.admin? || owner?(user, record) || teacher?(user, record)
+		end
+	end
+
+	def part_report?
 		unless user.nil?
 			user.admin? || owner?(user, record) || teacher?(user, record)
 	end

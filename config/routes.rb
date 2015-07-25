@@ -19,7 +19,8 @@ Rails.application.routes.draw do
     get 'general_manage', on: :member
     get 'parts_manage', on: :member
     get 'statistics', on: :member
-    get 'report/:user_id', to: 'courses#report', as: "report", on: :member
+    get 'user_report/:user_id', to: 'courses#user_report', as: "user_report", on: :member
+    get 'part_report/:part_id', to: 'courses#part_report', as: "part_report", on: :member
     get 'members', on: :member
     get 'enroll', on: :member
     post 'check_enroll', on: :member
@@ -33,7 +34,8 @@ Rails.application.routes.draw do
 
   resources :ratings, only: :update
 
-  get "admin/index"
+  get "admin/users_index"
+  get "admin/admins_index"
   get "admin/courses"
 
   get 'user_cabinet', to: 'user_cabinet#courses'
