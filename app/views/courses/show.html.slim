@@ -24,6 +24,11 @@ br /
     b.col-sm-6.text-center = I18n.t("course.active_tasks")
     b.col-sm-6.text-center = I18n.t("course.completed_tasks")
 
+  -if @course.parts.count == 0
+
+    b.col-sm-12.text-center = I18n.t("course.no_parts")
+
+  -else
 
   - 0.upto(table_row_count(@active_parts, @completed_parts) - 1) do |index|
     .row.margin-bottom-20
