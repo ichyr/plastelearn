@@ -6,12 +6,11 @@ class CoursesController < ApplicationController
 
   def index
     @courses = Course.where("public_visible = true and title like ?", search_param)
-                     .order(:created_at)
-                     .paginate(:page => params[:page], :per_page => 9)
+    .order(:created_at)
+    .paginate(:page => params[:page], :per_page => 9)
   end
 
   def show
-
     authorize @course
 
     unless current_user
@@ -20,9 +19,51 @@ class CoursesController < ApplicationController
     else
       add_breadcrumb "Home", :root_path
       add_breadcrumb @course.title, course_path(@course)
-      
+
       enrolled = Registry.where("user_id = ? and course_id = ?",
-                                current_user.id, @course.id).count
+      current_user.id, @course.id).count
+      enrolled = enrolled > 0 ? true : false;
+
+      if enrolled
+        respond_with(@course)
+      else
+        redirect_to enroll_course_path(@course)
+      end
+    end
+  end
+
+  # Change breadcrumbs
+  def documentation
+    authorize @course
+
+    add_breadcrumb "Home", :root_path
+    add_breadcrumb @course.title, course_path(@course)
+    add_breadcrumb I18n.t("course.show.documentation"), documentation_course_path(@course)
+  end
+
+  # Change breadcrumbs
+  def discuss
+    authorize @course
+
+    add_breadcrumb "Home", :root_path
+    add_breadcrumb @course.title, course_path(@course)
+    add_breadcrumb I18n.t("course.show.discuss"), discuss_course_path(@course)
+  end
+
+  # Change breadcrumbs
+  def parts
+    authorize @course
+
+    unless current_user
+      flash[:notice] = "Only registered user can access the courses. Please register!"
+      redirect_to new_user_session_path
+    else
+      add_breadcrumb "Home", :root_path
+      add_breadcrumb @course.title, course_path(@course)
+      add_breadcrumb I18n.t("course.show.parts"), parts_course_path(@course) 
+
+      enrolled = Registry.where("user_id = ? and course_id = ?",
+      current_user.id, @course.id).count
       enrolled = enrolled > 0 ? true : false;
 
       if enrolled
@@ -62,11 +103,11 @@ class CoursesController < ApplicationController
     if current_user.course_grants > 0 && @course.save
 
       Registry.create course_id: @course.id,
-                      user_id: current_user.id,
-                      role: USER_COURSE_ROLES[:OWNER]
+      user_id: current_user.id,
+      role: USER_COURSE_ROLES[:OWNER]
       current_user.course_grants -= 1;
       current_user.save!
-                      
+
       flash[:notice] = 'Course was successfully created.'
       respond_with(@course)
     else
@@ -86,7 +127,7 @@ class CoursesController < ApplicationController
     authorize @course
 
     @course.destroy
-    
+
     redirect_to :back
   end
 
@@ -104,7 +145,7 @@ class CoursesController < ApplicationController
     authorize @course
 
     @registries = Registry.includes(:user)
-                          .where("course_id = ?", @course.id).order(:id)
+    .where("course_id = ?", @course.id).order(:id)
   end
 
   def statistics
@@ -143,13 +184,13 @@ class CoursesController < ApplicationController
     course_homeworks = Homework.select(:user_id).where("part_id in (?)", course_parts_ids).map { |t|
       t.user_id
     }
-    
+
     @course_users_hw_done = []
     @course_users_hw_failed = []
     course_parts_finished = @courses_count_completed + @courses_count_active
 
     # try to optimize the loop below
-    @course_users.each_with_index { |user, index| 
+    @course_users.each_with_index { |user, index|
       temp = course_homeworks.count { |x| x == user.id }
       @course_users_hw_done << temp
       @course_users_hw_failed << (course_parts_finished - temp)
@@ -159,18 +200,18 @@ class CoursesController < ApplicationController
 
   def user_report
     authorize @course
-    
+
     @user = User.find(params[:user_id])
     @parts = @course.parts.order(:id)
     part_ids = @user.homeworks.ids
 
     @homeworks = []
-    @parts.each_with_index { |p, index| 
+    @parts.each_with_index { |p, index|
       hw = p.homeworks
       match = nil
-      hw.each { |hw| 
+      hw.each { |hw|
         if part_ids.include?(hw.id)
-          match = hw 
+          match = hw
           break
         end
       }
@@ -188,11 +229,11 @@ class CoursesController < ApplicationController
     @users = course_students_list.map { |reg| reg.user }
 
     @homeworks = []
-    @users.each { |user| 
+    @users.each { |user|
       match = nil
-      @part.homeworks.each { |hw| 
+      @part.homeworks.each { |hw|
         if user.id == hw.user_id
-          match = hw 
+          match = hw
           break
         end
 
@@ -212,8 +253,8 @@ class CoursesController < ApplicationController
     if @course.enrollment_key == params[:enrollment][:enrollment_key]
       flash[:notice] = "You were sucessfully enrolled into the course #{@course.title}!"
       Registry.create(user_id: current_user.id,
-                      course_id: @course.id,
-                      role: USER_COURSE_ROLES[:STUDENT])
+      course_id: @course.id,
+      role: USER_COURSE_ROLES[:STUDENT])
       redirect_to @course
     else
       flash[:notice] = 'Entered enrollment key is not correct.'
@@ -222,9 +263,9 @@ class CoursesController < ApplicationController
   end
 
 
-  # 
+  #
   # CANDIDATES FOR REFACTORING INTO HELPER STRUCTURES
-  # 
+  #
 
   def assign_user_as_course_teacher
     authorize @course
@@ -250,32 +291,32 @@ class CoursesController < ApplicationController
     redirect_to members_course_path(@course)
   end
 
-  # 
+  #
   # CANDIDATES FOR REFACTORING INTO HELPER STRUCTURES
-  # 
+  #
 
 
   private
-    def set_course
-      @course = Course.find(params[:id])
-    end
+  def set_course
+    @course = Course.find(params[:id])
+  end
 
-    def course_params
-      params.require(:course).permit(:title,
-                                     :description,
-                                     :enrollment_key,
-                                     :bootsy_image_gallery_id,
-                                     :public_visible,
-                                     :short_description,
-                                     :logo)
-    end
+  def course_params
+    params.require(:course).permit(:title,
+    :description,
+    :enrollment_key,
+    :bootsy_image_gallery_id,
+    :public_visible,
+    :short_description,
+    :logo)
+  end
 
-    def get_registry user, course
-      registry = Registry.where("course_id = ? and user_id = ?",
-                               course.id, user.id).first
-    end
+  def get_registry user, course
+    registry = Registry.where("course_id = ? and user_id = ?",
+    course.id, user.id).first
+  end
 
-    def search_param
-      params[:search] ? "%#{params[:search]}%" : "%"
-    end
+  def search_param
+    params[:search] ? "%#{params[:search]}%" : "%"
+  end
 end

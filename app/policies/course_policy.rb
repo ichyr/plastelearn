@@ -2,12 +2,23 @@ class CoursePolicy < ApplicationPolicy
 
 	# access check is performed in the controller
 	def show?
-		true
+		is_registered_enrolled?(user, record)
 	end
 
-	# access check is performed in the controller
+	def documentation?
+		is_registered_enrolled?(user, record)
+	end
+
+	def discuss?
+		is_registered_enrolled?(user, record)
+	end
+
+	def parts?
+		is_registered_enrolled?(user, record)
+	end
+
 	def new?
-		true unless user.nil?
+		is_registered_enrolled?(user, record)
 	end
 
 	def edit?
@@ -18,7 +29,7 @@ class CoursePolicy < ApplicationPolicy
 
 	# access check is performed in the controller
 	def create?
-		true unless user.nil?
+		is_registered_enrolled?(user, record)
 	end
 
 	def update?
@@ -66,6 +77,7 @@ class CoursePolicy < ApplicationPolicy
 	def part_report?
 		unless user.nil?
 			user.admin? || owner?(user, record) || teacher?(user, record)
+		end
 	end
 
 	def enroll?
@@ -88,10 +100,22 @@ class CoursePolicy < ApplicationPolicy
 		end
 	end
 
-  class Scope < Scope
-    def resolve
-      scope
-    end
-  end
+	class Scope < Scope
+		def resolve
+			scope
+		end
+	end
+
+	private
+	def is_registered_enrolled?(user, course)
+		true unless user.nil? || !is_enrolled?(user, record)
+	end
+
+	def is_enrolled?(user, course)
+		enrolled = Registry.where("user_id = ? and course_id = ?", 
+															user.id, course.id).count
+	  enrolled = enrolled > 0 ? true : false;
+	  enrolled
+	end
 
 end

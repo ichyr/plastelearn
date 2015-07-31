@@ -97,6 +97,10 @@ en:
       title: "Course people management"
     no_found: "There were no courses found for your request."
     create_course: "Create course"
+    show:
+      tasks: "Modules and homeworks"
+      documentation: "Documentation and books"
+      discuss: "Discussions"
 
   comment:
     comment_on: "commented on"

@@ -1,0 +1,55 @@
+= content_for :title
+  = @course.title
+
+= content_for :heading do
+  .header-bg style="background-image: url(#{@course.logo.url})"
+    .container-fluid
+      == render 'layouts/messages'
+      .margin-bottom-50
+        = render_breadcrumbs
+      .jumbotron
+        h1.text-center
+          = @course.title
+        i.text-muted.text-center
+          = raw @course.description
+
+br /
+- if policy(@course).update?
+  = link_to I18n.t("part.create"), new_part_path(course_id: @course.id), class: "btn btn-success pull-right"
+
+br /
+
+.container-fluid
+  .row.margin-bottom-20
+    b.col-sm-6.text-center = I18n.t("course.active_tasks")
+    b.col-sm-6.text-center = I18n.t("course.completed_tasks")
+
+  -if @course.parts.count == 0
+
+    b.col-sm-12.text-center = I18n.t("course.no_parts")
+
+  -else
+
+  - 0.upto(table_row_count(@active_parts, @completed_parts) - 1) do |index|
+    .row.margin-bottom-20
+      - apart = @active_parts[index]
+      - cpart = @completed_parts[index]
+
+      .col-sm-6
+        - if apart
+          = link_to apart
+            .col-sm-1
+              span.glyphicon.glyphicon-align-left aria-hidden="true" style="color:green;"
+            .col-sm-11
+              = apart.title
+              br
+              i = apart.short_description
+      .col-sm-6
+        - if cpart
+          = link_to cpart
+            .col-sm-1
+              span.glyphicon.glyphicon-align-left aria-hidden="true" style="color:orange;"
+            .col-sm-11
+              = cpart.title
+              br
+              i = cpart.short_description

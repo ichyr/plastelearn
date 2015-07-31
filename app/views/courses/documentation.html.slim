@@ -1,0 +1,17 @@
+= content_for :title
+  = @course.title
+
+= content_for :heading do
+  .header-bg style="background-image: url(#{@course.logo.url})"
+    .container-fluid
+      == render 'layouts/messages'
+      .margin-bottom-50
+        = render_breadcrumbs
+      .jumbotron
+        h1.text-center
+          = @course.title
+        i.text-muted.text-center
+          = raw @course.description
+
+h1 Documentation
+i Add field documentation to course model
