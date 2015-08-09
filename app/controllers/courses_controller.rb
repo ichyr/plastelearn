@@ -308,7 +308,8 @@ class CoursesController < ApplicationController
     :bootsy_image_gallery_id,
     :public_visible,
     :short_description,
-    :logo)
+    :logo,
+    :documentation)
   end
 
   def get_registry user, course

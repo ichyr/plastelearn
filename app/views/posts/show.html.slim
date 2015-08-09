@@ -1,0 +1,18 @@
+p#notice = notice
+
+p
+  strong Parent:
+  = @post.parent_id
+p
+  strong Course:
+  = @post.course_id
+p
+  strong Content:
+  = @post.content
+p
+  strong User:
+  = @post.user_id
+
+= link_to 'Edit', edit_post_path(@post)
+'|
+= link_to 'Back', posts_path
