@@ -17,7 +17,7 @@ class CoursesController < ApplicationController
       flash[:notice] = "Only registered user can access the courses. Please register!"
       redirect_to new_user_session_path
     else
-      add_breadcrumb "Home", :root_path
+      add_breadcrumb I18n.t("general.breadcrumbs.home"), :root_path
       add_breadcrumb @course.title, course_path(@course)
 
       enrolled = Registry.where("user_id = ? and course_id = ?",
@@ -35,7 +35,7 @@ class CoursesController < ApplicationController
   def documentation
     authorize @course
 
-    add_breadcrumb "Home", :root_path
+    add_breadcrumb I18n.t("general.breadcrumbs.home"), :root_path
     add_breadcrumb @course.title, course_path(@course)
     add_breadcrumb I18n.t("course.show.documentation"), documentation_course_path(@course)
   end
@@ -47,7 +47,7 @@ class CoursesController < ApplicationController
   def discuss
     authorize @course
 
-    add_breadcrumb "Home", :root_path
+    add_breadcrumb I18n.t("general.breadcrumbs.home"), :root_path
     add_breadcrumb @course.title, course_path(@course)
     add_breadcrumb I18n.t("course.show.discuss"), discuss_course_path(@course)
   end
@@ -59,7 +59,7 @@ class CoursesController < ApplicationController
       flash[:notice] = "Only registered user can access the courses. Please register!"
       redirect_to new_user_session_path
     else
-      add_breadcrumb "Home", :root_path
+      add_breadcrumb I18n.t("general.breadcrumbs.home"), :root_path
       add_breadcrumb @course.title, course_path(@course)
       add_breadcrumb I18n.t("course.show.parts"), parts_course_path(@course) 
 

@@ -41,6 +41,8 @@ en:
     search_placeholer:
       course_name: "Enter course name to search..."
       user_name: "Enter user name to search..."
+    breadcrumbs:
+      home: "Home"
 
   admin:
     title: "Admininstration panel"
