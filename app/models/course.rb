@@ -8,7 +8,7 @@ class Course < ActiveRecord::Base
 	has_many :registries, dependent: :destroy
   has_many :users, through: :registries
 
-  after_create :set_defaults, :if => :new_record?
+  after_create :set_defaults
 
   # validates :title, length: { in: 5..30 }
   # validates :enrollment_key, length: { minimum: 8 }

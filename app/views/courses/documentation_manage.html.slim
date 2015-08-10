@@ -7,9 +7,9 @@ h5.text-center = @course.title
 br /
 
 ul.nav.nav-tabs.nav-justified.highlight
-  li.active role="presentation" 
-    = link_to I18n.t("course.management.general"), general_manage_course_path(@course)
   li role="presentation" 
+    = link_to I18n.t("course.management.general"), general_manage_course_path(@course)
+  li.active role="presentation" 
     = link_to I18n.t("course.management.documentation"), documentation_manage_course_path(@course)
   li role="presentation" 
   	= link_to I18n.t("course.management.parts"), parts_manage_course_path(@course)
@@ -20,4 +20,12 @@ ul.nav.nav-tabs.nav-justified.highlight
 
 br/
 
-== render 'form'
+= simple_form_for(@course) do |f|
+  -if f.error_notification
+    .alert = f.error_notification
+
+  .form-inputs
+    = f.input :documentation, as: :bootsy, input_html: {class: 'form-control', rows: 15}, hint: I18n.t("activerecord.attributes.course.hint.documentation")
+
+  .form-actions
+    = f.button :submit, value: I18n.t("general.save_changes"), class: "btn btn-success"

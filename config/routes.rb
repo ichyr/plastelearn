@@ -19,6 +19,7 @@ Rails.application.routes.draw do
 
   resources :courses do
     get 'general_manage', on: :member
+    get 'documentation_manage', on: :member
     get 'parts_manage', on: :member
     get 'statistics', on: :member
     get 'user_report/:user_id', to: 'courses#user_report', as: "user_report", on: :member

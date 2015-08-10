@@ -50,6 +50,12 @@ class CoursePolicy < ApplicationPolicy
 		end
 	end
 
+	def documentation_manage?
+		unless user.nil?
+			user.admin? || owner?(user, record) || teacher?(user, record)
+		end
+	end
+
 	def parts_manage?
 		unless user.nil?
 			user.admin? || owner?(user, record) || teacher?(user, record)

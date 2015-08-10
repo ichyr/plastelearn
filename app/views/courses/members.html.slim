@@ -10,6 +10,8 @@ ul.nav.nav-tabs.nav-justified.highlight
   li role="presentation" 
     = link_to I18n.t("course.management.general"), general_manage_course_path(@course)
   li role="presentation" 
+    = link_to I18n.t("course.management.documentation"), documentation_manage_course_path(@course)
+  li role="presentation" 
     = link_to I18n.t("course.management.parts"), parts_manage_course_path(@course)
   li role="presentation" 
     = link_to I18n.t("course.management.statistics"), statistics_course_path(@course)

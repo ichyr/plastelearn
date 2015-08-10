@@ -36,6 +36,7 @@ ua:
     failed: "Не виконано"
     submit: "Надіслати"
     manage: "Управляти"
+    save_changes: "Зберегти зміни"
     are_you_sure: "Ви впевнені?"
     search_placeholer:
       course_name: "Введіть ім'я курсу для пошуку..."
@@ -70,6 +71,7 @@ ua:
       parts: "Управління модулями"
       statistics: "Статистика"
       members: "Учасники"
+      documentation: "Ресурси"
       assign:
         teacher: "Зробити тренером"
         teacher_confirm: "Ви впевнені, що хочете зробити %{user_name} тренером?"

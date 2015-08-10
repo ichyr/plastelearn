@@ -15,8 +15,8 @@ end
 
 
 # 1. Create admin user
-user = CreateAdminService.new.call
-puts 'CREATED ADMIN USER: ' << user.email
+user_adm = CreateAdminService.new.call
+puts 'CREATED ADMIN USER: ' << user_adm.email
 
 DESCRIPTION_LONG = "Lorem Ipsum jest tekstem stosowanym jako przykładowy wypełniacz w przemyśle poligraficznym. Został po raz pierwszy użyty w XV w. przez nieznanego drukarza do wypełnienia tekstem próbnej książki. Pięć wieków później zaczął być używany przemyśle elektronicznym, pozostając praktycznie niezmienionym. Spopularyzował się w latach 60. XX w. wraz z publikacją arkuszy Letrasetu, zawierających fragmenty Lorem Ipsum, a ostatnio z zawierającym różne wersje Lorem Ipsum oprogramowaniem przeznaczonym do realizacji druków na komputerach osobistych, jak Aldus PageMaker"
 DESCRIPTION_SHORT = "Lorem ipsum doler odor!"
@@ -30,7 +30,8 @@ PARTS_COUNT = 11
   course = Course.create  title: "Course #{t}",
                  short_description: DESCRIPTION_SHORT,
                  description: DESCRIPTION_LONG,
-                 enrollment_key: ENROLLMENT_KEY
+                 enrollment_key: ENROLLMENT_KEY,
+                 documentation: DESCRIPTION_LONG
 
   # 3. Create 11 modules for each course
   parts = []
@@ -62,6 +63,7 @@ crs = CreateRegistryService.new
   end  
 }
 
+crs.call 1, user_adm.id, USER_COURSE_ROLES[:OWNER]
 
 
 # 7. Create dummy homework with 2 attachments
@@ -105,7 +107,7 @@ data = []
 homeworks.each { |homework| 
   0.upto(rand(20)) { |temp| 
     comment_instance = {text: COMMENT_TEXT,
-                        user_id: user.id,
+                        user_id: user_adm.id,
                         homework_id: homework.id }
     data << comment_instance
   }

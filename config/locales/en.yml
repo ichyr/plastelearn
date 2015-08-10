@@ -36,6 +36,7 @@ en:
     failed: "Failed"
     submit: "Submit"
     manage: "Manage"
+    save_changes: "Save changes"
     are_you_sure: "Are you sure?"
     search_placeholer:
       course_name: "Enter course name to search..."
@@ -70,6 +71,7 @@ en:
       parts: "Parts management"
       statistics: "Statistics"
       members: "Members"
+      documentation: "Resources"
       assign:
         teacher: "Assign as a Teacher"
         teacher_confirm: "Are you sure to make %{user_name} a teacher?"

@@ -32,7 +32,6 @@ class CoursesController < ApplicationController
     end
   end
 
-  # Change breadcrumbs
   def documentation
     authorize @course
 
@@ -41,7 +40,10 @@ class CoursesController < ApplicationController
     add_breadcrumb I18n.t("course.show.documentation"), documentation_course_path(@course)
   end
 
-  # Change breadcrumbs
+  def documentation_manage
+    authorize @course
+  end
+  
   def discuss
     authorize @course
 
@@ -50,7 +52,6 @@ class CoursesController < ApplicationController
     add_breadcrumb I18n.t("course.show.discuss"), discuss_course_path(@course)
   end
 
-  # Change breadcrumbs
   def parts
     authorize @course
 
