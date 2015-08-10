@@ -1,8 +1,5 @@
 Rails.application.routes.draw do
 
-
-  resources :posts
-
   mount Bootsy::Engine => '/bootsy', as: 'bootsy'
 
   root to: 'courses#index'
@@ -32,6 +29,8 @@ Rails.application.routes.draw do
     post 'check_enroll', on: :member
     put 'assign_user_as_course_teacher', on: :member
     delete 'delete_user_from_course', on: :member
+
+    resources :posts
   end
 
   get 'courses/:id/user_stats/:user_id', to: "courses#user_stats"

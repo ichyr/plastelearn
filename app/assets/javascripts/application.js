@@ -21,6 +21,7 @@
 //= require bootstrap-datetimepicker
 //= require bootsy
 //= require highcharts
+//= require angular
 //= require_tree .
 
 $(function() {

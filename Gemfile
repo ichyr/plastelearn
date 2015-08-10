@@ -79,3 +79,6 @@ gem 'whenever', :require => false
 
 # gem for async jobs
 gem 'que'
+
+# injects Angular.js into project
+gem 'angularjs-rails', "~> 1.4.3"
