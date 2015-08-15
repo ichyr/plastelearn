@@ -50,6 +50,8 @@ class CoursesController < ApplicationController
     add_breadcrumb I18n.t("general.breadcrumbs.home"), :root_path
     add_breadcrumb @course.title, course_path(@course)
     add_breadcrumb I18n.t("course.show.discuss"), discuss_course_path(@course)
+
+    render layout: "course_posts"
   end
 
   def parts

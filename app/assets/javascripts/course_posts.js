@@ -11,22 +11,19 @@
 // about supported directives.
 //
 //= require jquery
-//= require jquery_ujs
-//= require jquery-ui
 //= require bootstrap-sprockets
 //= require turbolinks
-//= require jquery_nested_form
-//= require jquery.raty.min
-//= require moment
-//= require bootstrap-datetimepicker
-//= require bootsy
-//= require highcharts
-//= require_tree .
+//= require angular
+//= require angular-resource
+//= require_tree ./app
 
 $(function() {
-	$(document).on('ready page:change', function() {
-		$('.datetime_picker').datetimepicker({
-			pickSeconds: false
+	// Turbolinks antidote
+	$(document).on('page:load', function() {
+		return $('[ng-app]').each(function() {
+			var module;
+			module = $(this).attr('ng-app');
+			return angular.bootstrap(this, [module]);
 		});
 	});
 });
