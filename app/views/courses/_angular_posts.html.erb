@@ -4,21 +4,59 @@
       Discussion
     </h1>
 
+    <br />
+
     <div class="row">
       <div class="col-sm-3">
-        <input class="form-input col-sm-12" type="text" ng-model="topicList" placeholder="Search by name"></input>
+        <input class="form-input col-sm-11" type="text" ng-model="topicList" placeholder="Search by name"></input>
 
         <br />
         <br />
-        
+
         <ul class="list-group col-sm-12">
           <li ng-repeat="title in threads | filter:topicList" class="list-group-item">
             {{ title }}
           </li>
         </ul>
       </div>
-      <div class="col-sm-9">
 
+      <div class="col-sm-9">
+        <div class="col-sm-10 col-sm-offset-1">
+
+          <div class="margin-bottom-20 text-center col-sm-12">
+            <b> {{ current.title }} </b>
+          </div>
+        
+          <div class="margin-bottom-50">
+            <div ng-repeat="post in current.conversation" class="col-sm-12 margin-bottom-20">
+              <span class="glyphicon glyphicon-comment col-sm-1" aria-hidden="true"></span>
+
+              <div class="col-sm-11 row">
+                <i>
+                  <span>
+                    {{ post.author }} commented on {{post.created_at}}
+                  </span>
+                </i>
+                <br />
+                {{ post.text }}
+              </div>
+
+            </div>
+          </div>
+
+          <fieldset>
+            <textarea rows="4" cols="50" ng-model="newPostText" class="col-sm-12" placeholder="Please specify anyting you would like others to hear."> </textarea>
+
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+
+            <button ng-click="$scope.submitNewPost" class="btn btn-success col-sm-3 col-sm-offset-4"> Submit New Post </button>
+          </fieldset>
+        </div>
       </div>
     </div>
   </div>
