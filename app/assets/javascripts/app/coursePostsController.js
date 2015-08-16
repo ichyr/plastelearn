@@ -1,6 +1,4 @@
-app.controller('coursePostsController', ['$scope', '$http', 'Post', function($scope, $http, Post) {
-	$scope.threads = ["1", "2", "3"];
-
+app.controller('coursePostsController', ['$scope', '$http', '$location', 'Post', function($scope, $http, $location, Post) {
 	$scope.changeTopic = function(firstPostId) {
 		// change current object
 		// load messages
@@ -37,9 +35,18 @@ app.controller('coursePostsController', ['$scope', '$http', 'Post', function($sc
 		};
 
 		console.log(newPost);
-		$scope.current.conversation.push( newPost );
+		$scope.current.conversation.push(newPost);
 
 		$scope.newPostText = "";
 	}
+
+	// private like functions
+
+	function _itemsParseIdController($scope, $location) {
+		$scope.courseId = (/courses\/(\d+)/.exec($location.absUrl())[1]);
+	};
+
+	// Initialize course id in the scope of controller
+	_itemsParseIdController($scope, $location);
 
 }])
