@@ -39,18 +39,12 @@
             </div>
           </div>
 
-          <fieldset>
-            <textarea rows="4" cols="50" ng-model="newPostText" class="col-sm-12" placeholder="Please specify anyting you would like others to hear."> </textarea>
+          <textarea rows="4" cols="50" ng-model="newPostText" class="col-sm-12 margin-bottom-10" placeholder="Please specify anyting you would like others to hear."> </textarea>
 
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
+          <button ng-click="$scope.submitNewPost" class="btn btn-success col-sm-3 col-sm-offset-4">
+            Submit New Post
+          </button>
 
-            <button ng-click="$scope.submitNewPost" class="btn btn-success col-sm-3 col-sm-offset-4"> Submit New Post </button>
-          </fieldset>
         </div>
       </div>
     </div>
