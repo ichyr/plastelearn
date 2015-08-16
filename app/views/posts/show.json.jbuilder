@@ -1,1 +1,4 @@
-json.extract! @post, :id, :parent_id, :course_id, :content, :user_id, :created_at, :updated_at
+json.array!(@posts) do |post|
+  json.extract! post, :content, :created_at
+  json.author post.user.name
+end

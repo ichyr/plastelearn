@@ -8,6 +8,10 @@ app.factory('Post', function($resource) {
 			}, {
 				update: {
 					method: 'PATCH'
+				},
+				getDiscussion: {
+					method: 'GET',
+					isArray: true
 				}
 			})
 
@@ -21,6 +25,10 @@ app.factory('Post', function($resource) {
 				return attrs.id = post.id;
 			});
 			return attrs;
+		};
+
+		Post.prototype.getDiscussion = function(postId) {
+			return this.service.getDiscussion({id: postId});
 		};
 
 		Post.prototype.all = function() {

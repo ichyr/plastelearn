@@ -10,6 +10,7 @@ class User < ActiveRecord::Base
   has_many :comments
   has_many :ratings
   has_many :scores
+  has_many :posts
 
   has_many :registries, dependent: :destroy
   has_many :courses, through: :registries

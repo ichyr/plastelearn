@@ -5,12 +5,16 @@ class PostsController < ApplicationController
   respond_to :json
 
   def index
-    @posts = Post.where("course_id = ?", @course.id)
+    @posts = Post.includes(:user)
+                 .where("course_id = ? and parent_id = 0", @course.id)
+                 .order(:created_at)
+                 
     respond_with(@posts)
   end
 
   def show
-    respond_with(@post)
+    @posts = Post.includes(:user).where("course_id = ? and parent_id = ?", @course.id, params[:id])
+    respond_with(@posts)
   end
 
   def new
