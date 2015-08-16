@@ -113,3 +113,11 @@ homeworks.each { |homework|
   }
 }
 Comment.create(data)  
+
+(1..10).each { |num|
+  temp = Post.create user_id: 1, parent_id: 0, content: "Heading of the topic #{num}", course_id: course.id
+
+  (1..10).each { |n| 
+    Post.create user_id: 1, parent_id: temp.id, content: DESCRIPTION_LONG, course_id: course.id
+  }
+}
