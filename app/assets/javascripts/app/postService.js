@@ -22,7 +22,8 @@ app.factory('Post', function($resource) {
 			new this.service({
 				post: attrs
 			}).$save(function(post) {
-				return attrs.id = post.id;
+				attrs.id = post.id;
+				return attrs.user_id = post.user_id;
 			});
 			return attrs;
 		};

@@ -15,6 +15,7 @@ app.controller('coursePostsController', ['$scope', '$http', '$location', 'Post',
 	$scope.changeTopic = function(topicId, topicText) {
 		$scope.current.conversation = postService.getDiscussion(topicId);
 		$scope.current.title = topicText;
+		$scope.current.topicId = topicId;
 		$scope.current.selected = true;
 	};
 
@@ -22,15 +23,15 @@ app.controller('coursePostsController', ['$scope', '$http', '$location', 'Post',
 
 	$scope.submitNewPost = function() {
 		var newPost = {
-			author: "Mama Dia",
-			created_at: "Today",
-			text: $scope.newPostText
+			content: $scope.newPostText,
+			parent_id: $scope.current.topicId
 		};
 
-		console.log(newPost);
-		$scope.current.conversation.push(newPost);
-
-		$scope.newPostText = "";
+		postService.service.save(newPost, function(post){
+			$scope.current.conversation.push(post);
+			$scope.newPostText = "";
+		});
+		
 	}
 
 	// private like functions

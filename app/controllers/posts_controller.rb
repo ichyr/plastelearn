@@ -27,8 +27,11 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.new(post_params)
-    flash[:notice] = 'Post was successfully created.' if @post.save
-    respond_with(@post)
+    @post.course_id = params[:course_id]
+    @post.user_id = current_user.id
+
+    @post.save!
+    render :create
   end
 
   def update
