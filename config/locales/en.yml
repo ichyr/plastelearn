@@ -105,6 +105,7 @@ en:
       tasks: "Modules and homeworks"
       documentation: "Documentation and books"
       discuss: "Discussions"
+    discussions: "Discussions"
 
   comment:
     comment_on: "commented on"

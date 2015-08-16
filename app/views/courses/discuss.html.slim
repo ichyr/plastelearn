@@ -5,12 +5,10 @@
   .header-bg style="background-image: url(#{@course.logo.url})"
     .container-fluid
       == render 'layouts/messages'
-      .margin-bottom-50
-        = render_breadcrumbs
-      .jumbotron
+      .breadcrumb
+        .margin-bottom-10
+          = render_breadcrumbs
         h1.text-center
-          = @course.title
-        i.text-muted.text-center
-          = raw @course.description
-
+          = I18n.t("course.discussions")
+          
 == render "angular_posts"
