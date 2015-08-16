@@ -49,4 +49,7 @@ app.controller('coursePostsController', ['$scope', '$http', '$location', 'Post',
 	// Initialize course id in the scope of controller
 	_itemsParseIdController($scope, $location);
 
+	var postService = new Post($scope.courseId);
+	$scope.data = postService.all();
+
 }])

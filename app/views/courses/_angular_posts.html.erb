@@ -1,6 +1,8 @@
 <div class="container-fluid" ng-app="discussCourse">
   <div ng-controller="coursePostsController">
 
+    {{ data | json }}
+
     <div class="row">
       <div class="col-sm-3">
         <input class="form-input col-sm-11" type="text" ng-model="topicList" placeholder="Search by name"></input>

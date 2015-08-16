@@ -2,7 +2,7 @@ app.factory('Post', function($resource) {
 	var Post;
 	return Post = (function() {
 		function Post(courseId) {
-			this.service = $resource('/courses/:course_id/posts/:id', {
+			this.service = $resource('/courses/:course_id/posts/:id.json', {
 				course_id: courseId,
 				id: '@id'
 			}, {
@@ -10,6 +10,8 @@ app.factory('Post', function($resource) {
 					method: 'PATCH'
 				}
 			})
+
+			console.log(courseId);
 		}
 
 		Post.prototype.create = function(attrs) {

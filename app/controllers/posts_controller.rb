@@ -1,10 +1,11 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
+  before_action :set_course
 
   respond_to :json
 
   def index
-    @posts = Post.all
+    @posts = Post.where("course_id = ?", @course.id)
     respond_with(@posts)
   end
 
@@ -39,6 +40,10 @@ class PostsController < ApplicationController
   private
     def set_post
       @post = Post.find(params[:id])
+    end
+
+    def set_course
+      @course = Course.find(params[:course_id])
     end
 
     def post_params
