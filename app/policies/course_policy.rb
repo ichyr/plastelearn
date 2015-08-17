@@ -17,6 +17,10 @@ class CoursePolicy < ApplicationPolicy
 		is_registered_enrolled?(user, record)
 	end
 
+	def calendar?
+		is_registered_enrolled?(user, record)
+	end
+
 	def new?
 		is_registered_enrolled?(user, record)
 	end

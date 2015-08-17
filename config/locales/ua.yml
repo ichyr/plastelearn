@@ -106,7 +106,9 @@ ua:
       tasks: "Завдання"
       documentation: "Допоміжні ресурси"
       discuss: "Майже живі обговорення"
+      calendar: "Календар"
     discussions: "Обговорення"
+    calendar: "Календар"
 
   comment:
     comment_on: "прокоментував "

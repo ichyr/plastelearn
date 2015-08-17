@@ -105,7 +105,9 @@ en:
       tasks: "Modules and homeworks"
       documentation: "Documentation and books"
       discuss: "Discussions"
+      calendar: "Calendar"
     discussions: "Discussions"
+    calendar: "Calendar"
 
   comment:
     comment_on: "commented on"
