@@ -82,3 +82,6 @@ gem 'que'
 
 # injects Angular.js into project
 gem 'angularjs-rails', "~> 1.4.3"
+
+# includes full calendar for course#calendar
+gem 'fullcalendar-rails'

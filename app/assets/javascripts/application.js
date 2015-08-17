@@ -18,6 +18,7 @@
 //= require jquery_nested_form
 //= require jquery.raty.min
 //= require moment
+//= require fullcalendar
 //= require bootstrap-datetimepicker
 //= require bootsy
 //= require highcharts
