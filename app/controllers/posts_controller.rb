@@ -30,7 +30,7 @@ class PostsController < ApplicationController
     @post.course_id = params[:course_id]
     @post.user_id = current_user.id
 
-    @post.save!
+    @post.save
     render :create
   end
 

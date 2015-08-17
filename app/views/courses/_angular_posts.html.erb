@@ -5,10 +5,10 @@
 
     <div class="row">
       <div class="col-sm-3">
-        <input class="form-input col-sm-11" type="text" ng-model="topicList.content" placeholder="Search by name"></input>
+        <button class="btn btn-default margin-bottom-20 text-center col-sm-offset-2 col-sm-8" ng-click="createThread()">Add new question</button>
 
-        <br />
-        <br />
+
+        <input class="form-input col-sm-11 margin-bottom-10" type="text" ng-model="topicList.content" placeholder="Search by name"></input>
 
         <ul class="list-group col-sm-12">
           <li ng-repeat="topic in topics | filter:topicList" class="list-group-item" ng-click="changeTopic(topic.id, topic.content)">

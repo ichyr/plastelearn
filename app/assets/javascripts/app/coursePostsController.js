@@ -19,6 +19,20 @@ app.controller('coursePostsController', ['$scope', '$http', '$location', 'Post',
 		$scope.current.selected = true;
 	};
 
+	$scope.createThread = function() {
+		var data = prompt("Please enter the text of the question","No text");
+
+		var newPost = {
+			content: data,
+			parent_id: 0
+		};
+
+		postService.service.save(newPost, function(data){
+			console.log(data.id);
+			$scope.topics.push({id: data.id, content: data.content });
+			$scope.changeTopic(data.id, data.content);
+		});
+	};
 
 
 	$scope.submitNewPost = function() {
