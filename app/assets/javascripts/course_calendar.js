@@ -12,23 +12,6 @@
 //
 //= require jquery
 //= require moment
-//= require jquery_ujs
-//= require jquery-ui
-//= require bootstrap-sprockets
-//= require turbolinks
-//= require jquery_nested_form
-//= require jquery.raty.min
-//= require bootstrap-datetimepicker
-//= require bootsy
-//= require highcharts
-//= require angular
 //= require fullcalendar
-//= require_tree .
-
-$(function() {
-	$(document).on('ready page:change', function() {
-		$('.datetime_picker').datetimepicker({
-			pickSeconds: false
-		});
-	});
-});
+//= require lang-all
+//= require turbolinks

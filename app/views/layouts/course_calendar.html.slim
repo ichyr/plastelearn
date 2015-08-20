@@ -1,0 +1,22 @@
+doctype html
+html
+  head
+    meta[name="viewport" content="width=device-width, initial-scale=1.0"]
+    title
+      = content_for?(:title) ? yield(:title) : 'Plastelearn'
+    meta name="description" content="#{content_for?(:description) ? yield(:description) : 'Plastelearn'}"
+    == stylesheet_link_tag "application", :media => 'all', 'data-turbolinks-track' => true
+    == javascript_include_tag 'course_calendar', 'data-turbolinks-track' => true
+    == csrf_meta_tags
+  body
+    header
+      .container
+        == render 'layouts/navigation'
+    = content_for(:heading)
+    br /
+    main[role="main"]
+      .container
+        == yield
+    footer.footer
+      .container
+        == render 'layouts/footer'
