@@ -21,6 +21,10 @@ class CoursePolicy < ApplicationPolicy
 		is_registered_enrolled?(user, record)
 	end
 
+	def get_module_info?
+		is_registered_enrolled?(user, record)
+	end
+
 	def new?
 		is_registered_enrolled?(user, record)
 	end

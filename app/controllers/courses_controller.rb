@@ -21,7 +21,7 @@ class CoursesController < ApplicationController
       add_breadcrumb @course.title, course_path(@course)
 
       enrolled = Registry.where("user_id = ? and course_id = ?",
-      current_user.id, @course.id).count
+                                current_user.id, @course.id).count
       enrolled = enrolled > 0 ? true : false;
 
       if enrolled
@@ -43,7 +43,7 @@ class CoursesController < ApplicationController
   def documentation_manage
     authorize @course
   end
-  
+
   def discuss
     authorize @course
 
@@ -64,6 +64,14 @@ class CoursesController < ApplicationController
     render layout: "course_calendar"
   end
 
+  def get_module_info
+    authorize @course
+
+    @course.parts
+
+    render "calendar_data.json.jbuilder"
+  end
+
   def parts
     authorize @course
 
@@ -73,10 +81,10 @@ class CoursesController < ApplicationController
     else
       add_breadcrumb I18n.t("general.breadcrumbs.home"), :root_path
       add_breadcrumb @course.title, course_path(@course)
-      add_breadcrumb I18n.t("course.show.parts"), parts_course_path(@course) 
+      add_breadcrumb I18n.t("course.show.parts"), parts_course_path(@course)
 
       enrolled = Registry.where("user_id = ? and course_id = ?",
-      current_user.id, @course.id).count
+                                current_user.id, @course.id).count
       enrolled = enrolled > 0 ? true : false;
 
       if enrolled
@@ -116,8 +124,8 @@ class CoursesController < ApplicationController
     if current_user.course_grants > 0 && @course.save
 
       Registry.create course_id: @course.id,
-      user_id: current_user.id,
-      role: USER_COURSE_ROLES[:OWNER]
+        user_id: current_user.id,
+        role: USER_COURSE_ROLES[:OWNER]
       current_user.course_grants -= 1;
       current_user.save!
 
@@ -266,8 +274,8 @@ class CoursesController < ApplicationController
     if @course.enrollment_key == params[:enrollment][:enrollment_key]
       flash[:notice] = "You were sucessfully enrolled into the course #{@course.title}!"
       Registry.create(user_id: current_user.id,
-      course_id: @course.id,
-      role: USER_COURSE_ROLES[:STUDENT])
+                      course_id: @course.id,
+                      role: USER_COURSE_ROLES[:STUDENT])
       redirect_to @course
     else
       flash[:notice] = 'Entered enrollment key is not correct.'
@@ -316,18 +324,18 @@ class CoursesController < ApplicationController
 
   def course_params
     params.require(:course).permit(:title,
-    :description,
-    :enrollment_key,
-    :bootsy_image_gallery_id,
-    :public_visible,
-    :short_description,
-    :logo,
-    :documentation)
+                                   :description,
+                                   :enrollment_key,
+                                   :bootsy_image_gallery_id,
+                                   :public_visible,
+                                   :short_description,
+                                   :logo,
+                                   :documentation)
   end
 
   def get_registry user, course
     registry = Registry.where("course_id = ? and user_id = ?",
-    course.id, user.id).first
+                              course.id, user.id).first
   end
 
   def search_param
