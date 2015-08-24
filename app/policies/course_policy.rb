@@ -114,6 +114,16 @@ class CoursePolicy < ApplicationPolicy
 		end
 	end
 
+	def is_rateable?
+		if privileged_enrolled?(user, record)
+			true
+		elsif record.rating_restricted?
+			false
+		else
+			true
+		end
+	end
+
 	class Scope < Scope
 		def resolve
 			scope

@@ -51,6 +51,7 @@ en:
           description: "This is a detailed description of your course. It will be displayed on the course page. Here you can make rich formatting and add links/images."
           enrollment_key: "This is key that users must specify to enroll to your course."
           documentation: "Supplementary resources for the course"
+          rating_policy: "Restrict rating possibility for non-students participants."
       homework:
         description: "Description"
       part:

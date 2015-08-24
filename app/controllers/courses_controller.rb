@@ -330,7 +330,8 @@ class CoursesController < ApplicationController
                                    :public_visible,
                                    :short_description,
                                    :logo,
-                                   :documentation)
+                                   :documentation,
+                                   :rating_policy)
   end
 
   def get_registry user, course

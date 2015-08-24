@@ -174,7 +174,8 @@ CREATE TABLE courses (
     short_description character varying,
     public_visible boolean DEFAULT true,
     logo character varying,
-    documentation text
+    documentation text,
+    rating_policy integer
 );
 
 
@@ -804,4 +805,6 @@ INSERT INTO schema_migrations (version) VALUES ('20150622001729');
 INSERT INTO schema_migrations (version) VALUES ('20150731200206');
 
 INSERT INTO schema_migrations (version) VALUES ('20150809161358');
+
+INSERT INTO schema_migrations (version) VALUES ('20150824154615');
 

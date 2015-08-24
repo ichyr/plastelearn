@@ -18,7 +18,12 @@ class Course < ActiveRecord::Base
 
   def self.search(search)
     where('title LIKE ?', "%#{search}%")
-	end
+  end
+
+  def rating_restricted?
+    puts self.rating_policy
+    self.rating_policy
+  end
 
   private
   def set_defaults

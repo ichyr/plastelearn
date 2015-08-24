@@ -40,11 +40,4 @@ class PartPolicy < ApplicationPolicy
       scope
     end
   end
-
-  private
-  def privileged_enrolled?(user, record)
-  	unless user.nil?
-    	owner?(user, record) || teacher?(user,record)
-    end
-  end
 end

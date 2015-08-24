@@ -64,6 +64,12 @@ class ApplicationPolicy
     check_role(user, course, USER_COURSE_ROLES[:TEACHER])
   end
 
+  def privileged_enrolled?(user, record)
+    unless user.nil?
+      owner?(user, record) || teacher?(user,record)
+    end
+  end
+
   private
   def registry_entry(user, course)
     Registry.where("user_id = ? and course_id = ?", user.id, course.id)
