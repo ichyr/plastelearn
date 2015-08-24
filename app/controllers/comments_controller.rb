@@ -29,7 +29,7 @@ class CommentsController < ApplicationController
       @comment.user_id = current_user.id
       @comment.save
     else
-      flash[:notice] = 'You need to be logged in to create a comment.'
+      flash[:notice] = I18n.t("comments.not_logged_in")
     end
 
     # respond_with(@comment)

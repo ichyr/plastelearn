@@ -14,7 +14,7 @@ class CoursesController < ApplicationController
     authorize @course
 
     unless current_user
-      flash[:notice] = "Only registered user can access the courses. Please register!"
+      flash[:notice] = I18n.t("course.messages.not_logged_in")
       redirect_to new_user_session_path
     else
       add_breadcrumb I18n.t("general.breadcrumbs.home"), :root_path
@@ -76,7 +76,7 @@ class CoursesController < ApplicationController
     authorize @course
 
     unless current_user
-      flash[:notice] = "Only registered user can access the courses. Please register!"
+      flash[:notice] = I18n.t("course.messages.not_logged_in")
       redirect_to new_user_session_path
     else
       add_breadcrumb I18n.t("general.breadcrumbs.home"), :root_path
@@ -107,7 +107,7 @@ class CoursesController < ApplicationController
 
       respond_with(@course)
     else
-      flash[:notice] = "You can't create new courses. Please contact administrator for support!"
+      flash[:notice] = I18n.t("course.messages.cant_create_course")
       redirect_to root_path
     end
   end
@@ -129,10 +129,10 @@ class CoursesController < ApplicationController
       current_user.course_grants -= 1;
       current_user.save!
 
-      flash[:notice] = 'Course was successfully created.'
+      flash[:notice] = I18n.t("course.messages.created")
       respond_with(@course)
     else
-      flash[:notice] = "You can't create new courses. Please contact administrator for support!"
+      flash[:notice] = I18n.t("course.messages.cant_create_course")
       redirect_to root_path
     end
   end
@@ -140,7 +140,7 @@ class CoursesController < ApplicationController
   def update
     authorize @course
 
-    flash[:notice] = 'Course was successfully updated.' if @course.update(course_params)
+    flash[:notice] = I18n.t("course.messages.updated") if @course.update(course_params)
     respond_with(@course)
   end
 
@@ -272,13 +272,13 @@ class CoursesController < ApplicationController
     authorize @course
 
     if @course.enrollment_key == params[:enrollment][:enrollment_key]
-      flash[:notice] = "You were sucessfully enrolled into the course #{@course.title}!"
+      flash[:notice] = I18n.t("course.messages.enrolled", course: @course.title)
       Registry.create(user_id: current_user.id,
                       course_id: @course.id,
                       role: USER_COURSE_ROLES[:STUDENT])
       redirect_to @course
     else
-      flash[:notice] = 'Entered enrollment key is not correct.'
+      flash[:notice] = I18n.t("course.messages.wrong_enroll_key")
       redirect_to enroll_course_path(@course)
     end
   end
@@ -297,7 +297,7 @@ class CoursesController < ApplicationController
     registry.role = USER_COURSE_ROLES[:TEACHER]
     registry.save!
 
-    flash[:notice] = "User #{user.name} was assigned as a teacher for this course."
+    flash[:notice] = I18n.t("course.messages.assigned.teacher", name: user.name)
     redirect_to members_course_path(@course)
   end
 
@@ -308,7 +308,7 @@ class CoursesController < ApplicationController
     registry = get_registry(user, @course)
     registry.destroy!
 
-    flash[:notice] = "User #{user.name} was deleted from members of this course."
+    flash[:notice] = I18n.t("course.messages.assigned.deleted", name: user.name)
     redirect_to members_course_path(@course)
   end
 

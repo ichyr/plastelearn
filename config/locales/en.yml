@@ -111,9 +111,22 @@ en:
       calendar: "Calendar"
     discussions: "Discussions"
     calendar: "Calendar"
+    messages:
+      not_logged_in: "Only registered user can access the courses. Please register!"
+      cant_create_course: "You can't create new courses. Please contact administrator for support!"
+      created: "Course was successfully created."
+      updated: "Course was successfully updated."
+      enrolled: "You were sucessfully enrolled into the course  %{course}!"
+      wrong_enroll_key: "Entered enrollment key is not correct."
+      assigned:
+        teacher: "User %{name} was assigned as a teacher for this course."
+        deleted: "User #{name} was deleted from members of this course."
+
+
 
   comment:
     comment_on: "commented on"
+    not_logged_in: "You need to be logged in to create a comment."
 
   homework:
     for: "Homework for"
