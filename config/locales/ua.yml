@@ -19,6 +19,9 @@ ua:
     footer:
       copyright: "Христина та Іван Чир"
 
+  pundit:
+    not_authorized: "Ви не маєте достатніх прав доступу для цієї дії."
+
   models:
     course:
       new: "Новий курс"

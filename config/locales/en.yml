@@ -19,6 +19,9 @@ en:
     footer:
       copyright: "Krystyna and Ivan Chyr"
 
+  pundit:
+    not_authorized: "You are not authorized to perform this action."
+
   models:
     course:
       new: "New course"
