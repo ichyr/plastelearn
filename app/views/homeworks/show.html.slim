@@ -2,16 +2,15 @@
   = "#{I18n.t("homework.for")} #{@homework.part.title}"
 
 = content_for :heading do
-  .header-bg style="background-image: ;"
+  .header-bg style="background-image: url(#{@homework.part.course.logo.url});"
     .container-fluid
       == render 'layouts/messages'
-      .margin-bottom-50
+      .breadcrumb
         = render_breadcrumbs
-      .jumbotron
         h1.text-center
           = raw "#{I18n.t("homework.for")} #{link_to @homework.part.title, @homework.part}"
 
-        b.text-center.margin-bottom-10
+        b.pull-right.margin-bottom-10
           = "by #{@homework.user.email}"
 
         br /
@@ -23,11 +22,11 @@
         br /
         br /
 
-        .row style=("display:inline;")
+        .row.raty
           -if CoursePolicy.new(current_user, @homework.part.course).is_rateable?
             .col-sm-3.col-sm-offset-2
               - if current_user
-                p #{I18n.t("rating.your")}
+                p.col-sm-5 #{I18n.t("rating.your")}
                 #user_star
           .col-sm-3.col-sm-offset-2
             p #{I18n.t("rating.average")}

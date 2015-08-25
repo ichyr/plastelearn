@@ -5,13 +5,13 @@
   .header-bg style="background-image: url(#{@course.logo.url})"
     .container-fluid
       == render 'layouts/messages'
-      .margin-bottom-50
-        = render_breadcrumbs
-      .jumbotron
-        h1.text-center
-          = @course.title
-        i.text-center
-          = raw @course.short_description
+      .breadcrumb
+        .margin-bottom-10
+          = render_breadcrumbs
+          h1.text-center
+            = @course.title
+          i.text-center
+            = raw @course.short_description
 
 .container-fluid
   .row.text-center
