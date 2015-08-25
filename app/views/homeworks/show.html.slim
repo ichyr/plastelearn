@@ -63,14 +63,20 @@
 javascript:
   $(document).ready(function(){
     $('#star').raty({
+      halfShow: true,
       readOnly: true,
-      score: #{@homework.average_rating},
-      path: '/assets'
+      starHalf     : "#{image_path('star-half.png')}",
+      starOff      : "#{image_path('star-off.png')}",
+      starOn       : "#{image_path('star-on.png')}",
+      starType     : 'img',
+      score: "#{@homework.average_rating}",
+      path: "../../"
     });
 
     $('#user_star').raty({
       #{"score: #{@rating.score}," if @rating}
-      path: '/assets',
+      halfShow: true,
+      path: "../../",
       click: function(score, evt) {
         $.ajax({
           url: '/ratings/' #{"+ #{@rating.id}" if @rating},
