@@ -26,7 +26,7 @@ class UsersController < ApplicationController
     authorize @user
 
     if @user.update_attributes(secure_params)
-      redirect_to admin_admins_index_path, :notice => "User #{@user.name} was succesfully updated."
+      redirect_to admin_admins_index_path, :notice => I18n.t("user.messages.updated", name: @user.name)
     else
       flash[:alert] = "Unable to update user."
     end

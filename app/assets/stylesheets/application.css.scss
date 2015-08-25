@@ -48,3 +48,11 @@
 	content: "" !important;
 	padding: 0px 3px 0px 3px;
 }
+
+.alert.alert-danger {
+  background-color: rgba(196, 68, 66, 0.5);
+}
+
+.alert.alert-success {
+  background-color: rgba(223, 240, 216, 0.5);
+}

@@ -3,7 +3,7 @@ module ApplicationHelper
     if date 
       date.strftime "%m/%d/%Y %H:%M"
     else 
-      "No date specified"
+      I18n.t("helpers.app.no_date")
     end
   end
 

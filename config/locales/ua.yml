@@ -163,6 +163,8 @@ ua:
   user: 
     default_name: "Тут мое бути ваше ім'я"
     update: "Оновити інформацію"
+    messages:
+      updated: "Користувач %{name} був успішно оновлений."
 
   mail:
     greeting:

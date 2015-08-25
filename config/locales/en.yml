@@ -164,6 +164,8 @@ en:
   user: 
     default_name: "Here shall be the name"
     update: "Update User"
+    messages:
+      updated: "User %{name} was succesfully updated."
 
   mail:
     greeting:
