@@ -10,7 +10,7 @@
 
         <input class="form-input col-sm-11 margin-bottom-10" type="text" ng-model="topicList.content" placeholder="Search by name"></input>
 
-        <ul class="list-group col-sm-12">
+        <ul class="list-group col-sm-12" style="height:415px; overflow-y: auto;">
           <li ng-repeat="topic in topics | filter:topicList" class="list-group-item" ng-click="changeTopic(topic.id, topic.content)">
             {{ topic.content }}
           </li>
