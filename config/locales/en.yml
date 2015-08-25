@@ -46,6 +46,7 @@ en:
       user_name: "Enter user name to search..."
     breadcrumbs:
       home: "Home"
+      homework: "Homework of %{name}"
 
   admin:
     title: "Admininstration panel"

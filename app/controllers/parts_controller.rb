@@ -15,7 +15,7 @@ class PartsController < ApplicationController
   def show
     authorize @part.course
 
-    add_breadcrumb @part.title, :root_path
+    add_breadcrumb @part.title, part_path(@part)
 
     @part.homeworks
 

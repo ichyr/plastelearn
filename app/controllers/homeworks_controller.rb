@@ -68,11 +68,11 @@ class HomeworksController < ApplicationController
 
   private
     def set_homework
-      add_breadcrumb "Home", :root_path
+      add_breadcrumb I18n.t("general.breadcrumbs.home"), :root_path
       @homework = Homework.find(params[:id])
       add_breadcrumb @homework.part.course.title, course_path(@homework.part.course)
       add_breadcrumb @homework.part.title, part_path(@homework.part)
-      add_breadcrumb "Homework of #{@homework.user.name}"
+      add_breadcrumb I18n.t("general.breadcrumbs.homework", name: @homework.user.name)
     end
 
     def homework_params
