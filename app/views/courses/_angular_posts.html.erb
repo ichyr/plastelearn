@@ -5,7 +5,7 @@
 
     <div class="row">
       <div class="col-sm-3">
-        <button class="btn btn-default margin-bottom-20 text-center col-sm-offset-2 col-sm-8" ng-click="createThread()">Add new question</button>
+        <button class="btn btn-default margin-bottom-20 text-center col-sm-offset-2 col-sm-8" ng-click="createThread()"><%= I18n.t("course.discuss.add_question") %></button>
 
 
         <input class="form-input col-sm-11 margin-bottom-10" type="text" ng-model="topicList.content" placeholder="Search by name"></input>
@@ -44,7 +44,7 @@
           <textarea rows="4" cols="50" ng-model="newPostText" class="col-sm-12 margin-bottom-10" placeholder="Please specify anyting you would like others to hear."> </textarea>
 
           <button ng-click="submitNewPost()" class="btn btn-success col-sm-3 col-sm-offset-4">
-            Submit New Post
+            <%= I18n.t("course.discuss.new_post") %>
           </button>
 
         </div>

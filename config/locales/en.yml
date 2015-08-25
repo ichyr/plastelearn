@@ -111,6 +111,9 @@ en:
       calendar: "Calendar"
       parts: "Modules"
     discussions: "Discussions"
+    discuss:
+      add_question: "Add new question"
+      new_post: "Submit New Post"
     calendar: "Calendar"
     messages:
       not_logged_in: "Only registered user can access the courses. Please register!"
