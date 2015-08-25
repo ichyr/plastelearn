@@ -29,6 +29,17 @@ namespace :setup do
     end
   end
 
+  desc "Reset the database."
+  task :reset_db do
+    on roles(:app) do
+      within "#{current_path}" do
+        with rails_env: :production do
+          execute :rake, "db:reset"
+        end
+      end
+    end
+  end
+
   desc "Symlinks config files for Nginx and Unicorn."
   task :symlink_config do
     on roles(:app) do
