@@ -85,3 +85,6 @@ gem 'angularjs-rails', "~> 1.4.3"
 
 # includes full calendar for course#calendar
 gem 'fullcalendar-rails', "~> 2.0.2.0"
+
+# gem for pdf creation
+gem 'prawn'

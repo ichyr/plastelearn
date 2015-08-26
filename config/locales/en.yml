@@ -96,7 +96,7 @@ en:
       parts_stats: "Parts statistics"
       part_statuses: "Course part statuses"
       part_finalization: "Finalization of parts"
-      users_finalization: "Finalization of users"
+      user_finalization: "Finalization of users"
       completed: "Completed"
       failed: "Failed"
     parts_mng:

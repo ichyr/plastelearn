@@ -96,7 +96,7 @@ ua:
       parts_stats: "Статистика модулів"
       part_statuses: "Статуси модулів"
       part_finalization: "Завершеність по модулях"
-      users_finalization: "Завершеність по користувачах"
+      user_finalization: "Завершеність по користувачах"
       completed: "Завершено"
       failed: "Не завершено"
     parts_mng:
