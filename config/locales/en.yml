@@ -37,6 +37,8 @@ en:
     done: "Done"
     cancel: "Cancel"
     failed: "Failed"
+    details: "Details"
+    
     submit: "Submit"
     manage: "Manage"
     save_changes: "Save changes"

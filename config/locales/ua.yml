@@ -38,6 +38,8 @@ ua:
     cancel: "Відмінити"
     failed: "Не виконано"
     submit: "Надіслати"
+    details: "Детальніше"
+    details_link: "Переглянути"
     manage: "Управляти"
     save_changes: "Зберегти зміни"
     are_you_sure: "Ви впевнені?"
