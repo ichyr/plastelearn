@@ -1,4 +1,4 @@
-module ExportHelper
+module FileSystemHelper
 
 	# Method creates hierarchy of directories
 	# 

@@ -38,7 +38,7 @@ en:
     cancel: "Cancel"
     failed: "Failed"
     details: "Details"
-    
+    details_link: "See details"
     submit: "Submit"
     manage: "Manage"
     save_changes: "Save changes"

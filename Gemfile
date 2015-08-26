@@ -87,4 +87,6 @@ gem 'angularjs-rails', "~> 1.4.3"
 gem 'fullcalendar-rails', "~> 2.0.2.0"
 
 # gem for pdf creation
-gem 'prawn'
+# gem 'prawn'
+gem 'wicked_pdf'
+gem 'wkhtmltopdf-binary'

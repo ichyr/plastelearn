@@ -2,7 +2,9 @@ class CoursePolicy < ApplicationPolicy
 
 	# access check is performed in the controller
 	def show?
-		is_registered_enrolled?(user, record)
+		unless user.nil?
+			user.admin? || is_registered_enrolled?(user, record)
+		end
 	end
 
 	def documentation?
