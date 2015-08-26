@@ -26,7 +26,7 @@
           -if CoursePolicy.new(current_user, @homework.part.course).is_rateable?
             .col-sm-3.col-sm-offset-2
               - if current_user
-                p.col-sm-5 #{I18n.t("rating.your")}
+                p #{I18n.t("rating.your")}
                 #user_star
           .col-sm-3.col-sm-offset-2
             p #{I18n.t("rating.average")}
