@@ -132,7 +132,11 @@ class CoursePolicy < ApplicationPolicy
 
 	private
 	def is_registered_enrolled?(user, course)
-		true unless user.nil? || !is_enrolled?(user, record)
+		unless user.nil? || !is_enrolled?(user, record)
+			true
+		else
+			false
+		end
 	end
 
 	def is_enrolled?(user, course)

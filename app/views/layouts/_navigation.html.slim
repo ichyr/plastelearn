@@ -4,9 +4,9 @@ nav.navbar.navbar-inverse.navbar-fixed-top.navstripe-top
     .navbar-header
       button.navbar-toggle[type="button" data-toggle="collapse" data-target=".navbar-collapse"]
         span.sr-only #{I18n.t("layout.header.navigation.toogle")}
-        span.icon-bar
-        span.icon-bar
-        span.icon-bar
+        span.icon-bar style="background-color: black;"
+        span.icon-bar style="background-color: black;"
+        span.icon-bar style="background-color: black;"
       = link_to I18n.t("layout.header.navigation.title"), root_path, class: 'navbar-brand'
     .collapse.navbar-collapse
       ul.nav.navbar-nav.navbar-right
