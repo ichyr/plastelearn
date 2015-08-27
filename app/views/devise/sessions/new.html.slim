@@ -1,14 +1,15 @@
+- if devise_error_messages! && devise_error_messages! != ""
+  .alert.alert-danger = devise_error_messages!
+- flash.each do |name, msg|
+  - if msg.is_a?(String)
+    div class="alert alert-#{name.to_s == 'notice' ? 'success' : 'danger'}"
+      button.close[type="button" data-dismiss="alert" aria-hidden="true"] ×
+      = content_tag :div, msg, :id => "flash_#{name}"
+
 .authform
   = form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => { :role => 'form'}) do |f|
 
     h3.text-center = I18n.t "devise.user.sign_in"
-
-    - if devise_error_messages! && devise_error_messages! != ""
-      .alert.alert-danger = devise_error_messages!
-    - if flash[:notice]
-      .alert.alert-danger = flash[:notice]
-    - if flash[:alert]
-      .alert.alert-danger = flash[:alert]
 
     .form-group  
       - if devise_mapping.registerable? 
