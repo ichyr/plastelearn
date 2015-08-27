@@ -37,7 +37,7 @@ class CoursePolicy < ApplicationPolicy
 
 	# access check is performed in the controller
 	def create?
-		is_registered_enrolled?(user, record)
+		user.course_grants > 0
 	end
 
 	def update?
