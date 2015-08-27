@@ -114,9 +114,13 @@ en:
       calendar: "Calendar"
       parts: "Modules"
     discussions: "Discussions"
+    documentation: "Supplementary documentation"
     discuss:
       add_question: "Add new question"
       new_post: "Submit New Post"
+      new_post_helper: "Please specify anyting you would like others to hear."
+      commented_on: " commented on "
+      search: "Search by name"
     calendar: "Calendar"
     messages:
       not_logged_in: "Only registered user can access the courses. Please register!"

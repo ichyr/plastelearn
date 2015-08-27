@@ -115,9 +115,12 @@ ua:
       calendar: "Календар"
       parts: "Модулі"
     discussions: "Обговорення"
+    documentation: "Додаткові матеріали"
     discuss:
       add_question: "Нове питання"
       new_post: "Відправити відповідь"
+      new_post_helper: "Тут введіть свою думку про вищесказане."
+      commented_on: " прокоментував "
     calendar: "Календар"
     messages:
       not_logged_in: "Тільки зареєстровані користувачі мають доступ до курсу. Зареєструйтеся!"
