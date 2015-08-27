@@ -17,6 +17,13 @@
         </ul>
       </div>
 
+      <div class="col-sm-9" ng-show="!current.selected">
+        <div class="margin-bottom-50"></div>
+        <div class="text-info info-pomperek text-center">
+          <%= I18n.t("course.discuss.no_topic_selected") %>
+        </div>
+      </div>
+
       <div class="col-sm-9" ng-show="current.selected">
         <div class="col-sm-10 col-sm-offset-1">
 

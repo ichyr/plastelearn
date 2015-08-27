@@ -121,6 +121,9 @@ en:
       new_post_helper: "Please specify anyting you would like others to hear."
       commented_on: " commented on "
       search: "Search by name"
+      no_topic_selected: "Here you can ask new question or take part in answering asked ones by cicking the name of the question in the left list."
+      new_question_text: "Please enter the text of the question"
+      new_question_hint: "No text"
     calendar: "Calendar"
     messages:
       not_logged_in: "Only registered user can access the courses. Please register!"

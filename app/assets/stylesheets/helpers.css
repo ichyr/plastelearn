@@ -1,0 +1,10 @@
+.info-pomperek {
+  -webkit-border-radius: 30px;
+  -moz-border-radius: 30px;
+  border-radius: 30px;
+
+  border: 1px solid #0000BB;
+
+  padding: 35px;
+  font-size: 120%;
+}

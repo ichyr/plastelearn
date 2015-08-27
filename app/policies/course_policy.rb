@@ -26,7 +26,7 @@ class CoursePolicy < ApplicationPolicy
 	end
 
 	def new?
-		is_registered_enrolled?(user, record)
+		user.course_grants > 0
 	end
 
 	def edit?
