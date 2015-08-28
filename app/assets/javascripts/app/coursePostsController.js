@@ -1,4 +1,4 @@
-app.controller('coursePostsController', ['$scope', '$http', '$location', 'Post', function($scope, $http, $location, Post) {
+app.controller('coursePostsController', ['$log', '$scope', '$http', '$location', 'Post', function($log, $scope, $http, $location, Post) {
 
 	// Initialize course id in the scope of controller
 	_itemsParseIdController($scope, $location);
@@ -20,12 +20,20 @@ app.controller('coursePostsController', ['$scope', '$http', '$location', 'Post',
 		$scope.current.selected = true;
 	};
 
-	$scope.createThread = function() {
-		var data = $scope.newTopic;
+	$scope.showModal = function() {
+		$log.log("triggered");
+		$('#newTopicModal').modal('toggle');
+	};	
 
-		if( data != "" || data != undefined || false ) {
+	$scope.closeModal = function() {
+		$log.log("triggered");
+		$('#newTopicModal').modal('toggle');
+	};
+
+	$scope.createThread = function() {
+		if( $scope.newTopic != null && $scope.newTopic != "" && $scope.newTopic != undefined ) {
 			var newPost = {
-				content: data,
+				content: $scope.newTopic,
 				parent_id: 0
 			};
 
@@ -33,13 +41,14 @@ app.controller('coursePostsController', ['$scope', '$http', '$location', 'Post',
 				$scope.topics.push({id: data.id, content: data.content });
 				$scope.changeTopic(data.id, data.content);
 			});
-			$("[data-dismiss=modal]").trigger({ type: "click" });
+
+			$scope.closeModal();
 		}
 
 	};
 
-	$('#newTopicModal').on('hidden.bs.modal', function () {
-		$scope.newTopic = "";
+	$('#newTopicModal').on('hide.bs.modal', function () {
+		$scope.newTopic = null;
 	})
 
 
