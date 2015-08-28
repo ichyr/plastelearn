@@ -1,5 +1,5 @@
-# require "whenever/capistrano"
-# set :whenever_command, "bundle exec whenever"
+require "whenever/capistrano"
+set :whenever_command, "bundle exec whenever"
 
 set :default_run_options, {
   shell: '/bin/bash --login'

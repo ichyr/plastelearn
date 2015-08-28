@@ -54,6 +54,15 @@ class ApplicationPolicy
 
   def owner?(user, course)
     check_role(user, course, USER_COURSE_ROLES[:OWNER])
+  endclass CoursePolicy < ApplicationPolicy
+
+  # access check is performed in the controller
+  def show?
+    true
+  end
+
+  def documentation?
+    is_registered_enrolled?(user, record)
   end
 
   def enrolled?(user, course)
