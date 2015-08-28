@@ -36,6 +36,7 @@ en:
     actions: "Actions"
     done: "Done"
     cancel: "Cancel"
+    new_topic: "Create question"
     failed: "Failed"
     details: "Details"
     details_link: "See details"

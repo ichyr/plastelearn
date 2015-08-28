@@ -5,8 +5,10 @@
 
     <div class="row">
       <div class="col-sm-3">
-        <button class="btn btn-default margin-bottom-20 text-center col-sm-offset-2 col-sm-8" ng-click="createThread()"><%= I18n.t("course.discuss.add_question") %></button>
 
+        <button type="button" class="btn btn-default margin-bottom-20 text-center col-sm-offset-2 col-sm-8" ng-click="createThread()" data-toggle="modal" data-target="#newTopicModal">
+          <%= I18n.t("course.discuss.add_question") %>
+        </button>
 
         <input class="form-input col-sm-11 margin-bottom-10" type="text" ng-model="topicList.content" placeholder="<%=I18n.t("course.discuss.search")%>"></input>
 
@@ -54,6 +56,32 @@
             <%= I18n.t("course.discuss.new_post") %>
           </button>
 
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="newTopicModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel"><%= I18n.t("course.discuss.add_question") %></h4>
+          </div>
+          <div class="modal-body">
+            <%= I18n.t("course.discuss.new_question_text") %>
+            <br />
+            <input class="form-input col-sm-11 margin-bottom-10" type="text" ng-model="newTopic" placeholder="<%=I18n.t("course.discuss.new_question_hint")%>"></input>
+            <br />
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clearModal()">
+              <%= I18n.t("general.cancel") %>
+            </button>
+            <button type="button" class="btn btn-primary" ng-click="createThread()">
+              <%= I18n.t("general.new_topic") %>
+            </button>
+          </div>
         </div>
       </div>
     </div>

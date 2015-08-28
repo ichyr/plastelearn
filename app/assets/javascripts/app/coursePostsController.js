@@ -6,6 +6,8 @@ app.controller('coursePostsController', ['$scope', '$http', '$location', 'Post',
 
 	// Initialize the list of topics
 	$scope.topics = postService.all();
+	$scope.newTopic = {};
+
 
 	// Initialize conversation array
 	$scope.current = {
@@ -20,10 +22,7 @@ app.controller('coursePostsController', ['$scope', '$http', '$location', 'Post',
 	};
 
 	$scope.createThread = function() {
-		var data = prompt("Please enter the text of the question","No text");
-		console.log("data");
-		console.log(data);
-		console.log(data != "" || data != null || !!data != false);
+		var data = $scope.newTopic;
 
 		if( data != "" || data != null || !!data != false ) {
 			var newPost = {
@@ -32,11 +31,18 @@ app.controller('coursePostsController', ['$scope', '$http', '$location', 'Post',
 			};
 
 			postService.service.save(newPost, function(data){
-				console.log(data.id);
 				$scope.topics.push({id: data.id, content: data.content });
 				$scope.changeTopic(data.id, data.content);
 			});
+			$scope.clearModal();
 		}
+
+	};
+
+	$scope.clearModal = function() {
+		$scope.topicList.content = "done";
+		$scope.newTopic = "";
+		$("#newTopicModal").modal('hide');
 	};
 
 

@@ -54,7 +54,7 @@ class ApplicationPolicy
 
   def owner?(user, course)
     check_role(user, course, USER_COURSE_ROLES[:OWNER])
-  endclass CoursePolicy < ApplicationPolicy
+  end
 
   # access check is performed in the controller
   def show?

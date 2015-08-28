@@ -14,9 +14,7 @@ app.factory('Post', function($resource) {
 					isArray: true
 				}
 			})
-
-			console.log(courseId);
-		}
+		};
 
 		Post.prototype.create = function(attrs) {
 			new this.service({
