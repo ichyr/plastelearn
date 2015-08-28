@@ -6,7 +6,6 @@ app.controller('coursePostsController', ['$scope', '$http', '$location', 'Post',
 
 	// Initialize the list of topics
 	$scope.topics = postService.all();
-	$scope.newTopic = {};
 
 
 	// Initialize conversation array
@@ -24,7 +23,7 @@ app.controller('coursePostsController', ['$scope', '$http', '$location', 'Post',
 	$scope.createThread = function() {
 		var data = $scope.newTopic;
 
-		if( data != "" || data != null || !!data != false ) {
+		if( data != "" || data != undefined || false ) {
 			var newPost = {
 				content: data,
 				parent_id: 0
@@ -34,16 +33,14 @@ app.controller('coursePostsController', ['$scope', '$http', '$location', 'Post',
 				$scope.topics.push({id: data.id, content: data.content });
 				$scope.changeTopic(data.id, data.content);
 			});
-			$scope.clearModal();
+			$("[data-dismiss=modal]").trigger({ type: "click" });
 		}
 
 	};
 
-	$scope.clearModal = function() {
-		$scope.topicList.content = "done";
+	$('#newTopicModal').on('hidden.bs.modal', function () {
 		$scope.newTopic = "";
-		$("#newTopicModal").modal('hide');
-	};
+	})
 
 
 	$scope.submitNewPost = function() {
