@@ -92,7 +92,7 @@ module CoursesHelper
     text = I18n.t("helpers.course.how_create")
     title = I18n.t("helpers.course.how_create")
 
-    full = I18n.t("helpers.course.full")
+    full = I18n.t("helpers.course.full") + ", написавши листа на адресу zmii@plast.org.ua"
 
     '<div class="btn btn-info">' +
     modal_button(target, text) +

@@ -21,8 +21,11 @@ app.controller('coursePostsController', ['$scope', '$http', '$location', 'Post',
 
 	$scope.createThread = function() {
 		var data = prompt("Please enter the text of the question","No text");
+		console.log("data");
+		console.log(data);
+		console.log(data != "" || data != null || !!data != false);
 
-		if( !!data ) {
+		if( data != "" || data != null || !!data != false ) {
 			var newPost = {
 				content: data,
 				parent_id: 0
