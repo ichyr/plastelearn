@@ -63,13 +63,13 @@ module CoursesHelper
 
   def part_state_transition_button part, state
     if state == PART_STATUSES[:PLANNED]
-      link_to 'Start', move_status_part_path(part, status: PART_STATUSES[:ACTIVE]), 
+      link_to I18n.t("course.actions.start"), move_status_part_path(part, status: PART_STATUSES[:ACTIVE]), 
               method: "PUT", class: "btn btn-default"
     elsif state == PART_STATUSES[:ACTIVE]
-      link_to 'Finish', move_status_part_path(part, status: PART_STATUSES[:COMPLETE]),
+      link_to I18n.t("course.actions.finish"), move_status_part_path(part, status: PART_STATUSES[:COMPLETE]),
               method: "PUT", class: "btn btn-default"
     elsif state == PART_STATUSES[:COMPLETE]
-      link_to 'Reactivate', move_status_part_path(part, status: PART_STATUSES[:ACTIVE]),
+      link_to I18n.t("course.actions.reactivate"), move_status_part_path(part, status: PART_STATUSES[:ACTIVE]),
               method: "PUT", class: "btn btn-default"
     end
   end

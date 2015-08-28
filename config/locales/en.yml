@@ -136,6 +136,10 @@ en:
       assigned:
         teacher: "User %{name} was assigned as a teacher for this course."
         deleted: "User #{name} was deleted from members of this course."
+    actions:
+      start: "Start"
+      finish: "Finish"
+      reactivate: "Reactivate"
 
 
 

@@ -137,6 +137,10 @@ ua:
       assigned:
         teacher: "Користувача %{name} було відвищено до тренерів курсу."
         deleted: "Користувач #{name} було видалено з учасників цього курсу."
+    actions:
+      start: "Почати"
+      finish: "Завершити"
+      reactivate: "Перепочати"
 
   comment:
     comment_on: "прокоментував "
