@@ -69,9 +69,10 @@
           <div class="modal-body">
             <%= I18n.t("course.discuss.new_question_text") %>
             <br />
-            <input class="form-input col-sm-11 margin-bottom-10" type="text" ng-model="newTopic" placeholder="<%=I18n.t("course.discuss.new_question_hint")%>"></input>
             <br />
-            {{ newTopic }}
+            <input class="form-input col-sm-12 margin-bottom-10" type="text" ng-model="newTopic" placeholder="<%=I18n.t("course.discuss.new_question_hint")%>"></input>
+            <br />
+            <br />
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-default" ng-click="closeModal()">

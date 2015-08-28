@@ -1,4 +1,4 @@
-app.controller('coursePostsController', ['$log', '$scope', '$http', '$location', 'Post', function($log, $scope, $http, $location, Post) {
+app.controller('coursePostsController', ['$scope', '$http', '$location', 'Post', function($scope, $http, $location, Post) {
 
 	// Initialize course id in the scope of controller
 	_itemsParseIdController($scope, $location);
@@ -21,12 +21,10 @@ app.controller('coursePostsController', ['$log', '$scope', '$http', '$location',
 	};
 
 	$scope.showModal = function() {
-		$log.log("triggered");
 		$('#newTopicModal').modal('toggle');
 	};	
 
 	$scope.closeModal = function() {
-		$log.log("triggered");
 		$('#newTopicModal').modal('toggle');
 	};
 
