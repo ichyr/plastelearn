@@ -23,14 +23,14 @@ div role="tabpanel"
   .tab-content
     .tab-pane.active role="tabpanel"
       br /
-      .row.single-task.bg-success.col-sm-10.col-sm-offset-1.margin-bottom-15
-        h5.col-sm-5 = @course_grants
-        -if @new_course_count > 0
-          .pull-right
-            .btn.btn-success = link_to I18n.t("user_cabinet.create_new"), new_course_path
-        -else
-          .pull-right
-            = raw how_to_create_course_modal
-      br/
+      .row.margin-bottom-15.col-sm-10.col-sm-offset-1
+          span.glyphicon.glyphicon-exclamation-sign = "        #{@course_grants}"
+          -if @new_course_count > 0
+            .pull-right
+              .btn.btn-success.color-white = link_to I18n.t("user_cabinet.create_new"), new_course_path
+          -else
+            .pull-right
+              = raw how_to_create_course_modal
+
       #course_table
         = render partial: "courses_table", locals: { courses: @owner_courses, manageable: true, search_path_link: user_cabinet_courses_own_path }

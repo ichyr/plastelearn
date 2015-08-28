@@ -94,7 +94,7 @@ module CoursesHelper
 
     full = I18n.t("helpers.course.full") + ", написавши листа на адресу zmii@plast.org.ua"
 
-    '<div class="btn btn-info">' +
+    '<div class="btn btn-info color-white">' +
     modal_button(target, text) +
     '</div>' +
     '<br />' +

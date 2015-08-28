@@ -22,6 +22,7 @@ app.controller('coursePostsController', ['$scope', '$http', '$location', 'Post',
 
 	$scope.showModal = function() {
 		$('#newTopicModal').modal('toggle');
+		$('#newTopicTextInput').focus();
 	};	
 
 	$scope.closeModal = function() {
