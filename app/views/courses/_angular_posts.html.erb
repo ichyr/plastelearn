@@ -38,7 +38,9 @@
               <div class="col-sm-11 row">
                 <i>
                   <span>
-                    {{ post.author }} <%= I18n.t("course.discuss.commented_on")%> {{post.created_at}}
+                    <a href='{{ post.author_link }}'>
+                      {{ post.author }} <%= I18n.t("course.discuss.commented_on")%> {{post.created_at}}
+                    </a>
                   </span>
                 </i>
                 <br />
