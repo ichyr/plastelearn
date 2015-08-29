@@ -36,7 +36,7 @@ table.table
         tr
           td.col-sm-1 = index + 1
           th.col-sm-1.text-center = image_tag record.user.avatar.url(:thumb).to_s, size: "35x35" if record.user.avatar
-          td.col-sm-2 = record.user.name
+          td.col-sm-2 = link_to record.user.name, record.user
           td.col-sm-2 = record.user.email
           td.col-sm-2.text-center = raw user_status_decoration(record.role)
           td.col-sm-2

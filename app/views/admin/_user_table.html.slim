@@ -5,7 +5,7 @@ table.table.table-hover
       th.col-sm-3 = I18n.t("activerecord.attributes.user.name")
       th.col-sm-3 = I18n.t("activerecord.attributes.user.email")
       th.col-sm-1.text-center = I18n.t("activerecord.attributes.user.avatar")
-      th.col-sm-2.text-center = I18n.t("activerecord.attributes.user.course_grants")
+      th.col-sm-1.text-center = I18n.t("activerecord.attributes.user.course_grants")
       
   tbody
     - @users.each_with_index do |user, index|
@@ -14,7 +14,9 @@ table.table.table-hover
         td.col-sm-3 = user.name
         td.col-sm-3 = user.email
         td.col-sm-1 = image_tag user.avatar.url(:thumb).to_s, size: "25x25" if user.avatar
-        td.col-sm-2.text-center = user.course_grants
+        td.col-sm-1.text-center = user.course_grants
+        td.col-sm-1
+          .btn.btn-sm.btn-info = link_to I18n.t("general.show"), user
         td.col-sm-1
           .btn.btn-sm.btn-warning = link_to I18n.t("general.edit"), controller: :users, action: :edit, id: user.id
         td.col-sm-1
