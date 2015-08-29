@@ -11,7 +11,7 @@
           = raw "#{I18n.t("homework.for")} #{link_to @homework.part.title, @homework.part}"
 
         b.pull-right.margin-bottom-10
-          = "by #{@homework.user.email}"
+          = link_to "by #{@homework.user.email}", @homework.user
 
         br /
         br /
