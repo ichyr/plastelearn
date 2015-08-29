@@ -55,7 +55,7 @@
     .col-sm-2
       = image_tag comment.user.avatar.url(:thumb).to_s, size: "50x50", class: "img-circle" if comment.user.avatar.url
     .col-sm-offest-3
-      = comment.user.name
+      = link_to comment.user.name, comment.user
       i.margin-bottom-20 = " #{I18n.t("comment.comment_on")} #{format_date_comments(comment.created_at)}"
       br /
       i = comment.text

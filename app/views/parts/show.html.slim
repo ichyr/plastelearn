@@ -38,10 +38,10 @@ br /
           .col-sm-2
             = image_tag homework.user.avatar.url(:thumb).to_s, size: "50x50", class: "img-circle" if homework.user.avatar.url
           .col-sm-offest-3
-          = homework.user.email
+          = link_to homework.user.email, user_path(homework.user)
           .star.pull-right.display-inline data-score="#{homework.average_rating}"
           br/
-          i = raw shorten_description(homework.description)
+          i = link_to(raw(shorten_description(homework.description)), homework)
 
 javascript:
   $(document).ready(function(){
