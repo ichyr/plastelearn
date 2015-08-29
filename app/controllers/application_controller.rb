@@ -13,12 +13,16 @@ class ApplicationController < ActionController::Base
   protected
   def configure_permitted_parameters
 	  devise_parameter_sanitizer.for(:account_update) << :name
-	  devise_parameter_sanitizer.for(:account_update) << :cell_phone
+    devise_parameter_sanitizer.for(:account_update) << :cell_phone
+    devise_parameter_sanitizer.for(:account_update) << :city
+	  devise_parameter_sanitizer.for(:account_update) << :specialization
 	  devise_parameter_sanitizer.for(:account_update) << :information
 	  devise_parameter_sanitizer.for(:account_update) << :avatar
 
 	  devise_parameter_sanitizer.for(:sign_up) << :name
-	  devise_parameter_sanitizer.for(:sign_up) << :cell_phone
+    devise_parameter_sanitizer.for(:sign_up) << :cell_phone
+    devise_parameter_sanitizer.for(:sign_up) << :city
+	  devise_parameter_sanitizer.for(:sign_up) << :specialization
 	  devise_parameter_sanitizer.for(:sign_up) << :information
 	  devise_parameter_sanitizer.for(:sign_up) << :avatar
 	end

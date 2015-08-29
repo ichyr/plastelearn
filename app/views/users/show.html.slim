@@ -10,5 +10,15 @@ h1.text-center.margin-bottom-20 = @user.name || I18n.t("user.default_name")
         = image_tag @user.avatar.url(:thumb).to_s, size: "100x100" if @user.avatar
     .col-sm-9
       .container-fluid
-        b.col-sm-6.text-right = I18n.t("activerecord.attributes.user.email") + ":"
-        .col-sm-6.text-left = @user.email
+        .row
+          b.col-sm-6.text-right = I18n.t("activerecord.attributes.user.email") + ":"
+          .col-sm-6.text-left = @user.email
+        .row
+          b.col-sm-6.text-right = I18n.t("activerecord.attributes.user.city") + ":"
+          .col-sm-6.text-left = @user.city
+        .row
+          b.col-sm-6.text-right = I18n.t("activerecord.attributes.user.specialization") + ":"
+          .col-sm-6.text-left = @user.specialization
+        .row
+          b.col-sm-6.text-right = I18n.t("activerecord.attributes.user.information") + ":"
+          .col-sm-6.text-left = @user.information

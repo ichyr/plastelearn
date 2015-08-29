@@ -476,7 +476,9 @@ CREATE TABLE users (
     information text,
     role integer,
     avatar character varying,
-    course_grants integer
+    course_grants integer,
+    city character varying,
+    specialization character varying
 );
 
 
@@ -807,4 +809,6 @@ INSERT INTO schema_migrations (version) VALUES ('20150731200206');
 INSERT INTO schema_migrations (version) VALUES ('20150809161358');
 
 INSERT INTO schema_migrations (version) VALUES ('20150824154615');
+
+INSERT INTO schema_migrations (version) VALUES ('20150829164222');
 

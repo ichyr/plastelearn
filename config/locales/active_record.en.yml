@@ -82,6 +82,8 @@ en:
         name: "Name"
         email: "Email"
         cell_phone: "Cell phone number"
+        city: "City"
+        specialization: "Field of education"
         information: "Information"
         role: "Role"
         password: "Password"
