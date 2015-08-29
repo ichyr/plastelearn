@@ -5,6 +5,8 @@ class CoursesController < ApplicationController
   respond_to :html
 
   def index
+    SendWelcomeEmail.enqueue run_at: 1.second.from_now
+
     @courses = Course.where("public_visible = true and title like ?", search_param)
     .order(:created_at)
     .paginate(:page => params[:page], :per_page => 9)

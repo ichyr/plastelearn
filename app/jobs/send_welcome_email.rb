@@ -13,3 +13,6 @@ class SendWelcomeEmail < Que::Job
     destroy
   end
 end
+
+# Example of usage
+# SendWelcomeEmail.enqueue run_at: 1.second.from_now
