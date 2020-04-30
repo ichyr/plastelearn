@@ -1,26 +1,26 @@
 source 'https://rubygems.org'
 ruby '2.1.2'
-gem 'rails', '4.2.0'
-gem 'sass-rails', '~> 5.0'
-gem 'uglifier', '>= 1.3.0'
+gem 'rails', '4.2.8'
+gem 'sass-rails', '~> 5.0', '>= 5.0.1'
+gem 'uglifier', '>= 2.7.0'
 gem 'coffee-rails', '~> 4.1.0'
-gem 'jquery-rails'
-gem "jquery-ui-rails"
-gem 'turbolinks'
-gem 'jbuilder', '~> 2.0'
+gem 'jquery-rails', '>= 4.0.3'
+gem "jquery-ui-rails", ">= 5.0.0"
+gem 'turbolinks', '>= 2.5.3'
+gem 'jbuilder', '~> 2.2', '>= 2.2.6'
 group :development, :test do
   gem 'byebug'
-  gem 'web-console', '~> 2.0'
+  gem 'web-console', '~> 2.0', '>= 2.0.0'
   gem 'spring'
 end
 gem 'bootstrap-sass'
-gem 'twitter-bootstrap-rails'
-gem 'devise'
+gem 'twitter-bootstrap-rails', '>= 3.2.0'
+gem 'devise', '>= 3.4.1'
 gem 'high_voltage'
 gem 'pg'
-gem 'pundit'
-gem 'simple_form'
-gem 'slim-rails'
+gem 'pundit', '>= 0.3.0'
+gem 'simple_form', '>= 3.1.0'
+gem 'slim-rails', '>= 3.0.1'
 gem 'unicorn'
 gem 'unicorn-rails'
 group :development do
@@ -35,7 +35,7 @@ group :development do
   gem 'guard-bundler'
   gem 'guard-rails'
   gem 'guard-rspec'
-  gem 'quiet_assets'
+  gem 'quiet_assets', '>= 1.1.0'
   gem 'rails_layout'
   gem 'rb-fchange', :require=>false
   gem 'rb-fsevent', :require=>false
@@ -43,11 +43,11 @@ group :development do
   gem 'spring-commands-rspec'
 end
 group :development, :test do
-  gem 'factory_girl_rails'
+  gem 'factory_girl_rails', '>= 4.5.0'
   gem 'faker'
   gem 'pry-rails'
   gem 'pry-rescue'
-  gem 'rspec-rails'
+  gem 'rspec-rails', '>= 3.1.0'
   gem 'rubocop'
 end
 group :test do
@@ -60,11 +60,11 @@ end
 
 gem 'will_paginate', '~> 3.0.6'
 gem 'nested_form'
-gem 'carrierwave'
+gem 'carrierwave', '>= 0.10.0'
 gem 'rmagick'
 gem 'jquery-raty-rails', :git => "https://github.com/bmc/jquery-raty-rails"
-gem 'bootsy'
-gem 'momentjs-rails', '>= 2.8.1', :github => 'derekprior/momentjs-rails'
+gem 'bootsy', '>= 2.0.13'
+gem 'momentjs-rails', '>= 2.9.0'
 gem 'datetimepicker-rails', '>= 3.0.0', :git => 'git://github.com/zpaulovics/datetimepicker-rails.git', :branch => 'tarruda'
 # Bootstrap pagination links
 gem 'will_paginate-bootstrap'
@@ -73,7 +73,7 @@ gem "breadcrumbs_on_rails"
 # for diagram generation
 gem 'railroady'
 # charts
-gem "highcharts-rails", "~> 3.0.0"
+gem "highcharts-rails", "~> 3.0.10"
 # gem for crontab manipulations
 gem 'whenever', :require => false
 
@@ -88,5 +88,5 @@ gem 'fullcalendar-rails', "~> 2.0.2.0"
 
 # gem for pdf creation
 # gem 'prawn'
-gem 'wicked_pdf'
+gem 'wicked_pdf', '>= 0.11.0'
 gem 'wkhtmltopdf-binary'
