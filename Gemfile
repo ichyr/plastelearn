@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 ruby '2.1.2'
 gem 'rails', '4.2.0'
-gem 'sass-rails', '~> 5.0'
+gem 'sass-rails', '~> 5.0', '>= 5.0.1'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.1.0'
 gem 'jquery-rails'
@@ -10,7 +10,7 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 group :development, :test do
   gem 'byebug'
-  gem 'web-console', '~> 2.0'
+  gem 'web-console', '~> 2.0', '>= 2.0.0'
   gem 'spring'
 end
 gem 'bootstrap-sass'
@@ -73,7 +73,7 @@ gem "breadcrumbs_on_rails"
 # for diagram generation
 gem 'railroady'
 # charts
-gem "highcharts-rails", "~> 3.0.0"
+gem "highcharts-rails", "~> 3.0.10"
 # gem for crontab manipulations
 gem 'whenever', :require => false
 
