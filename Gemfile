@@ -1,30 +1,30 @@
 source 'https://rubygems.org'
 ruby '2.1.2'
-gem 'rails', '4.2.0'
-gem 'sass-rails', '~> 5.0'
-gem 'uglifier', '>= 1.3.0'
-gem 'coffee-rails', '~> 4.1.0'
-gem 'jquery-rails'
-gem "jquery-ui-rails"
-gem 'turbolinks'
-gem 'jbuilder', '~> 2.0'
+gem 'rails', '5.2.8.1'
+gem 'sass-rails', '~> 5.0', '>= 5.0.5'
+gem 'uglifier', '>= 2.7.2'
+gem 'coffee-rails', '~> 4.2.2'
+gem 'jquery-rails', '>= 4.4.0'
+gem "jquery-ui-rails", ">= 6.0.0"
+gem 'turbolinks', '>= 5.0.0'
+gem 'jbuilder', '~> 2.6', '>= 2.6.4'
 group :development, :test do
   gem 'byebug'
-  gem 'web-console', '~> 2.0'
+  gem 'web-console', '~> 2.1', '>= 2.1.3'
   gem 'spring'
 end
-gem 'bootstrap-sass'
-gem 'twitter-bootstrap-rails'
-gem 'devise'
+gem 'bootstrap-sass', '>= 3.4.0'
+gem 'twitter-bootstrap-rails', '>= 3.2.2'
+gem 'devise', '>= 4.7.1'
 gem 'high_voltage'
 gem 'pg'
 gem 'pundit'
-gem 'simple_form'
-gem 'slim-rails'
+gem 'simple_form', '>= 5.0.0'
+gem 'slim-rails', '>= 3.1.0'
 gem 'unicorn'
 gem 'unicorn-rails'
 group :development do
-  gem 'better_errors'
+  gem 'better_errors', '>= 2.8.0'
   gem 'binding_of_caller', :platforms=>[:mri_21]
   gem 'capistrano', '~> 3.0.1'
   gem 'capistrano-bundler'
@@ -48,7 +48,7 @@ group :development, :test do
   gem 'pry-rails'
   gem 'pry-rescue'
   gem 'rspec-rails'
-  gem 'rubocop'
+  gem 'rubocop', '>= 0.49.0'
 end
 group :test do
   gem 'capybara'
@@ -60,20 +60,20 @@ end
 
 gem 'will_paginate', '~> 3.0.6'
 gem 'nested_form'
-gem 'carrierwave'
+gem 'carrierwave', '>= 1.3.2'
 gem 'rmagick'
 gem 'jquery-raty-rails', :git => "https://github.com/bmc/jquery-raty-rails"
-gem 'bootsy'
+gem 'bootsy', '>= 2.4.0'
 gem 'momentjs-rails', '>= 2.8.1', :github => 'derekprior/momentjs-rails'
 gem 'datetimepicker-rails', '>= 3.0.0', :git => 'git://github.com/zpaulovics/datetimepicker-rails.git', :branch => 'tarruda'
 # Bootstrap pagination links
 gem 'will_paginate-bootstrap'
 # Breadcrumbs for rails 4
-gem "breadcrumbs_on_rails"
+gem "breadcrumbs_on_rails", ">= 3.0.0"
 # for diagram generation
 gem 'railroady'
 # charts
-gem "highcharts-rails", "~> 3.0.0"
+gem "highcharts-rails", "~> 3.0.10"
 # gem for crontab manipulations
 gem 'whenever', :require => false
 
