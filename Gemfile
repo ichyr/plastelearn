@@ -61,7 +61,7 @@ end
 gem 'will_paginate', '~> 3.0.6'
 gem 'nested_form'
 gem 'carrierwave'
-gem 'rmagick'
+gem 'rmagick', '>= 5.3.0'
 gem 'jquery-raty-rails', :git => "https://github.com/bmc/jquery-raty-rails"
 gem 'bootsy'
 gem 'momentjs-rails', '>= 2.8.1', :github => 'derekprior/momentjs-rails'
