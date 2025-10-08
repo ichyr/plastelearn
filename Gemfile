@@ -1,30 +1,30 @@
 source 'https://rubygems.org'
 ruby '2.1.2'
-gem 'rails', '4.2.0'
-gem 'sass-rails', '~> 5.0'
+gem 'rails', '5.0.0'
+gem 'sass-rails', '~> 5.0', '>= 5.0.5'
 gem 'uglifier', '>= 1.3.0'
-gem 'coffee-rails', '~> 4.1.0'
-gem 'jquery-rails'
-gem "jquery-ui-rails"
-gem 'turbolinks'
+gem 'coffee-rails', '~> 4.1.1'
+gem 'jquery-rails', '>= 4.0.4'
+gem "jquery-ui-rails", ">= 5.0.1"
+gem 'turbolinks', '>= 2.5.4'
 gem 'jbuilder', '~> 2.0'
 group :development, :test do
   gem 'byebug'
-  gem 'web-console', '~> 2.0'
+  gem 'web-console', '~> 2.1', '>= 2.1.0'
   gem 'spring'
 end
 gem 'bootstrap-sass'
-gem 'twitter-bootstrap-rails'
-gem 'devise'
+gem 'twitter-bootstrap-rails', '>= 3.2.2'
+gem 'devise', '>= 4.0.0'
 gem 'high_voltage'
 gem 'pg'
 gem 'pundit'
-gem 'simple_form'
-gem 'slim-rails'
-gem 'unicorn'
-gem 'unicorn-rails'
+gem 'simple_form', '>= 3.2.1'
+gem 'slim-rails', '>= 3.1.0'
+gem 'unicorn', '>= 4.9.0'
+gem 'unicorn-rails', '>= 2.2.1'
 group :development do
-  gem 'better_errors'
+  gem 'better_errors', '>= 2.2.0'
   gem 'binding_of_caller', :platforms=>[:mri_21]
   gem 'capistrano', '~> 3.0.1'
   gem 'capistrano-bundler'
@@ -43,15 +43,15 @@ group :development do
   gem 'spring-commands-rspec'
 end
 group :development, :test do
-  gem 'factory_girl_rails'
+  gem 'factory_girl_rails', '>= 4.6.0'
   gem 'faker'
   gem 'pry-rails'
   gem 'pry-rescue'
-  gem 'rspec-rails'
+  gem 'rspec-rails', '>= 3.5.0'
   gem 'rubocop'
 end
 group :test do
-  gem 'capybara'
+  gem 'capybara', '>= 2.5.0'
   gem 'database_cleaner'
   gem 'launchy'
   gem 'selenium-webdriver'
@@ -73,7 +73,7 @@ gem "breadcrumbs_on_rails"
 # for diagram generation
 gem 'railroady'
 # charts
-gem "highcharts-rails", "~> 3.0.0"
+gem "highcharts-rails", "~> 4.0.0"
 # gem for crontab manipulations
 gem 'whenever', :require => false
 
@@ -88,5 +88,5 @@ gem 'fullcalendar-rails', "~> 2.0.2.0"
 
 # gem for pdf creation
 # gem 'prawn'
-gem 'wicked_pdf'
+gem 'wicked_pdf', '>= 1.0.0'
 gem 'wkhtmltopdf-binary'
